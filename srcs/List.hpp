@@ -25,7 +25,18 @@ namespace ft {
 		typedef typename allocator_type::pointer pointer;
 		typedef typename allocator_type::const_pointer const_pointer;
 	private:
+		typedef struct	_s_node
+		{
+			struct _s_node*	_next;
+			struct _s_node*	_prev;
+			value_type*		_data;
+		}				_t_node;
+		_t_node*		_begin_node;
+		_t_node*		_end_node;
 
+		typedef typename allocator_type::template rebind<_t_node>::other allocator_rebind;
+		allocator_rebind _alloc_rebind;
+		allocator_type	 _alloc;
 	public:
 		explicit list(const allocator_type& alloc = allocator_type()) {}
 		explicit list(size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type()) {}
