@@ -133,7 +133,7 @@ namespace ft {
 			value_type*					operator->() const { return _pointer->_data; }
 		};
 
-		class const_iterator : public std::iterator<std::bidirectional_iterator_tag, T> {
+		class const_iterator : public std::iterator<std::bidirectional_iterator_tag, const T> {
 		private:
 			_t_node*	_pointer;
 		public:
@@ -178,7 +178,7 @@ namespace ft {
 			value_type const*			operator->() const { return _pointer->_data; }
 		};
 
-		class reverse_iterator : public std::iterator<std::bidirectional_iterator_tag, T> {
+		class reverse_iterator : public std::reverse_iterator<iterator> {
 		private:
 			_t_node*	_pointer;
 		public:
@@ -217,7 +217,7 @@ namespace ft {
 			value_type*					operator->() const { return _pointer->_data; }
 		};
 
-		class const_reverse_iterator : public std::iterator<std::bidirectional_iterator_tag, T> {
+		class const_reverse_iterator : public std::reverse_iterator<const_iterator> {
 		private:
 			_t_node*	_pointer;
 		public:
@@ -273,47 +273,56 @@ namespace ft {
 
 		/* Constructors and destructor */
 
-			/* empty container constructor (default constructor)
-				Constructs an empty container, with no elements. */
 		explicit list(const allocator_type& alloc = allocator_type()) : _alloc(alloc), _size(0) { _createEmptyList(); }
-			/* fill constructor
-				Constructs a container with n elements. Each element is a copy of val. */
-		explicit list(size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type()) : _alloc(alloc), _size(n) {
+		explicit list(size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type()) : _alloc(alloc), _size(0) {
 			_createEmptyList();
-			// pushback n values
+			for (; n > 0; n--)
+				push_back(val);
 		}
-			/* range constructor
-				Constructs a container with as many elements as the range [first,last),
-				with each element constructed from its corresponding element in that range, in the same order. */
 		template<class InputIterator>
-				list(InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type(), typename ft::enable_if<std::__is_input_iterator<InputIterator>::value>::type* = 0) {}
-			/* copy constructor
-				Constructs a container with a copy of each of the elements in x, in the same order. */
-		list(const list &x) {
-
+		list(InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type(),
+			typename ft::enable_if<std::__is_input_iterator<InputIterator>::value>::type* = 0) : _alloc(alloc), _size(0) {
+			_createEmptyList();
+			for ( ; first != last; first++)
+				push_back(*first);
 		}
-			/* destructor */
+		list(const list &x) : _alloc(x._alloc), _size(0) {
+			_createEmptyList();
+			*this = x;
+		}
 		~list() {
-			// call clear
+			clear();
+			_alloc.destroy(_end_node->_data);
+			_alloc_rebind.deallocate(_end_node, 1);
 		}
-			/* Copies all the elements from x into the container. */
-		list& operator=(const list& x) {}
+		list& operator=(const list& x) {
+			if (this == &x)
+				return *this;
+			clear();
+			const_iterator itEnd = x.end();
+			for (const_iterator itBegin = x.begin(); itBegin != itEnd; itBegin++)
+				push_back(*itBegin);
+			return *this;
+		}
 
 		/* Modifiers */
 
 		template <class InputIterator>
 		void assign (InputIterator first, InputIterator last) {
-
+			clear();
+			for (; first != last; first++)
+				push_back(*first);
 		}
 
 		void assign (size_type n, const value_type& val) {
-
+			clear();
+			for (; n > 0; n--)
+				push_back(val);
 		}
 
 		void			push_front(const value_type& val) {
 			_t_node *node = _createNode(val);
-			_relinkNodes(node, _end_node->_next);
-			_relinkNodes(_end_node, node);
+			_insertNode(node, _end_node, _end_node->_next);
 		}
 
 		void			pop_front() {
@@ -324,8 +333,7 @@ namespace ft {
 
 		void			push_back(const value_type& val) {
 			_t_node *node = _createNode(val);
-			_relinkNodes(_end_node->_prev, node);
-			_relinkNodes(node, _end_node);
+			_insertNode(node, _end_node->_prev,_end_node);
 		}
 
 		void			pop_back() {
@@ -336,8 +344,7 @@ namespace ft {
 
 		iterator		insert(iterator position, const value_type& val) {
 			_t_node *node = _createNode(val);
-			_relinkNodes(position->_prev, node);
-			_relinkNodes(node, position->_next);
+			_insertNode(node, (*position)->_prev, (*position)->_next);
 		}
 
 		void			insert(iterator position, size_type n, const value_type& val) {
@@ -353,20 +360,64 @@ namespace ft {
 		}
 
 		iterator		erase(iterator position) {
-			// TODO think
-			++position;
+			iterator tmp(position);
+			_relinkNodes((*position)->prev, (*position)->next);
+			position++;
+			_deleteNode(*tmp);
 			return position;
 		}
 
-		iterator		erase(iterator first, iterator last) {}
+		iterator		erase(iterator first, iterator last) {
+			while (first != last)
+				first = erase(first);
+		}
 
-		void			swap(list& x) {}
+		void			swap(list& x) {
+			_t_node		*tmpNode = _end_node;
+			size_type	tmpSize = _size;
+			_end_node = x._end_node;
+			x._end_node = tmpNode;
+			_size = x._size;
+			x._size = tmpSize;
+		}
 
-		void			resize(size_type n, value_type val = value_type()) {}
+		void			resize(size_type n, value_type val = value_type()) {
+			while (_size != n) {
+				if (_size < n)
+					push_back(val);
+				else
+					erase(iterator(_end_node->_prev));
+			}
+		}
 
-		void			clear() {}
+		void			clear() {
+			while (_size != 0) {
+				_t_node *tmp = _end_node->_prev;
+				_relinkNodes(tmp->_prev, _end_node);
+				_deleteNode(tmp);
+			}
+			_end_node->_next = _end_node;
+			_end_node->_prev = _end_node;
+		}
 
+		/* Capacity */
 
+		bool			empty() const { return _size == 0; }
+		size_type		size() const { return _size; }
+		size_type		max_size() const { return std::numeric_limits<size_type>::max() / sizeof(_t_node) / ((sizeof(value_type) == 1) ? 2 : 1); }
+
+		/* Element access */
+
+		reference		front() { return _end_node->_next->_data; }
+		const_reference	front() const { return _end_node->_next->_data; }
+		reference		back() { return _end_node->_prev->_data; }
+		const_reference	back() const { return _end_node->_prev->_data; }
+
+		/* Operations */
+
+		void			splice(iterator position, list& x) {}
+		void			splice(iterator position, list& x, iterator i) {}
+		void			splice(iterator position, list& x, iterator first, iterator last) {}
 
 	};
 }
