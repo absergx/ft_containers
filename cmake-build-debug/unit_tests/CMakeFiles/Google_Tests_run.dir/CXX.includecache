@@ -14,10 +14,6 @@ type_traits
 stdexcept
 -
 
-../srcs/queue.hpp
-list.hpp
-../srcs/list.hpp
-
 ../unit_tests/lib/googletest/include/gtest/gtest-death-test.h
 gtest/internal/gtest-death-test-internal.h
 ../unit_tests/lib/googletest/include/gtest/gtest/internal/gtest-death-test-internal.h
@@ -336,15 +332,15 @@ cxxabi.h
 acxx_demangle.h
 -
 
-/Users/memilio/homerun/ft_containers/unit_tests/queue.cpp
+/Users/sergeyabramov/LearnCode/git_split/ft_containers/unit_tests/list.cpp
 gtest/gtest.h
-/Users/memilio/homerun/ft_containers/unit_tests/gtest/gtest.h
-queue.hpp
-/Users/memilio/homerun/ft_containers/unit_tests/queue.hpp
-queue
--
+/Users/sergeyabramov/LearnCode/git_split/ft_containers/unit_tests/gtest/gtest.h
+list.hpp
+/Users/sergeyabramov/LearnCode/git_split/ft_containers/unit_tests/list.hpp
 list
 -
-string
+sstream
+-
+cmath
 -
 

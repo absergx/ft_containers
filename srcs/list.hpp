@@ -78,9 +78,9 @@ namespace ft {
 		}
 
 		void 				_changeSize(int _difference) {
-			if (_difference == -1)
+			if (_difference == -1 && _size != 0)
 				_size--;
-			else
+			else if (_difference > 0)
 				_size += static_cast<size_type>(_difference);
 		}
 

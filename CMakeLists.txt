@@ -11,7 +11,6 @@ include_directories(${INCLUDE_DIRS})
 
 set(SRCS
 		srcs/list.hpp
-#        srcs/iterator.hpp
 #        srcs/vector.hpp
 #        srcs/map.hpp
 #        srcs/stack.hpp

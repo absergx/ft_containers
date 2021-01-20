@@ -68,10 +68,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/memilio/homerun/ft_containers
+CMAKE_SOURCE_DIR = /Users/sergeyabramov/LearnCode/git_split/ft_containers
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/memilio/homerun/ft_containers/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/sergeyabramov/LearnCode/git_split/ft_containers/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -146,14 +146,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/memilio/homerun/ft_containers/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_progress_start /Users/memilio/homerun/ft_containers/cmake-build-debug/CMakeFiles /Users/memilio/homerun/ft_containers/cmake-build-debug/unit_tests/CMakeFiles/progress.marks
-	cd /Users/memilio/homerun/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unit_tests/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/memilio/homerun/ft_containers/cmake-build-debug/CMakeFiles 0
+	cd /Users/sergeyabramov/LearnCode/git_split/ft_containers/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_progress_start /Users/sergeyabramov/LearnCode/git_split/ft_containers/cmake-build-debug/CMakeFiles /Users/sergeyabramov/LearnCode/git_split/ft_containers/cmake-build-debug/unit_tests/CMakeFiles/progress.marks
+	cd /Users/sergeyabramov/LearnCode/git_split/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unit_tests/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/sergeyabramov/LearnCode/git_split/ft_containers/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/memilio/homerun/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unit_tests/clean
+	cd /Users/sergeyabramov/LearnCode/git_split/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unit_tests/clean
 .PHONY : clean
 
 # The main clean target
@@ -163,22 +163,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/memilio/homerun/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unit_tests/preinstall
+	cd /Users/sergeyabramov/LearnCode/git_split/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unit_tests/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/memilio/homerun/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unit_tests/preinstall
+	cd /Users/sergeyabramov/LearnCode/git_split/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unit_tests/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/memilio/homerun/ft_containers/cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/sergeyabramov/LearnCode/git_split/ft_containers/cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 unit_tests/CMakeFiles/Google_Tests_run.dir/rule:
-	cd /Users/memilio/homerun/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unit_tests/CMakeFiles/Google_Tests_run.dir/rule
+	cd /Users/sergeyabramov/LearnCode/git_split/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unit_tests/CMakeFiles/Google_Tests_run.dir/rule
 .PHONY : unit_tests/CMakeFiles/Google_Tests_run.dir/rule
 
 # Convenience name for target.
@@ -188,7 +188,7 @@ Google_Tests_run: unit_tests/CMakeFiles/Google_Tests_run.dir/rule
 
 # fast build rule for target.
 Google_Tests_run/fast:
-	cd /Users/memilio/homerun/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f unit_tests/CMakeFiles/Google_Tests_run.dir/build.make unit_tests/CMakeFiles/Google_Tests_run.dir/build
+	cd /Users/sergeyabramov/LearnCode/git_split/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f unit_tests/CMakeFiles/Google_Tests_run.dir/build.make unit_tests/CMakeFiles/Google_Tests_run.dir/build
 .PHONY : Google_Tests_run/fast
 
 list.o: list.cpp.o
@@ -197,7 +197,7 @@ list.o: list.cpp.o
 
 # target to build an object file
 list.cpp.o:
-	cd /Users/memilio/homerun/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f unit_tests/CMakeFiles/Google_Tests_run.dir/build.make unit_tests/CMakeFiles/Google_Tests_run.dir/list.cpp.o
+	cd /Users/sergeyabramov/LearnCode/git_split/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f unit_tests/CMakeFiles/Google_Tests_run.dir/build.make unit_tests/CMakeFiles/Google_Tests_run.dir/list.cpp.o
 .PHONY : list.cpp.o
 
 list.i: list.cpp.i
@@ -206,7 +206,7 @@ list.i: list.cpp.i
 
 # target to preprocess a source file
 list.cpp.i:
-	cd /Users/memilio/homerun/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f unit_tests/CMakeFiles/Google_Tests_run.dir/build.make unit_tests/CMakeFiles/Google_Tests_run.dir/list.cpp.i
+	cd /Users/sergeyabramov/LearnCode/git_split/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f unit_tests/CMakeFiles/Google_Tests_run.dir/build.make unit_tests/CMakeFiles/Google_Tests_run.dir/list.cpp.i
 .PHONY : list.cpp.i
 
 list.s: list.cpp.s
@@ -215,7 +215,7 @@ list.s: list.cpp.s
 
 # target to generate assembly for a file
 list.cpp.s:
-	cd /Users/memilio/homerun/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f unit_tests/CMakeFiles/Google_Tests_run.dir/build.make unit_tests/CMakeFiles/Google_Tests_run.dir/list.cpp.s
+	cd /Users/sergeyabramov/LearnCode/git_split/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f unit_tests/CMakeFiles/Google_Tests_run.dir/build.make unit_tests/CMakeFiles/Google_Tests_run.dir/list.cpp.s
 .PHONY : list.cpp.s
 
 queue.o: queue.cpp.o
@@ -224,7 +224,7 @@ queue.o: queue.cpp.o
 
 # target to build an object file
 queue.cpp.o:
-	cd /Users/memilio/homerun/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f unit_tests/CMakeFiles/Google_Tests_run.dir/build.make unit_tests/CMakeFiles/Google_Tests_run.dir/queue.cpp.o
+	cd /Users/sergeyabramov/LearnCode/git_split/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f unit_tests/CMakeFiles/Google_Tests_run.dir/build.make unit_tests/CMakeFiles/Google_Tests_run.dir/queue.cpp.o
 .PHONY : queue.cpp.o
 
 queue.i: queue.cpp.i
@@ -233,7 +233,7 @@ queue.i: queue.cpp.i
 
 # target to preprocess a source file
 queue.cpp.i:
-	cd /Users/memilio/homerun/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f unit_tests/CMakeFiles/Google_Tests_run.dir/build.make unit_tests/CMakeFiles/Google_Tests_run.dir/queue.cpp.i
+	cd /Users/sergeyabramov/LearnCode/git_split/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f unit_tests/CMakeFiles/Google_Tests_run.dir/build.make unit_tests/CMakeFiles/Google_Tests_run.dir/queue.cpp.i
 .PHONY : queue.cpp.i
 
 queue.s: queue.cpp.s
@@ -242,7 +242,7 @@ queue.s: queue.cpp.s
 
 # target to generate assembly for a file
 queue.cpp.s:
-	cd /Users/memilio/homerun/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f unit_tests/CMakeFiles/Google_Tests_run.dir/build.make unit_tests/CMakeFiles/Google_Tests_run.dir/queue.cpp.s
+	cd /Users/sergeyabramov/LearnCode/git_split/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f unit_tests/CMakeFiles/Google_Tests_run.dir/build.make unit_tests/CMakeFiles/Google_Tests_run.dir/queue.cpp.s
 .PHONY : queue.cpp.s
 
 test.o: test.cpp.o
@@ -251,7 +251,7 @@ test.o: test.cpp.o
 
 # target to build an object file
 test.cpp.o:
-	cd /Users/memilio/homerun/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f unit_tests/CMakeFiles/Google_Tests_run.dir/build.make unit_tests/CMakeFiles/Google_Tests_run.dir/test.cpp.o
+	cd /Users/sergeyabramov/LearnCode/git_split/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f unit_tests/CMakeFiles/Google_Tests_run.dir/build.make unit_tests/CMakeFiles/Google_Tests_run.dir/test.cpp.o
 .PHONY : test.cpp.o
 
 test.i: test.cpp.i
@@ -260,7 +260,7 @@ test.i: test.cpp.i
 
 # target to preprocess a source file
 test.cpp.i:
-	cd /Users/memilio/homerun/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f unit_tests/CMakeFiles/Google_Tests_run.dir/build.make unit_tests/CMakeFiles/Google_Tests_run.dir/test.cpp.i
+	cd /Users/sergeyabramov/LearnCode/git_split/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f unit_tests/CMakeFiles/Google_Tests_run.dir/build.make unit_tests/CMakeFiles/Google_Tests_run.dir/test.cpp.i
 .PHONY : test.cpp.i
 
 test.s: test.cpp.s
@@ -269,7 +269,7 @@ test.s: test.cpp.s
 
 # target to generate assembly for a file
 test.cpp.s:
-	cd /Users/memilio/homerun/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f unit_tests/CMakeFiles/Google_Tests_run.dir/build.make unit_tests/CMakeFiles/Google_Tests_run.dir/test.cpp.s
+	cd /Users/sergeyabramov/LearnCode/git_split/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f unit_tests/CMakeFiles/Google_Tests_run.dir/build.make unit_tests/CMakeFiles/Google_Tests_run.dir/test.cpp.s
 .PHONY : test.cpp.s
 
 # Help Target
@@ -305,6 +305,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/memilio/homerun/ft_containers/cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/sergeyabramov/LearnCode/git_split/ft_containers/cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
