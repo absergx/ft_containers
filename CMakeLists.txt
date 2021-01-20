@@ -10,12 +10,12 @@ set(INCLUDE_DIRS srcs)
 include_directories(${INCLUDE_DIRS})
 
 set(SRCS
-		srcs/list.hpp)
+		srcs/list.hpp
 #        srcs/iterator.hpp
 #        srcs/vector.hpp
 #        srcs/map.hpp
 #        srcs/stack.hpp
-#        srcs/queue.hpp)
+        srcs/queue.hpp)
 
 add_executable(ft_containers main.cpp ${SRCS})
 

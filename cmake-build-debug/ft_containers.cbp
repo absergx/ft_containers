@@ -378,6 +378,9 @@
 		<Unit filename="/Users/memilio/homerun/ft_containers/srcs/list.hpp">
 			<Option target="ft_containers"/>
 		</Unit>
+		<Unit filename="/Users/memilio/homerun/ft_containers/srcs/queue.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
 		<Unit filename="/Users/memilio/homerun/ft_containers/unit_tests/lib/googlemock/src/gmock-all.cc">
 			<Option target="gmock"/>
 		</Unit>
@@ -391,6 +394,9 @@
 			<Option target="gtest_main"/>
 		</Unit>
 		<Unit filename="/Users/memilio/homerun/ft_containers/unit_tests/list.cpp">
+			<Option target="Google_Tests_run"/>
+		</Unit>
+		<Unit filename="/Users/memilio/homerun/ft_containers/unit_tests/queue.cpp">
 			<Option target="Google_Tests_run"/>
 		</Unit>
 		<Unit filename="/Users/memilio/homerun/ft_containers/unit_tests/test.cpp">
