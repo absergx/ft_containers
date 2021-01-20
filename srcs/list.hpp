@@ -64,6 +64,7 @@ namespace ft {
 			ret->_data = _alloc.allocate(1);
 			_alloc.construct(ret->_data, val);
 			_changeSize(1);
+			return ret;
 		}
 
 		void 				_insertNode(_t_node* _target, _t_node* _prev, _t_node* _next) {
@@ -77,18 +78,22 @@ namespace ft {
 		}
 
 		void 				_changeSize(int _difference) {
-			_size += (_difference != -1) ? static_cast<size_type>(_difference) : -1;
+			if (_difference == -1)
+				_size--;
+			else
+				_size += static_cast<size_type>(_difference);
 		}
 
-		/*
-		 * TODO :
-		 * 1. iterators
-		 * 2. modifiers
-		 * 		a. push_
-		 * 		b. insert
-		 * 		c. pop_
-		 * 		d. erase
-		 * */
+		struct				_equal {
+			bool			operator() (value_type const& lhs, value_type const& rhs) {
+				return lhs == rhs;
+			}
+		};
+		struct				_less {
+			bool			operator() (value_type const& lhs, value_type const& rhs) {
+				return lhs < rhs;
+			}
+		};
 
 	public:
 
@@ -108,14 +113,14 @@ namespace ft {
 				return *this;
 			}
 			bool 						operator==(const iterator& rhs) const { return _pointer == rhs._pointer; }
-			bool 						operator==(const const_iterator& rhs) const { return _pointer == rhs._pointer; }
+			bool 						operator==(const const_iterator& rhs) const { return _pointer == rhs.getPointer(); }
 			bool 						operator!=(const iterator& rhs) const { return _pointer != rhs._pointer; }
 			bool 						operator!=(const const_iterator& rhs) const { return _pointer != rhs._pointer; }
 			iterator&					operator++() {
-				_pointer = _pointer->next;
+				_pointer = _pointer->_next;
 				return *this;
 			}
-			iterator&					operator++(int) {
+			iterator					operator++(int) {
 				iterator tmp = *this;
 				operator++();
 				return tmp;
@@ -124,13 +129,15 @@ namespace ft {
 				_pointer = _pointer->_prev;
 				return *this;
 			}
-			iterator&					operator--(int) {
+			iterator					operator--(int) {
 				iterator tmp = *this;
 				operator--();
 				return tmp;
 			}
-			value_type&					operator* () const { return _pointer->_data; }
+			value_type&					operator* () const { return *_pointer->_data; }
 			value_type*					operator->() const { return _pointer->_data; }
+
+			_t_node*					getPointer() const { return _pointer; }
 		};
 
 		class const_iterator : public std::iterator<std::bidirectional_iterator_tag, const T> {
@@ -148,20 +155,19 @@ namespace ft {
 				return *this;
 			}
 			const_iterator&				operator= (const iterator& rhs) {
-				if (this != &rhs)
-					_pointer = rhs._pointer;
+				_pointer = rhs.getPointer();
 				return *this;
 			}
-			bool 						operator==(const iterator& rhs) const { return _pointer == rhs._pointer; }
+			bool 						operator==(const iterator& rhs) const { return _pointer == rhs.getPointer(); }
 			bool 						operator==(const const_iterator& rhs) const { return _pointer == rhs._pointer; }
-			bool 						operator!=(const iterator& rhs) const { return _pointer != rhs._pointer; }
+			bool 						operator!=(const iterator& rhs) const { return _pointer != rhs.getPointer(); }
 			bool 						operator!=(const const_iterator& rhs) const { return _pointer != rhs._pointer; }
 			const_iterator&				operator++() {
-				_pointer = _pointer->next;
+				_pointer = _pointer->_next;
 				return *this;
 			}
-			const_iterator&				operator++(int) {
-				iterator tmp = *this;
+			const_iterator				operator++(int) {
+				const_iterator tmp(_pointer);
 				operator++();
 				return tmp;
 			}
@@ -169,13 +175,14 @@ namespace ft {
 				_pointer = _pointer->_prev;
 				return *this;
 			}
-			const_iterator&				operator--(int) {
-				iterator tmp = *this;
+			const_iterator				operator--(int) {
+				const_iterator tmp = *this;
 				operator--();
 				return tmp;
 			}
-			value_type const&			operator* () const { return _pointer->_data; }
-			value_type const*			operator->() const { return _pointer->_data; }
+			value_type &			operator* () const { return *_pointer->_data; }
+			value_type *			operator->() const { return _pointer->_data; }
+			_t_node*				getPointer() const { return _pointer; }
 		};
 
 		class reverse_iterator : public std::reverse_iterator<iterator> {
@@ -193,13 +200,13 @@ namespace ft {
 			}
 			bool 						operator==(const reverse_iterator& rhs) const { return _pointer == rhs._pointer; }
 			bool 						operator!=(const reverse_iterator& rhs) const { return _pointer != rhs._pointer; }
-			bool						operator==(const const_reverse_iterator& rhs) const { return _pointer == rhs._pointer; }
-			bool						operator!=(const const_reverse_iterator& rhs) const { return _pointer != rhs._pointer; }
+			bool						operator==(const const_reverse_iterator& rhs) const { return _pointer == rhs.getPointer(); }
+			bool						operator!=(const const_reverse_iterator& rhs) const { return _pointer != rhs.getPointer(); }
 			reverse_iterator&			operator++() {
 				_pointer = _pointer->_prev;
 				return *this;
 			}
-			reverse_iterator&			operator++(int) {
+			reverse_iterator			operator++(int) {
 				reverse_iterator tmp = *this;
 				operator++();
 				return tmp;
@@ -208,13 +215,14 @@ namespace ft {
 				_pointer = _pointer->_next;
 				return *this;
 			}
-			reverse_iterator&			operator--(int) {
+			reverse_iterator			operator--(int) {
 				reverse_iterator tmp = *this;
 				operator--();
 				return tmp;
 			}
-			value_type&					operator* () const { return _pointer->_data; }
+			value_type&					operator* () const { return *_pointer->_data; }
 			value_type*					operator->() const { return _pointer->_data; }
+			_t_node*					getPointer() const { return _pointer; }
 		};
 
 		class const_reverse_iterator : public std::reverse_iterator<const_iterator> {
@@ -232,20 +240,19 @@ namespace ft {
 				return *this;
 			}
 			const_reverse_iterator&		operator= (const reverse_iterator &rhs) {
-				if (this != &rhs)
-					_pointer = rhs._pointer;
+				_pointer = rhs.getPointer();
 				return *this;
 			}
-			bool 						operator==(const reverse_iterator& rhs) const { return _pointer == rhs._pointer; }
-			bool 						operator!=(const reverse_iterator& rhs) const { return _pointer != rhs._pointer; }
+			bool 						operator==(const reverse_iterator& rhs) const { return _pointer == rhs.getPointer(); }
+			bool 						operator!=(const reverse_iterator& rhs) const { return _pointer != rhs.getPointer(); }
 			bool						operator==(const const_reverse_iterator& rhs) const { return _pointer == rhs._pointer; }
 			bool						operator!=(const const_reverse_iterator& rhs) const { return _pointer != rhs._pointer; }
 			const_reverse_iterator&		operator++() {
 				_pointer = _pointer->_prev;
 				return *this;
 			}
-			const_reverse_iterator&		operator++(int) {
-				reverse_iterator tmp = *this;
+			const_reverse_iterator		operator++(int) {
+				const_reverse_iterator tmp = *this;
 				operator++();
 				return tmp;
 			}
@@ -253,13 +260,14 @@ namespace ft {
 				_pointer = _pointer->_next;
 				return *this;
 			}
-			const_reverse_iterator&		operator--(int) {
-				reverse_iterator tmp = *this;
+			const_reverse_iterator		operator--(int) {
+				const_reverse_iterator tmp = *this;
 				operator--();
 				return tmp;
 			}
-			value_type const&			operator* () const { return _pointer->_data; }
+			value_type const&			operator* () const { return *_pointer->_data; }
 			value_type const*			operator->() const { return _pointer->_data; }
+			_t_node*					getPointer() const { return _pointer; }
 		};
 
 		iterator						begin() { return iterator(_end_node->_next); }
@@ -308,13 +316,14 @@ namespace ft {
 		/* Modifiers */
 
 		template <class InputIterator>
-		void assign (InputIterator first, InputIterator last) {
+		void			assign(InputIterator first, InputIterator last,
+				typename ft::enable_if<std::__is_input_iterator<InputIterator>::value>::type* = 0) {
 			clear();
 			for (; first != last; first++)
 				push_back(*first);
 		}
 
-		void assign (size_type n, const value_type& val) {
+		void			assign(size_type n, const value_type& val) {
 			clear();
 			for (; n > 0; n--)
 				push_back(val);
@@ -344,7 +353,8 @@ namespace ft {
 
 		iterator		insert(iterator position, const value_type& val) {
 			_t_node *node = _createNode(val);
-			_insertNode(node, (*position)->_prev, (*position)->_next);
+			_insertNode(node, position.getPointer()->_prev, position.getPointer());
+			return iterator(node);
 		}
 
 		void			insert(iterator position, size_type n, const value_type& val) {
@@ -361,15 +371,16 @@ namespace ft {
 
 		iterator		erase(iterator position) {
 			iterator tmp(position);
-			_relinkNodes((*position)->prev, (*position)->next);
+			_relinkNodes(position.getPointer()->_prev, position.getPointer()->_next);
 			position++;
-			_deleteNode(*tmp);
+			_deleteNode(tmp.getPointer());
 			return position;
 		}
 
 		iterator		erase(iterator first, iterator last) {
 			while (first != last)
 				first = erase(first);
+			return first;
 		}
 
 		void			swap(list& x) {
@@ -408,18 +419,175 @@ namespace ft {
 
 		/* Element access */
 
-		reference		front() { return _end_node->_next->_data; }
+		reference		front() { return *_end_node->_next->_data; }
 		const_reference	front() const { return _end_node->_next->_data; }
-		reference		back() { return _end_node->_prev->_data; }
+		reference		back() { return *_end_node->_prev->_data; }
 		const_reference	back() const { return _end_node->_prev->_data; }
 
 		/* Operations */
 
-		void			splice(iterator position, list& x) {}
-		void			splice(iterator position, list& x, iterator i) {}
-		void			splice(iterator position, list& x, iterator first, iterator last) {}
+		void			splice(iterator position, list& x) {
+			_t_node *tmp = position.getPointer()->_prev;
+			_relinkNodes(tmp, x._end_node->_next);
+			_relinkNodes(x._end_node->_prev, position.getPointer());
+			_relinkNodes(x._end_node, x._end_node);
+			_size += x._size;
+			x._size = 0;
+		}
+		void			splice(iterator position, list& x, iterator i) {
+			_t_node *target = i.getPointer();
+			_relinkNodes(target->_prev, target->_next);
+			_insertNode(target, position.getPointer()->_prev, position.getPointer()->_next);
+			_changeSize(+1);
+			x._size -= 1;
+		}
+		void			splice(iterator position, list& x, iterator first, iterator last) {
+			for (; first != last; first++) {
+				splice(position, x, first);
+				position++;
+			}
+		}
+
+		void			remove(const value_type& val) {
+			iterator	_itStart = begin();
+			iterator	_itEnd = end();
+
+			while (_itStart != _itEnd) {
+				if (*_itStart == val)
+					_itStart = erase(_itStart);
+				else
+					_itStart++;
+			}
+		}
+
+		template <class Predicate>
+		void			remove_if(Predicate pred) {
+			iterator	_itStart = begin();
+			iterator	_itEnd = end();
+
+			while (_itStart != _itEnd) {
+				if (pred(*_itStart))
+					_itStart = erase(_itStart);
+				else
+					_itStart++;
+			}
+		}
+
+		void			unique() { unique(_equal()); }
+		template <class BinaryPredicate>
+		void			unique(BinaryPredicate binary_pred) {
+			iterator	first = begin();
+			iterator	second = ++begin();
+			iterator	last = end();
+
+			while (second != last) {
+				if (binary_pred(*first, *second)) {
+					second = erase(second);
+					continue;
+				}
+				++first;
+				++second;
+			}
+		}
+
+		void			merge(list& x) { merge(x, _less()); }
+		template <class Compare>
+		void			merge(list& x, Compare comp) {
+			if (this == &x)
+				return;
+			iterator	currentFirst = begin();
+			iterator	currentLast = end();
+			iterator	xFirst = x.begin();
+			iterator	xLast = x.end();
+
+			for (; xFirst != xLast; xFirst++) {
+				for (; currentFirst != currentLast; currentFirst++) {
+					if (comp(*xFirst, *currentFirst))
+						break;
+				}
+				splice(currentFirst, x, xFirst);
+			}
+		}
+
+		void			sort() { sort(_less()); }
+		template <class Compare>
+		void			sort(Compare comp) {
+			bool 		f = true;
+			while (f) {
+				f = false;
+				iterator	first = begin();
+				iterator	second = ++begin();
+				for (size_type i = 0; i < _size; ++i) {
+					if (!comp(*first, *second)) {
+						value_type tmp = *first;
+						*first = *second;
+						*second = tmp;
+						f = true;
+					}
+				}
+			}
+		}
+
+		void			reverse() {
+			_t_node *start = _end_node->_next;
+			for (size_type i = 0; i < _size; ++i) {
+				_t_node *tmp = start->_prev;
+				_t_node *next = start->_next;
+				start->_prev = start->_next;
+				start->_next = tmp;
+				start = next;
+			}
+		}
 
 	};
+
+	/* Non-member function overloads */
+
+	template <class T, class Alloc>
+	bool	operator==(const list<T,Alloc>& lhs, const list<T,Alloc>& rhs) {
+		if (lhs.size() != rhs.size())
+			return false;
+		typename ft::list<T, Alloc>::const_iterator	leftIt = lhs.begin();
+		typename ft::list<T, Alloc>::const_iterator leftItEnd = lhs.end();
+		typename ft::list<T, Alloc>::const_iterator	rightIt = rhs.begin();
+		typename ft::list<T, Alloc>::const_iterator rightItEnd = rhs.end();
+		for (; leftIt != leftItEnd; leftIt++) {
+			if (rightIt == rightItEnd || *leftIt != *rightIt)
+				return false;
+			rightIt++;
+		}
+		return true;
+	}
+	template <class T, class Alloc>
+	bool	operator!=(const list<T,Alloc>& lhs, const list<T,Alloc>& rhs) { return !(lhs == rhs); }
+	template <class T, class Alloc>
+	bool	operator< (const list<T,Alloc>& lhs, const list<T,Alloc>& rhs) {
+		if (lhs.size() < rhs.size())
+			return true;
+		typename ft::list<T, Alloc>::const_iterator	leftIt = lhs.begin();
+		typename ft::list<T, Alloc>::const_iterator leftItEnd = lhs.end();
+		typename ft::list<T, Alloc>::const_iterator	rightIt = rhs.begin();
+		typename ft::list<T, Alloc>::const_iterator rightItEnd = rhs.end();
+		for (; leftIt != leftItEnd; leftIt++) {
+			if (rightIt == rightItEnd)
+				return false;
+			if (*leftIt < *rightIt)
+				return true;
+			rightIt++;
+		}
+		return false;
+	}
+	template <class T, class Alloc>
+	bool	operator<=(const list<T,Alloc>& lhs, const list<T,Alloc>& rhs) { return !(rhs < lhs); }
+	template <class T, class Alloc>
+	bool	operator> (const list<T,Alloc>& lhs, const list<T,Alloc>& rhs) { return rhs < lhs; }
+	template <class T, class Alloc>
+	bool	operator>=(const list<T,Alloc>& lhs, const list<T,Alloc>& rhs) { return !(lhs < rhs); }
+
+	template <class T, class Alloc>
+	void	swap(list<T,Alloc>& x, list<T,Alloc>& y) {
+		x.swap(y);
+	}
 }
 
 #endif //FT_CONTAINERS_LIST_HPP

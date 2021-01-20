@@ -1,4 +1,10 @@
 /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/memilio/homerun/ft_containers
+-- Found PythonInterp: /usr/bin/python (found version "2.7.16") 
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /Users/memilio/homerun/ft_containers/cmake-build-debug
