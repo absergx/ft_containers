@@ -1,4 +1,4 @@
-# Install script for directory: /Users/sergeyabramov/LearnCode/git_split/ft_containers/unit_tests
+# Install script for directory: /Users/memilio/homerun/ft_containers/unit_tests
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,6 +34,6 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/Users/sergeyabramov/LearnCode/git_split/ft_containers/cmake-build-debug/unit_tests/lib/cmake_install.cmake")
+  include("/Users/memilio/homerun/ft_containers/cmake-build-debug/unit_tests/lib/cmake_install.cmake")
 endif()
 

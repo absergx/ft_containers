@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../srcs/list.hpp
+memory
+-
+type_traits
+-
+stdexcept
+-
+
+../srcs/queue.hpp
+
+../srcs/stack.hpp
+
+/Users/memilio/homerun/ft_containers/main.cpp
+iostream
+-
+list.hpp
+/Users/memilio/homerun/ft_containers/list.hpp
+stack.hpp
+/Users/memilio/homerun/ft_containers/stack.hpp
+queue.hpp
+/Users/memilio/homerun/ft_containers/queue.hpp
+

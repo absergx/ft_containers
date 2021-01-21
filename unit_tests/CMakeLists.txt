@@ -7,8 +7,7 @@ set(TEST_FILES
         test.cpp
 		list.cpp
 #        vector.cpp
-#        map.cpp
-#		stack.cpp
+#        map.cpp stack.cpp
 		queue.cpp)
 
 add_executable(Google_Tests_run ${TEST_FILES})

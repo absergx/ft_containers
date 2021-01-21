@@ -55,6 +55,7 @@ namespace ft {
 
 		void 				_deleteNode(_t_node* _target) {
 			_alloc.destroy(_target->_data);
+			_alloc.deallocate(_target->_data, 1);
 			_alloc_rebind.deallocate(_target, 1);
 			_changeSize(-1);
 		}
@@ -78,22 +79,24 @@ namespace ft {
 		}
 
 		void 				_changeSize(int _difference) {
-			if (_difference == -1 && _size != 0)
+			if (_difference == -1)
 				_size--;
-			else if (_difference > 0)
+			else
 				_size += static_cast<size_type>(_difference);
 		}
 
-		struct				_equal {
-			bool			operator() (value_type const& lhs, value_type const& rhs) {
-				return lhs == rhs;
-			}
-		};
-		struct				_less {
-			bool			operator() (value_type const& lhs, value_type const& rhs) {
-				return lhs < rhs;
-			}
-		};
+//		struct				_equal {
+//			bool			operator() (value_type const& lhs, value_type const& rhs) {
+//				return lhs == rhs;
+//			}
+//		};
+		inline static bool 	_equal(const value_type &lhs, const value_type &rhs) { return lhs == rhs; }
+		inline static bool 	_less(const value_type &lhs, const value_type &rhs) { return lhs < rhs; }
+//		struct				_less {
+//			bool			operator() (value_type const& lhs, value_type const& rhs) {
+//				return lhs < rhs;
+//			}
+//		};
 
 	public:
 
@@ -370,11 +373,13 @@ namespace ft {
 		}
 
 		iterator		erase(iterator position) {
-			iterator tmp(position);
-			_relinkNodes(position.getPointer()->_prev, position.getPointer()->_next);
-			position++;
-			_deleteNode(tmp.getPointer());
-			return position;
+			_t_node *toDel = position.getPointer();
+			if (toDel == _end_node)
+				return position;
+			_t_node *ret = toDel->_next;
+			_relinkNodes(toDel->_prev, toDel->_next);
+			_deleteNode(toDel);
+			return iterator(ret);
 		}
 
 		iterator		erase(iterator first, iterator last) {
@@ -437,14 +442,15 @@ namespace ft {
 		void			splice(iterator position, list& x, iterator i) {
 			_t_node *target = i.getPointer();
 			_relinkNodes(target->_prev, target->_next);
-			_insertNode(target, position.getPointer()->_prev, position.getPointer()->_next);
+			_insertNode(target, position.getPointer()->_prev, position.getPointer());
 			_changeSize(+1);
 			x._size -= 1;
 		}
 		void			splice(iterator position, list& x, iterator first, iterator last) {
-			for (; first != last; first++) {
-				splice(position, x, first);
-				position++;
+			iterator tmp;
+			for (; first != last;) {
+				tmp = first++;
+				splice(position, x, tmp);
 			}
 		}
 
@@ -473,7 +479,7 @@ namespace ft {
 			}
 		}
 
-		void			unique() { unique(_equal()); }
+		void			unique() { unique(_equal); }
 		template <class BinaryPredicate>
 		void			unique(BinaryPredicate binary_pred) {
 			iterator	first = begin();
@@ -483,14 +489,14 @@ namespace ft {
 			while (second != last) {
 				if (binary_pred(*first, *second)) {
 					second = erase(second);
-					continue;
+				} else {
+					++first;
+					++second;
 				}
-				++first;
-				++second;
 			}
 		}
 
-		void			merge(list& x) { merge(x, _less()); }
+		void			merge(list& x) { merge(x, _less); }
 		template <class Compare>
 		void			merge(list& x, Compare comp) {
 			if (this == &x)
@@ -509,22 +515,37 @@ namespace ft {
 			}
 		}
 
-		void			sort() { sort(_less()); }
+		void			sort() { sort(_less); }
 		template <class Compare>
 		void			sort(Compare comp) {
-			bool 		f = true;
-			while (f) {
-				f = false;
-				iterator	first = begin();
-				iterator	second = ++begin();
-				for (size_type i = 0; i < _size; ++i) {
+			iterator	first;
+			iterator	second;
+			iterator	itend = end();
+			while (itend != ++begin()) {
+				first = begin();
+				second = ++begin();
+				while (second != itend) {
 					if (!comp(*first, *second)) {
-						value_type tmp = *first;
-						*first = *second;
-						*second = tmp;
-						f = true;
+//						value_type tmp = *first;
+//						*first = *second;
+//						*second = tmp;
+						_t_node *firstNode = first.getPointer();
+						_t_node *secondNode = second.getPointer();
+						_t_node *changeBuffer = firstNode->_prev;
+						firstNode->_prev = secondNode;
+						firstNode->_next = secondNode->_next;
+						firstNode->_next->_prev = firstNode;
+						secondNode->_prev = changeBuffer;
+						secondNode->_next = firstNode;
+						secondNode->_prev->_next = secondNode;
+						iterator tmp = first;
+						first = second;
+						second = tmp;
 					}
+					++first;
+					++second;
 				}
+				itend = first;
 			}
 		}
 
