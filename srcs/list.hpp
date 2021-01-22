@@ -506,29 +506,26 @@ namespace ft {
 			iterator	xFirst = x.begin();
 			iterator	xLast = x.end();
 
-			for (; xFirst != xLast; xFirst++) {
-				for (; currentFirst != currentLast; currentFirst++) {
-					if (comp(*xFirst, *currentFirst))
-						break;
-				}
-				splice(currentFirst, x, xFirst);
+			while (xFirst != xLast) {
+				while (currentFirst != currentLast && !comp(*xFirst, *currentFirst))
+					++currentFirst;
+				splice(currentFirst, x, xFirst++);
 			}
 		}
 
 		void			sort() { sort(_less); }
 		template <class Compare>
 		void			sort(Compare comp) {
+			// todo refactor
 			iterator	first;
 			iterator	second;
 			iterator	itend = end();
+
 			while (itend != ++begin()) {
 				first = begin();
 				second = ++begin();
 				while (second != itend) {
 					if (!comp(*first, *second)) {
-//						value_type tmp = *first;
-//						*first = *second;
-//						*second = tmp;
 						_t_node *firstNode = first.getPointer();
 						_t_node *secondNode = second.getPointer();
 						_t_node *changeBuffer = firstNode->_prev;
@@ -551,7 +548,7 @@ namespace ft {
 
 		void			reverse() {
 			_t_node *start = _end_node->_next;
-			for (size_type i = 0; i < _size; ++i) {
+			for (size_type i = 0; i <= _size; ++i) {
 				_t_node *tmp = start->_prev;
 				_t_node *next = start->_next;
 				start->_prev = start->_next;
