@@ -85,23 +85,11 @@ namespace ft {
 				_size += static_cast<size_type>(_difference);
 		}
 
-//		struct				_equal {
-//			bool			operator() (value_type const& lhs, value_type const& rhs) {
-//				return lhs == rhs;
-//			}
-//		};
 		inline static bool 	_equal(const value_type &lhs, const value_type &rhs) { return lhs == rhs; }
 		inline static bool 	_less(const value_type &lhs, const value_type &rhs) { return lhs < rhs; }
-//		struct				_less {
-//			bool			operator() (value_type const& lhs, value_type const& rhs) {
-//				return lhs < rhs;
-//			}
-//		};
 
 	public:
-
 		/* Iterators */
-
 		class iterator : public std::iterator<std::bidirectional_iterator_tag, T> {
 		private:
 			_t_node*	_pointer;
@@ -283,7 +271,6 @@ namespace ft {
 		const_reverse_iterator			rend() const { return const_reverse_iterator(_end_node); }
 
 		/* Constructors and destructor */
-
 		explicit list(const allocator_type& alloc = allocator_type()) : _alloc(alloc), _size(0) { _createEmptyList(); }
 		explicit list(size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type()) : _alloc(alloc), _size(0) {
 			_createEmptyList();
@@ -317,7 +304,6 @@ namespace ft {
 		}
 
 		/* Modifiers */
-
 		template <class InputIterator>
 		void			assign(InputIterator first, InputIterator last,
 				typename ft::enable_if<std::__is_input_iterator<InputIterator>::value>::type* = 0) {
@@ -417,20 +403,17 @@ namespace ft {
 		}
 
 		/* Capacity */
-
 		bool			empty() const { return _size == 0; }
 		size_type		size() const { return _size; }
 		size_type		max_size() const { return std::numeric_limits<size_type>::max() / sizeof(_t_node) / ((sizeof(value_type) == 1) ? 2 : 1); }
 
 		/* Element access */
-
 		reference		front() { return *_end_node->_next->_data; }
 		const_reference	front() const { return _end_node->_next->_data; }
 		reference		back() { return *_end_node->_prev->_data; }
 		const_reference	back() const { return _end_node->_prev->_data; }
 
 		/* Operations */
-
 		void			splice(iterator position, list& x) {
 			_t_node *tmp = position.getPointer()->_prev;
 			_relinkNodes(tmp, x._end_node->_next);
@@ -560,7 +543,6 @@ namespace ft {
 	};
 
 	/* Non-member function overloads */
-
 	template <class T, class Alloc>
 	bool	operator==(const list<T,Alloc>& lhs, const list<T,Alloc>& rhs) {
 		if (lhs.size() != rhs.size())

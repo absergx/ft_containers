@@ -24,8 +24,8 @@
       <config projectName="ft_containers" targetName="gmock" />
       <config projectName="ft_containers" targetName="gtest_main" />
       <config projectName="ft_containers" targetName="Google_Tests_run" />
-      <config projectName="ft_containers" targetName="gmock_main" />
       <config projectName="ft_containers" targetName="gtest" />
+      <config projectName="ft_containers" targetName="gmock_main" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -36,11 +36,26 @@
   <component name="ChangeListManager">
     <list default="true" id="9669e708-914f-45aa-886d-882631712d33" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/ft_containers" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/ft_containers" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/unit_tests/Google_Tests_run" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/unit_tests/Google_Tests_run" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/Map.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/map.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/Vector.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/vector.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ft_containers.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ft_containers.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/ft_containers.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/ft_containers.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/unit_tests/CMakeFiles/Google_Tests_run.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/unit_tests/CMakeFiles/Google_Tests_run.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/unit_tests/CMakeFiles/Google_Tests_run.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/unit_tests/CMakeFiles/Google_Tests_run.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/unit_tests/CMakeFiles/Google_Tests_run.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/unit_tests/CMakeFiles/Google_Tests_run.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/unit_tests/CMakeFiles/Google_Tests_run.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/unit_tests/CMakeFiles/Google_Tests_run.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/unit_tests/CMakeFiles/Google_Tests_run.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/unit_tests/CMakeFiles/Google_Tests_run.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/unit_tests/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/unit_tests/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/unit_tests/Google_tests.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/unit_tests/Google_tests.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/unit_tests/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/unit_tests/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/unit_tests/lib/googlemock/CMakeFiles/gmock.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/unit_tests/lib/googlemock/CMakeFiles/gmock.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/unit_tests/lib/googlemock/CMakeFiles/gmock_main.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/unit_tests/lib/googlemock/CMakeFiles/gmock_main.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/unit_tests/lib/googletest/CMakeFiles/gtest.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/unit_tests/lib/googletest/CMakeFiles/gtest.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/unit_tests/lib/googletest/CMakeFiles/gtest_main.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/unit_tests/lib/googletest/CMakeFiles/gtest_main.dir/progress.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/list.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/list.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/vector.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/vector.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unit_tests/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/unit_tests/CMakeLists.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,21 +80,28 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.advertisement.text.has.clang-format" value="true" />
     <property name="cf.first.check.clang-format" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
-  <component name="RunManager" selected="CMake Application.ft_containers">
+  <component name="RunManager" selected="Google Test.VectorInsertIntTest.insertIntInPosition1">
     <configuration name="Google_Tests_run" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ft_containers" TARGET_NAME="Google_Tests_run" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ft_containers" RUN_TARGET_NAME="Google_Tests_run" TEST_MODE="SUITE_TEST">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
         <option name="BeforeTestRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ListReverseTest.reverseNormal" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" temporary="true" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ft_containers" TARGET_NAME="Google_Tests_run" RUN_TARGET_PROJECT_NAME="ft_containers" RUN_TARGET_NAME="Google_Tests_run" TEST_CLASS="ListReverseTest" TEST_METHOD="reverseNormal" TEST_MODE="SUITE_TEST">
+    <configuration name="ListReverseTest.reverseNormal" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" temporary="true" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ft_containers" TARGET_NAME="Google_Tests_run" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ft_containers" RUN_TARGET_NAME="Google_Tests_run" TEST_CLASS="ListReverseTest" TEST_METHOD="reverseNormal" TEST_MODE="SUITE_TEST">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
         <option name="BeforeTestRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ListTest.spliceRange_1" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" temporary="true" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ft_containers" TARGET_NAME="Google_Tests_run" RUN_TARGET_PROJECT_NAME="ft_containers" RUN_TARGET_NAME="Google_Tests_run" TEST_CLASS="ListTest" TEST_METHOD="spliceRange_1" TEST_MODE="SUITE_TEST">
+    <configuration name="ListTest.spliceRange_1" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" temporary="true" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ft_containers" TARGET_NAME="Google_Tests_run" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ft_containers" RUN_TARGET_NAME="Google_Tests_run" TEST_CLASS="ListTest" TEST_METHOD="spliceRange_1" TEST_MODE="SUITE_TEST">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="BeforeTestRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VectorInsertIntTest.insertIntInPosition1" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" temporary="true" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ft_containers" TARGET_NAME="Google_Tests_run" RUN_TARGET_PROJECT_NAME="ft_containers" RUN_TARGET_NAME="Google_Tests_run" TEST_CLASS="VectorInsertIntTest" TEST_METHOD="insertIntInPosition1" TEST_MODE="SUITE_TEST">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
         <option name="BeforeTestRunTask" enabled="true" />
@@ -127,11 +149,13 @@
       <item itemvalue="CMake Application.gtest" />
       <item itemvalue="CMake Application.gtest_main" />
       <item itemvalue="Google Test.Google_Tests_run" />
-      <item itemvalue="Google Test.ListTest.spliceRange_1" />
       <item itemvalue="Google Test.ListReverseTest.reverseNormal" />
+      <item itemvalue="Google Test.ListTest.spliceRange_1" />
+      <item itemvalue="Google Test.VectorInsertIntTest.insertIntInPosition1" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Google Test.VectorInsertIntTest.insertIntInPosition1" />
         <item itemvalue="Google Test.ListReverseTest.reverseNormal" />
         <item itemvalue="Google Test.ListTest.spliceRange_1" />
       </list>
@@ -146,6 +170,9 @@
       <option name="presentableId" value="Default" />
       <updated>1611229862606</updated>
       <workItem from="1611229864246" duration="11737000" />
+      <workItem from="1611498549740" duration="429000" />
+      <workItem from="1611571143734" duration="12134000" />
+      <workItem from="1611595581130" duration="2431000" />
     </task>
     <servers />
   </component>
@@ -162,47 +189,59 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1304" y="373" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1611229865470">
       <screen x="0" y="23" width="2560" height="1377" />
     </state>
     <state x="1304" y="373" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.2560.1377@0.23.2560.1377" timestamp="1611229865470" />
-    <state width="1336" height="396" key="GridCell.Tab.0.bottom" timestamp="1611318610275">
+    <state width="1336" height="486" key="GridCell.Tab.0.bottom" timestamp="1611597937731">
       <screen x="0" y="23" width="2560" height="1377" />
     </state>
-    <state width="1336" height="396" key="GridCell.Tab.0.bottom/0.23.2560.1377@0.23.2560.1377" timestamp="1611318610275" />
-    <state width="1336" height="396" key="GridCell.Tab.0.center" timestamp="1611318610275">
+    <state width="1336" height="486" key="GridCell.Tab.0.bottom/0.23.2560.1377@0.23.2560.1377" timestamp="1611597937731" />
+    <state width="1336" height="486" key="GridCell.Tab.0.center" timestamp="1611597937731">
       <screen x="0" y="23" width="2560" height="1377" />
     </state>
-    <state width="1336" height="396" key="GridCell.Tab.0.center/0.23.2560.1377@0.23.2560.1377" timestamp="1611318610275" />
-    <state width="1336" height="396" key="GridCell.Tab.0.left" timestamp="1611318610274">
+    <state width="1336" height="486" key="GridCell.Tab.0.center/0.23.2560.1377@0.23.2560.1377" timestamp="1611597937731" />
+    <state width="1336" height="486" key="GridCell.Tab.0.left" timestamp="1611597937730">
       <screen x="0" y="23" width="2560" height="1377" />
     </state>
-    <state width="1336" height="396" key="GridCell.Tab.0.left/0.23.2560.1377@0.23.2560.1377" timestamp="1611318610274" />
-    <state width="1336" height="396" key="GridCell.Tab.0.right" timestamp="1611318610275">
+    <state width="1336" height="486" key="GridCell.Tab.0.left/0.23.2560.1377@0.23.2560.1377" timestamp="1611597937730" />
+    <state width="1336" height="486" key="GridCell.Tab.0.right" timestamp="1611597937731">
       <screen x="0" y="23" width="2560" height="1377" />
     </state>
-    <state width="1336" height="396" key="GridCell.Tab.0.right/0.23.2560.1377@0.23.2560.1377" timestamp="1611318610275" />
-    <state width="1336" height="486" key="GridCell.Tab.1.bottom" timestamp="1611317222912">
+    <state width="1336" height="486" key="GridCell.Tab.0.right/0.23.2560.1377@0.23.2560.1377" timestamp="1611597937731" />
+    <state width="1336" height="486" key="GridCell.Tab.1.bottom" timestamp="1611597938237">
       <screen x="0" y="23" width="2560" height="1377" />
     </state>
-    <state width="1336" height="486" key="GridCell.Tab.1.bottom/0.23.2560.1377@0.23.2560.1377" timestamp="1611317222912" />
-    <state width="1336" height="486" key="GridCell.Tab.1.center" timestamp="1611317222911">
+    <state width="1336" height="486" key="GridCell.Tab.1.bottom/0.23.2560.1377@0.23.2560.1377" timestamp="1611597938237" />
+    <state width="1336" height="486" key="GridCell.Tab.1.center" timestamp="1611597938236">
       <screen x="0" y="23" width="2560" height="1377" />
     </state>
-    <state width="1336" height="486" key="GridCell.Tab.1.center/0.23.2560.1377@0.23.2560.1377" timestamp="1611317222911" />
-    <state width="1336" height="486" key="GridCell.Tab.1.left" timestamp="1611317222911">
+    <state width="1336" height="486" key="GridCell.Tab.1.center/0.23.2560.1377@0.23.2560.1377" timestamp="1611597938236" />
+    <state width="1336" height="486" key="GridCell.Tab.1.left" timestamp="1611597938236">
       <screen x="0" y="23" width="2560" height="1377" />
     </state>
-    <state width="1336" height="486" key="GridCell.Tab.1.left/0.23.2560.1377@0.23.2560.1377" timestamp="1611317222911" />
-    <state width="1336" height="486" key="GridCell.Tab.1.right" timestamp="1611317222912">
+    <state width="1336" height="486" key="GridCell.Tab.1.left/0.23.2560.1377@0.23.2560.1377" timestamp="1611597938236" />
+    <state width="1336" height="486" key="GridCell.Tab.1.right" timestamp="1611597938236">
       <screen x="0" y="23" width="2560" height="1377" />
     </state>
-    <state width="1336" height="486" key="GridCell.Tab.1.right/0.23.2560.1377@0.23.2560.1377" timestamp="1611317222912" />
+    <state width="1336" height="486" key="GridCell.Tab.1.right/0.23.2560.1377@0.23.2560.1377" timestamp="1611597938236" />
     <state x="1672" y="632" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1611322541846">
       <screen x="0" y="23" width="2560" height="1377" />
     </state>
     <state x="1672" y="632" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.2560.1377@0.23.2560.1377" timestamp="1611322541846" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/srcs/vector.hpp</url>
+          <line>459</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

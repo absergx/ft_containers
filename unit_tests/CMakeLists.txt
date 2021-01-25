@@ -6,7 +6,7 @@ include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 set(TEST_FILES
         test.cpp
 		list.cpp
-#        vector.cpp
+        vector.cpp
 #        map.cpp stack.cpp
 		queue.cpp)
 

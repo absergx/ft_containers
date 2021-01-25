@@ -272,6 +272,33 @@ test.cpp.s:
 	cd /Users/memilio/homerun/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f unit_tests/CMakeFiles/Google_Tests_run.dir/build.make unit_tests/CMakeFiles/Google_Tests_run.dir/test.cpp.s
 .PHONY : test.cpp.s
 
+vector.o: vector.cpp.o
+
+.PHONY : vector.o
+
+# target to build an object file
+vector.cpp.o:
+	cd /Users/memilio/homerun/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f unit_tests/CMakeFiles/Google_Tests_run.dir/build.make unit_tests/CMakeFiles/Google_Tests_run.dir/vector.cpp.o
+.PHONY : vector.cpp.o
+
+vector.i: vector.cpp.i
+
+.PHONY : vector.i
+
+# target to preprocess a source file
+vector.cpp.i:
+	cd /Users/memilio/homerun/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f unit_tests/CMakeFiles/Google_Tests_run.dir/build.make unit_tests/CMakeFiles/Google_Tests_run.dir/vector.cpp.i
+.PHONY : vector.cpp.i
+
+vector.s: vector.cpp.s
+
+.PHONY : vector.s
+
+# target to generate assembly for a file
+vector.cpp.s:
+	cd /Users/memilio/homerun/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f unit_tests/CMakeFiles/Google_Tests_run.dir/build.make unit_tests/CMakeFiles/Google_Tests_run.dir/vector.cpp.s
+.PHONY : vector.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -294,6 +321,9 @@ help:
 	@echo "... test.o"
 	@echo "... test.i"
 	@echo "... test.s"
+	@echo "... vector.o"
+	@echo "... vector.i"
+	@echo "... vector.s"
 .PHONY : help
 
 
