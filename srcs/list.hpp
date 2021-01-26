@@ -361,7 +361,7 @@ namespace ft {
 		iterator		erase(iterator position) {
 			_t_node *toDel = position.getPointer();
 			if (toDel == _end_node)
-				return position;
+				return iterator(_end_node);
 			_t_node *ret = toDel->_next;
 			_relinkNodes(toDel->_prev, toDel->_next);
 			_deleteNode(toDel);

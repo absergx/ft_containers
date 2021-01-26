@@ -37,13 +37,17 @@ namespace ft {
 
 		void			_arrMove(pointer dst, pointer src, difference_type len)
 		{
-			while (len) {
+			while (len > 0) {
 				--len;
 				if (src < dst)
 					*(dst + len) = *(src + len);
 				else
 					*dst++ = *src++;
 			}
+		}
+
+		difference_type	_getIndex(pointer ptr) {
+			return end().getPointer() - ptr;
 		}
 
 		bool 			_checkFreeSpace(size_type need) {
@@ -441,10 +445,16 @@ namespace ft {
 		}
 
 		void			push_back(const value_type& val) {
-			if (!_checkFreeSpace(1))
-				_reallocVector();
-			_alloc.construct(_arr + _size, val);
-			++_size;
+			if (_capacity == 0) {
+				_capacity = 1;
+				_size = 1;
+				_arr = _createVector(val);
+			} else {
+				if (!_checkFreeSpace(1))
+					_reallocVector();
+				_alloc.construct(_arr + _size, val);
+				++_size;
+			}
 		}
 
 		void			pop_back() {
@@ -453,14 +463,25 @@ namespace ft {
 		}
 
 		iterator		insert(iterator position, const value_type& val) {
-			insert(position, 1, val);
-			return position;
+			pointer pos = position.getPointer();
+			if (!_checkFreeSpace(1)) {
+				difference_type index = _getIndex(pos);
+				_reallocVector();
+				pos = end().getPointer() - index;
+			}
+			_arrMove(pos + 1, pos, end().getPointer() - pos);
+			_alloc.construct(pos, val);
+			++_size;
+			return iterator(pos);
 		}
 		void			insert(iterator position, size_type n, const value_type& val) {
 			pointer pos = position.getPointer();
-			if (!_checkFreeSpace(n))
+			if (!_checkFreeSpace(n)) {
+				difference_type index = _getIndex(pos);
 				_reallocVector(n);
-			_arrMove(pos + n, pos, end() - position);
+				pos = end().getPointer() - index;
+			}
+			_arrMove(pos + n, pos, end().getPointer() - pos);
 			for (size_type count = 0; count < n; ++count)
 				_alloc.construct(pos + count, val);
 			_size += n;
@@ -470,9 +491,12 @@ namespace ft {
 			   typename ft::enable_if<std::__is_input_iterator<InputIterator>::value>::type* = 0) {
 			size_type range = static_cast<size_type>(last.operator->() - first.operator->());
 			pointer pos = position.getPointer();
-			if (!_checkFreeSpace(range))
+			if (!_checkFreeSpace(range)) {
+				difference_type index = _getIndex(pos);
 				_reallocVector(range);
-			_arrMove(pos + range, pos, end() - position);
+				pos = end().getPointer() - index;
+			}
+			_arrMove(pos + range, pos, end().getPointer() - pos);
 			for (size_type count = 0; count < range; ++count, ++first)
 				_alloc.construct(pos + count, *first);
 			_size += range;
@@ -481,17 +505,15 @@ namespace ft {
 		iterator		erase(iterator position) {
 			pointer pos = position.getPointer();
 			_alloc.destroy(pos);
-			_arrMove(pos, pos + 1, end() - position);
+			_arrMove(pos, pos + 1, end() - position - 1);
 			--_size;
-			return iterator(position);
+			return iterator(pos);
 		}
 		iterator		erase(iterator first, iterator last) {
-			size_type range = static_cast<size_type>(last - first);
-			for (size_type count = 0; count < range; ++count)
-				_alloc.destroy(first.getPointer() + count);
-			_arrMove(first.getPointer(), last.getPointer(), end() - last);
-			_size -= range;
-			return first;
+			while (first != last) {
+				erase(--last);
+			}
+			return last;
 		}
 
 		void			swap(vector& x) {

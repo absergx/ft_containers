@@ -6,8 +6,12 @@
 
 #IncludeRegexTransform: 
 
-../srcs/vector.hpp
+../srcs/list.hpp
 memory
+-
+type_traits
+-
+stdexcept
 -
 
 ../unit_tests/lib/googletest/include/gtest/gtest-death-test.h
@@ -328,15 +332,15 @@ cxxabi.h
 acxx_demangle.h
 -
 
-/Users/memilio/homerun/ft_containers/unit_tests/vector.cpp
+/Users/memilio/homerun/ft_containers/unit_tests/list.cpp
 gtest/gtest.h
 /Users/memilio/homerun/ft_containers/unit_tests/gtest/gtest.h
-vector.hpp
-/Users/memilio/homerun/ft_containers/unit_tests/vector.hpp
-vector
+list.hpp
+/Users/memilio/homerun/ft_containers/unit_tests/list.hpp
+list
 -
-string
+sstream
 -
-stdexcept
+cmath
 -
 

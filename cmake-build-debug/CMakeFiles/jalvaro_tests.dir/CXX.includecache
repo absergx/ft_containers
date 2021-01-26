@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../srcs/vector.hpp
+memory
+-
+iostream
+-
+
+/Users/memilio/homerun/ft_containers/jalvaro_tests/main.cpp
+../srcs/vector.hpp
+/Users/memilio/homerun/ft_containers/srcs/vector.hpp
+iostream
+/Users/memilio/homerun/ft_containers/jalvaro_tests/iostream
+
+/Users/memilio/homerun/ft_containers/jalvaro_tests/vector_test.cpp
+vector.hpp
+/Users/memilio/homerun/ft_containers/jalvaro_tests/vector.hpp
+iostream
+-
+vector
+-
+
+/Users/memilio/homerun/ft_containers/srcs/vector.hpp
+memory
+-
+iostream
+-
+

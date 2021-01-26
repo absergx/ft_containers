@@ -286,6 +286,9 @@
 		<Unit filename="/Users/memilio/homerun/ft_containers/unit_tests/queue.cpp">
 			<Option target="Google_Tests_run"/>
 		</Unit>
+		<Unit filename="/Users/memilio/homerun/ft_containers/unit_tests/stack.cpp">
+			<Option target="Google_Tests_run"/>
+		</Unit>
 		<Unit filename="/Users/memilio/homerun/ft_containers/unit_tests/test.cpp">
 			<Option target="Google_Tests_run"/>
 		</Unit>

@@ -3,6 +3,4 @@
 
 CMakeFiles/ft_containers.dir/main.cpp.o
  ../srcs/list.hpp
- ../srcs/queue.hpp
- ../srcs/stack.hpp
  /Users/memilio/homerun/ft_containers/main.cpp

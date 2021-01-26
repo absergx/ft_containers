@@ -245,6 +245,33 @@ queue.cpp.s:
 	cd /Users/memilio/homerun/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f unit_tests/CMakeFiles/Google_Tests_run.dir/build.make unit_tests/CMakeFiles/Google_Tests_run.dir/queue.cpp.s
 .PHONY : queue.cpp.s
 
+stack.o: stack.cpp.o
+
+.PHONY : stack.o
+
+# target to build an object file
+stack.cpp.o:
+	cd /Users/memilio/homerun/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f unit_tests/CMakeFiles/Google_Tests_run.dir/build.make unit_tests/CMakeFiles/Google_Tests_run.dir/stack.cpp.o
+.PHONY : stack.cpp.o
+
+stack.i: stack.cpp.i
+
+.PHONY : stack.i
+
+# target to preprocess a source file
+stack.cpp.i:
+	cd /Users/memilio/homerun/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f unit_tests/CMakeFiles/Google_Tests_run.dir/build.make unit_tests/CMakeFiles/Google_Tests_run.dir/stack.cpp.i
+.PHONY : stack.cpp.i
+
+stack.s: stack.cpp.s
+
+.PHONY : stack.s
+
+# target to generate assembly for a file
+stack.cpp.s:
+	cd /Users/memilio/homerun/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f unit_tests/CMakeFiles/Google_Tests_run.dir/build.make unit_tests/CMakeFiles/Google_Tests_run.dir/stack.cpp.s
+.PHONY : stack.cpp.s
+
 test.o: test.cpp.o
 
 .PHONY : test.o
@@ -318,6 +345,9 @@ help:
 	@echo "... queue.o"
 	@echo "... queue.i"
 	@echo "... queue.s"
+	@echo "... stack.o"
+	@echo "... stack.i"
+	@echo "... stack.s"
 	@echo "... test.o"
 	@echo "... test.i"
 	@echo "... test.s"

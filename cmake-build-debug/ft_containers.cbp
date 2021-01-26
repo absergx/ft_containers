@@ -37,6 +37,16 @@
 					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/memilio/homerun/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="list_install_components">
+				<Option working_dir="/Users/memilio/homerun/ft_containers/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j6 -f &quot;/Users/memilio/homerun/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 list_install_components"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/Users/memilio/homerun/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/Users/memilio/homerun/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/memilio/homerun/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 			<Target title="rebuild_cache">
 				<Option working_dir="/Users/memilio/homerun/ft_containers/cmake-build-debug"/>
 				<Option type="4"/>
@@ -57,21 +67,55 @@
 					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/memilio/homerun/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="list_install_components">
-				<Option working_dir="/Users/memilio/homerun/ft_containers/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j6 -f &quot;/Users/memilio/homerun/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 list_install_components"/>
-					<CompileFile command="/usr/bin/make -j6 -f &quot;/Users/memilio/homerun/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j6 -f &quot;/Users/memilio/homerun/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/memilio/homerun/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
 			<Target title="install/local">
 				<Option working_dir="/Users/memilio/homerun/ft_containers/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
 					<Build command="/usr/bin/make -j6 -f &quot;/Users/memilio/homerun/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/local"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/Users/memilio/homerun/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/Users/memilio/homerun/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/memilio/homerun/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="jalvaro_tests">
+				<Option output="/Users/memilio/homerun/ft_containers/cmake-build-debug/jalvaro_tests" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/memilio/homerun/ft_containers/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/memilio/homerun/ft_containers/srcs"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j6 -f &quot;/Users/memilio/homerun/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 jalvaro_tests"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/Users/memilio/homerun/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/Users/memilio/homerun/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/memilio/homerun/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="jalvaro_tests/fast">
+				<Option output="/Users/memilio/homerun/ft_containers/cmake-build-debug/jalvaro_tests" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/memilio/homerun/ft_containers/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/memilio/homerun/ft_containers/srcs"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j6 -f &quot;/Users/memilio/homerun/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 jalvaro_tests/fast"/>
 					<CompileFile command="/usr/bin/make -j6 -f &quot;/Users/memilio/homerun/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j6 -f &quot;/Users/memilio/homerun/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/memilio/homerun/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
@@ -372,6 +416,21 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/memilio/homerun/ft_containers/jalvaro_tests/list_test.cpp">
+			<Option target="jalvaro_tests"/>
+		</Unit>
+		<Unit filename="/Users/memilio/homerun/ft_containers/jalvaro_tests/main.cpp">
+			<Option target="jalvaro_tests"/>
+		</Unit>
+		<Unit filename="/Users/memilio/homerun/ft_containers/jalvaro_tests/queue_test.cpp">
+			<Option target="jalvaro_tests"/>
+		</Unit>
+		<Unit filename="/Users/memilio/homerun/ft_containers/jalvaro_tests/stack_test.cpp">
+			<Option target="jalvaro_tests"/>
+		</Unit>
+		<Unit filename="/Users/memilio/homerun/ft_containers/jalvaro_tests/vector_test.cpp">
+			<Option target="jalvaro_tests"/>
+		</Unit>
 		<Unit filename="/Users/memilio/homerun/ft_containers/main.cpp">
 			<Option target="ft_containers"/>
 		</Unit>
@@ -400,6 +459,9 @@
 			<Option target="Google_Tests_run"/>
 		</Unit>
 		<Unit filename="/Users/memilio/homerun/ft_containers/unit_tests/queue.cpp">
+			<Option target="Google_Tests_run"/>
+		</Unit>
+		<Unit filename="/Users/memilio/homerun/ft_containers/unit_tests/stack.cpp">
 			<Option target="Google_Tests_run"/>
 		</Unit>
 		<Unit filename="/Users/memilio/homerun/ft_containers/unit_tests/test.cpp">

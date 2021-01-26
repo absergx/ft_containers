@@ -1,10 +1,11 @@
 
 #include <iostream>
 #include "list.hpp"
+#include <list>
 //#include "vector.hpp"
 //#include "map.hpp"
-#include "stack.hpp"
-#include "queue.hpp"
+//#include "stack.hpp"
+//#include "queue.hpp"
 
 /*	LIST COMPILES	*/
 
@@ -112,14 +113,14 @@
 
 int main()
 {
-	ft::list<int> my;
-
-	my.push_back(10);
-	my.push_back(3);
-	my.push_back(5);
-	std::cout << my.front() << " " << my.back() << std::endl;
-	my.sort();
-	std::cout << my.front() << " " << my.back() << std::endl;
+	std::list<int> s;
+	s.erase(s.begin());
+//	ft::vector<int> v;
+//	for (int i = 0; i < 7; ++i) {
+//		v.push_back(i * 10);
+//	}
+//	std::cout << "Before changes: " << std::endl;
+//	std::cout << "Size = " << v.size() << std::endl << "Capacity = " << v.capacity() << std::endl;
 //	ftList();
 //	ftVector();
 //	ftMap();
