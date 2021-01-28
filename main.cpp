@@ -1,8 +1,9 @@
 
 #include <iostream>
-#include "list.hpp"
-#include <list>
-//#include "vector.hpp"
+//#include "list.hpp"
+//#include <list>
+#include "vector.hpp"
+#include <vector>
 //#include "map.hpp"
 //#include "stack.hpp"
 //#include "queue.hpp"
@@ -113,19 +114,22 @@
 
 int main()
 {
-	std::list<int> s;
-	s.erase(s.begin());
-//	ft::vector<int> v;
-//	for (int i = 0; i < 7; ++i) {
-//		v.push_back(i * 10);
-//	}
-//	std::cout << "Before changes: " << std::endl;
-//	std::cout << "Size = " << v.size() << std::endl << "Capacity = " << v.capacity() << std::endl;
-//	ftList();
-//	ftVector();
-//	ftMap();
-//	ftStack();
-//	ftQueue();
+	ft::vector<int> f;
+	std::vector<int> s;
 
+	for (int i = 0; i < 10; ++i) {
+		f.push_back(i);
+		s.push_back(i);
+	}
+	std::cout << "iterator - 5 = " << *(f.end() - 5) << std::endl;
+	std::cout << "iterator - 3 = " << *(f.end() - 3) << std::endl;
+	f.insert(f.begin() + 1, f.end() - 5, f.end() - 3);
+	s.insert(s.begin() + 1, s.end() - 5, s.end() - 3);
+	for (ft::vector<int>::iterator it = f.begin(); it != f.end(); ++it)
+		std::cout << *it << " ";
+	std::cout << std::endl;
+	for (std::vector<int>::iterator it = s.begin(); it != s.end(); ++it)
+		std::cout << *it << " ";
+	std::cout << std::endl;
 	return 0;
 }

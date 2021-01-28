@@ -6,19 +6,15 @@
 
 #IncludeRegexTransform: 
 
-../srcs/list.hpp
+../srcs/vector.hpp
 memory
--
-type_traits
--
-stdexcept
 -
 
 /Users/memilio/homerun/ft_containers/main.cpp
 iostream
 -
-list.hpp
-/Users/memilio/homerun/ft_containers/list.hpp
-list
+vector.hpp
+/Users/memilio/homerun/ft_containers/vector.hpp
+vector
 -
 
