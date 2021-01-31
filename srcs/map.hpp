@@ -169,16 +169,42 @@ namespace ft {
 		}
 
 		_t_map*					_balance(_t_map* node) {
+			if (_isRedNode(node->_right))
+				node = _rotateLeft(node);
+			if (_isRedNode(node->_left) && node->_parent && _isRedNode(node->_parent->_left))
+				node = _rotateRight(node);
 			if (_isRedNode(node->_left) && _isRedNode(node->_right))
 				_flipColors(node);
-
-			if (_isRedNode(node->_right) && !_isRedNode(node->_left))
-				node = _rotateLeft(node);
-
-			if (_isRedNode(node->_left) && _isRedNode(node->_left->_left))
-				node = _rotateRight(node);
-
 			return node;
+		}
+
+		inline void 				_insertLeft(_t_map* toInsert, _t_map* parent) {
+			if (parent->_left == _begin) {
+				toInsert->left = _begin;
+				_begin->parent = toInsert;
+			}
+			parent->_left = toInsert;
+		}
+
+		inline void 				_insertRight(_t_map* toInsert, _t_map* parent) {
+			if (parent->_right == _end)
+				_linkRight(toInsert, _end);
+			parent->_right = toInsert;
+		}
+
+		std::pair<iterator, bool>	_insertNode(_t_map* node, const_reference val) {
+			int comp = _compare(val.first, node->_data->first) + _compare(node->_data->_first, val.first) * 2;
+			if (comp == 0)
+				return std::make_pair(iterator(node), false);
+			else if (comp == 1 && node->_left && node->_left != _begin)
+				return _insertNode(node->_left, val);
+			else if (comp == 2 && node->_right && node->_right != _end)
+				return _insertNode(node->_right, val);
+
+			_t_map* newNode = _createNode(node, val, red);
+			(comp == 1) ? _insertLeft(newNode, node) : _insertRight(newNode, node);
+			_balance(node);
+			return std::make_pair(iterator(newNode), true);
 		}
 
 	public:
@@ -199,6 +225,320 @@ namespace ft {
 		map&					operator= (const map& x);
 
 		/* Iterators */
+		class iterator : public std::iterator<std::bidirectional_iterator_tag, value_type> {
+		private:
+			_t_map*			_ptr;
+		public:
+			explicit iterator(_t_map* it = nullptr): _ptr(it) {}
+			iterator(const iterator &it) : _ptr(it._ptr) {}
+			~iterator() {}
+			iterator&				operator= (const iterator &it) {
+				_ptr = it._ptr;
+				return *this;
+			}
+			bool 					operator==(const iterator &it) const { return _ptr == it._ptr; }
+			bool 					operator!=(const iterator &it) const { return _ptr != it._ptr; }
+			bool 					operator==(const const_iterator &it) const { return _ptr == it.getPointer(); }
+			bool 					operator!=(const const_iterator &it) const { return _ptr != it.getPointer(); }
+			iterator&				operator++() {
+				_ptr = _nextNode(_ptr);
+				return *this;
+			}
+			iterator&				operator--() {
+				_ptr = _prevNode(_ptr);
+				return *this;
+			}
+			iterator				operator++(int) {
+				iterator tmp(_ptr);
+				operator++();
+				return tmp;
+			}
+			iterator				operator--(int) {
+				iterator tmp(_ptr);
+				operator--();
+				return tmp;
+			}
+			reference				operator* () const { return *(_ptr->_data); }
+			pointer 				operator->() const { return _ptr->_data; }
+			_t_map*					getPointer() const { return _ptr; }
+		private:
+			_t_map*					_findLower(_t_map* node) {
+				if (node->_left)
+					return _findLower(node->_left);
+				return node;
+			}
+			_t_map*					_findHigher(_t_map* node) {
+				if (node->_right)
+					return _findHigher(node->_right);
+				return node;
+			}
+			_t_map*					_nextNode(_t_map* node) {
+				if (node->_right)
+					return _findLower(node->_right);
+				else if (node->_parent && node->_parent->_left == node)
+					return node->_parent;
+				else if (node->_parent->_right == node)
+					node = node->_parent;
+				_t_map* tmp = node;
+				while (tmp->_parent->_right == tmp) {
+					tmp = tmp->_parent;
+					if (!tmp)
+						return node->_right;
+				}
+				return tmp->_parent;
+			}
+			_t_map*					_prevNode(_t_map* node) {
+				if (node->_left)
+					return _findHigher(node->_left);
+				else if (node->_parent && node->_parent->_right == node)
+					return node->_parent;
+				_t_map* tmp = node;
+				while (tmp->_parent->_left == tmp) {
+					tmp = tmp->_parent;
+					if (!tmp)
+						return node->_left;
+				}
+				return tmp->_parent;
+			}
+		};
+		class const_iterator : public std::iterator<std::bidirectional_iterator_tag, value_type> {
+		private:
+			_t_map*		_ptr;
+		public:
+			explicit const_iterator(_t_map* it = nullptr): _ptr(it) {}
+			const_iterator(const const_iterator &it) : _ptr(it._ptr) {}
+			const_iterator(const iterator &it) : _ptr(it.getPointer()) {}
+			~const_iterator() {}
+			const_iterator&			operator= (const const_iterator &it) {
+				_ptr = it._ptr;
+				return *this;
+			}
+			const_iterator&			operator= (const iterator &it) {
+				_ptr = it.getPointer();
+				return *this;
+			}
+			bool 					operator==(const iterator &it) const { return _ptr == it.getPointer(); }
+			bool 					operator!=(const iterator &it) const { return _ptr != it.getPointer(); }
+			bool 					operator==(const const_iterator &it) const { return _ptr == it._ptr; }
+			bool 					operator!=(const const_iterator &it) const { return _ptr != it._ptr; }
+			const_iterator&			operator++() {
+				_ptr = _nextNode(_ptr);
+				return *this;
+			}
+			const_iterator&			operator--() {
+				_ptr = _prevNode(_ptr);
+				return *this;
+			}
+			const_iterator			operator++(int) {
+				const_iterator tmp(_ptr);
+				operator++();
+				return tmp;
+			}
+			const_iterator			operator--(int) {
+				const_iterator tmp(_ptr);
+				operator--();
+				return tmp;
+			}
+			const_reference			operator* () const { return *(_ptr->_data); }
+			const_pointer			operator->() const { return _ptr->_data; }
+			_t_map*					getPointer() const { return _ptr; }
+		private:
+			_t_map*					_findLower(_t_map* node) {
+				if (node->_left)
+					return _findLower(node->_left);
+				return node;
+			}
+			_t_map*					_findHigher(_t_map* node) {
+				if (node->_right)
+					return _findHigher(node->_right);
+				return node;
+			}
+			_t_map*					_nextNode(_t_map* node) {
+				if (node->_right)
+					return _findLower(node->_right);
+				else if (node->_parent && node->_parent->_left == node)
+					return node->_parent;
+				else if (node->_parent->_right == node)
+					node = node->_parent;
+				_t_map* tmp = node;
+				while (tmp->_parent->_right == tmp) {
+					tmp = tmp->_parent;
+					if (!tmp)
+						return node->_right;
+				}
+				return tmp->_parent;
+			}
+			_t_map*					_prevNode(_t_map* node) {
+				if (node->_left)
+					return _findHigher(node->_left);
+				else if (node->_parent && node->_parent->_right == node)
+					return node->_parent;
+				_t_map* tmp = node;
+				while (tmp->_parent->_left == tmp) {
+					tmp = tmp->_parent;
+					if (!tmp)
+						return node->_left;
+				}
+				return tmp->_parent;
+			}
+		};
+		class reverse_iterator : public std::reverse_iterator<iterator> {
+		private:
+			_t_map*					_ptr;
+		public:
+			explicit reverse_iterator(_t_map* it = nullptr) : _ptr(it) {}
+			reverse_iterator(const reverse_iterator &it) : _ptr(it._ptr) {}
+			~reverse_iterator() {}
+			reverse_iterator&		operator= (const reverse_iterator &it) {
+				_ptr = it._ptr;
+				return *this;
+			}
+			bool 					operator==(const reverse_iterator &it) { return _ptr == it._ptr; }
+			bool 					operator!=(const reverse_iterator &it) { return _ptr != it._ptr; }
+			bool 					operator==(const const_reverse_iterator &it) { return _ptr == it.getPointer(); }
+			bool 					operator!=(const const_reverse_iterator &it) { return _ptr != it.getPointer(); }
+			reverse_iterator&		operator++() {
+				_ptr = _prevNode(_ptr);
+				return *this;
+			}
+			reverse_iterator&		operator--() {
+				_ptr = _nextNode(_ptr);
+				return *this;
+			}
+			reverse_iterator		operator++(int) {
+				reverse_iterator tmp(_ptr);
+				operator++();
+				return tmp;
+			}
+			reverse_iterator		operator--(int) {
+				reverse_iterator tmp(_ptr);
+				operator--();
+				return tmp;
+			}
+			reference				operator* () const { return *(_ptr->_data); }
+			pointer					operator->() const { return _ptr->_data; }
+			_t_map*					getPointer() const { return _ptr; }
+		private:
+			_t_map*					_findLower(_t_map* node) {
+				if (node->_left)
+					return _findLower(node->_left);
+				return node;
+			}
+			_t_map*					_findHigher(_t_map* node) {
+				if (node->_right)
+					return _findHigher(node->_right);
+				return node;
+			}
+			_t_map*					_nextNode(_t_map* node) {
+				if (node->_right)
+					return _findLower(node->_right);
+				else if (node->_parent && node->_parent->_left == node)
+					return node->_parent;
+				else if (node->_parent->_right == node)
+					node = node->_parent;
+				_t_map* tmp = node;
+				while (tmp->_parent->_right == tmp) {
+					tmp = tmp->_parent;
+					if (!tmp)
+						return node->_right;
+				}
+				return tmp->_parent;
+			}
+			_t_map*					_prevNode(_t_map* node) {
+				if (node->_left)
+					return _findHigher(node->_left);
+				else if (node->_parent && node->_parent->_right == node)
+					return node->_parent;
+				_t_map* tmp = node;
+				while (tmp->_parent->_left == tmp) {
+					tmp = tmp->_parent;
+					if (!tmp)
+						return node->_left;
+				}
+				return tmp->_parent;
+			}
+		};
+		class const_reverse_iterator : public std::reverse_iterator<iterator> {
+		private:
+			_t_map*					_ptr;
+		public:
+			explicit const_reverse_iterator(_t_map* it = nullptr) : _ptr(it) {}
+			const_reverse_iterator(const const_reverse_iterator &it) : _ptr(it._ptr) {}
+			const_reverse_iterator(const reverse_iterator &it) : _ptr(it.getPointer()) {}
+			~const_reverse_iterator() {}
+			const_reverse_iterator&	operator= (const const_reverse_iterator &it) {
+				_ptr = it._ptr;
+				return *this;
+			}
+			const_reverse_iterator& operator= (const reverse_iterator &it) {
+				_ptr = it.getPointer();
+				return *this;
+			}
+			bool 					operator==(const reverse_iterator &it) { return _ptr == it.getPointer(); }
+			bool 					operator!=(const reverse_iterator &it) { return _ptr != it.getPointer(); }
+			bool 					operator==(const const_reverse_iterator &it) { return _ptr == it._ptr; }
+			bool 					operator!=(const const_reverse_iterator &it) { return _ptr != it._ptr; }
+			const_reverse_iterator&	operator++() {
+				_ptr = _prevNode(_ptr);
+				return *this;
+			}
+			const_reverse_iterator&	operator--() {
+				_ptr = _nextNode(_ptr);
+				return *this;
+			}
+			const_reverse_iterator	operator++(int) {
+				const_reverse_iterator tmp(_ptr);
+				operator++();
+				return tmp;
+			}
+			const_reverse_iterator	operator--(int) {
+				const_reverse_iterator tmp(_ptr);
+				operator--();
+				return tmp;
+			}
+			const_reference			operator* () const { return *(_ptr->_data); }
+			const_pointer			operator->() const { return _ptr->_data; }
+			_t_map*					getPointer() const { return _ptr; }
+		private:
+			_t_map*					_findLower(_t_map* node) {
+				if (node->_left)
+					return _findLower(node->_left);
+				return node;
+			}
+			_t_map*					_findHigher(_t_map* node) {
+				if (node->_right)
+					return _findHigher(node->_right);
+				return node;
+			}
+			_t_map*					_nextNode(_t_map* node) {
+				if (node->_right)
+					return _findLower(node->_right);
+				else if (node->_parent && node->_parent->_left == node)
+					return node->_parent;
+				else if (node->_parent->_right == node)
+					node = node->_parent;
+				_t_map* tmp = node;
+				while (tmp->_parent->_right == tmp) {
+					tmp = tmp->_parent;
+					if (!tmp)
+						return node->_right;
+				}
+				return tmp->_parent;
+			}
+			_t_map*					_prevNode(_t_map* node) {
+				if (node->_left)
+					return _findHigher(node->_left);
+				else if (node->_parent && node->_parent->_right == node)
+					return node->_parent;
+				_t_map* tmp = node;
+				while (tmp->_parent->_left == tmp) {
+					tmp = tmp->_parent;
+					if (!tmp)
+						return node->_left;
+				}
+				return tmp->_parent;
+			}
+		};
 		iterator				begin();
 		const_iterator			begin() const;
 		iterator				end();
