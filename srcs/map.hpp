@@ -14,11 +14,7 @@ namespace ft {
 	template<class T>
 	struct enable_if<true, T> { typedef T type; };
 
-	template<class Key,                                     // map::key_type
-			class T,                                       // map::mapped_type
-			class Compare = std::less <Key>,                     // map::key_compare
-			class Alloc = std::allocator <std::pair<const Key, T>>    // map::allocator_type
-	>
+	template<class Key, class T, class Compare = std::less<Key>, class Alloc = std::allocator<std::pair<const Key, T> > >
 	class map {
 	public:
 		typedef Key key_type;
@@ -86,11 +82,11 @@ namespace ft {
 		_t_map*					_createNode(_t_map* parent, const_reference val, bool color) {
 			_t_map* ret = _alloc_rebind.allocate(1);
 			ret->_parent = parent;
+			ret->_left = nullptr;
+			ret->_right = nullptr;
 			ret->_color = color;
 			ret->_data = _alloc.allocate(1);
 			_alloc.construct(ret->_data, val);
-			ret->_left = nullptr;
-			ret->_right = nullptr;
 			++_size;
 			return ret;
 		}
@@ -104,18 +100,14 @@ namespace ft {
 
 		void 					_linkLeft(_t_map* parent, _t_map* left) {
 			parent->_left = left;
-			if (left) {
-				left->_left = _begin;
+			if (left)
 				left->_parent = parent;
-			}
 		};
 
 		void 					_linkRight(_t_map* parent, _t_map* right) {
-			parent->_left = right;
-			if (right) {
-				right->_right = _end;
+			parent->_right = right;
+			if (right)
 				right->_parent = parent;
-			}
 		};
 
 		bool 					_isRedNode(_t_map* node) {
@@ -127,15 +119,19 @@ namespace ft {
 		_t_map*					_rotateLeft(_t_map* node) {
 			_t_map* tmp = node->_right;
 
-//			if (node->_parent->_right == node)
-//				_linkRight(node->_parent, tmp);
-//			else
-//				_linkLeft(node->_parent, tmp);
-//			_linkRight(node, tmp->_left);
-//			_linkLeft(tmp, node);
+			tmp->_parent = nullptr;
+			if (node->_parent) {
+				if (node->_parent->_left == node)
+					_linkLeft(node->_parent, tmp);
+				else
+					_linkRight(node->_parent, tmp);
+			} else
+				tmp->_parent = node->_parent;
 
-			node->_right = tmp->_left; // todo refactor
-			tmp->_left = node; // todo refactor
+			_linkRight(node, tmp->_left);
+			_linkLeft(tmp, node);
+			if (node == _root)
+				_root = tmp;
 
 			tmp->_color = node->_color;
 			node->_color = red;
@@ -145,43 +141,47 @@ namespace ft {
 		_t_map*					_rotateRight(_t_map* node) {
 			_t_map* tmp = node->_left;
 
-//			if (node->_parent->_right == node)
-//				_linkRight(node->_parent, tmp);
-//			else
-//				_linkLeft(node->_parent, tmp);
-//			_linkRight(node, tmp->_right);
-//			_linkLeft(tmp, node);
+			tmp->_parent = nullptr;
+			if (node->_parent) {
+				if (node->_parent->_left == node)
+					_linkLeft(node->_parent, tmp);
+				else
+					_linkRight(node->_parent, tmp);
+			} else
+				tmp->_parent = node->_parent;
 
-			node->_left = tmp->_right;
-			tmp->_right = node;
+			_linkLeft(node, tmp->_right);
+			_linkRight(tmp, node);
+			if (node == _root)
+				_root = tmp;
 
 			tmp->_color = node->_color;
 			node->_color = red;
 			return tmp;
 		}
 
-		void 					_flipColors(_t_map* node) {
-			if (node->_left)
+		void 						_flipColors(_t_map* node) {
+			if (node->_left && node->_left != _begin)
 				node->_left->_color = !node->_left->_color;
-			if (node->_right)
+			if (node->_right && node->_right != _end)
 				node->_right->_color = !node->_right->_color;
-			node->_color = !node->_color;
+			if (node && node != _root)
+				node->_color = !node->_color;
 		}
 
-		_t_map*					_balance(_t_map* node) {
+		void						_balance(_t_map* node) {
 			if (_isRedNode(node->_right))
 				node = _rotateLeft(node);
-			if (_isRedNode(node->_left) && node->_parent && _isRedNode(node->_parent->_left))
+			if (_isRedNode(node->_left) && _isRedNode(node->_left->_left))
 				node = _rotateRight(node);
 			if (_isRedNode(node->_left) && _isRedNode(node->_right))
 				_flipColors(node);
-			return node;
 		}
 
 		inline void 				_insertLeft(_t_map* toInsert, _t_map* parent) {
 			if (parent->_left == _begin) {
-				toInsert->left = _begin;
-				_begin->parent = toInsert;
+				toInsert->_left = _begin;
+				_begin->_parent = toInsert;
 			}
 			parent->_left = toInsert;
 		}
@@ -193,7 +193,7 @@ namespace ft {
 		}
 
 		std::pair<iterator, bool>	_insertNode(_t_map* node, const_reference val) {
-			int comp = _compare(val.first, node->_data->first) + _compare(node->_data->_first, val.first) * 2;
+			int comp = _compare(val.first, node->_data->first) + _compare(node->_data->first, val.first) * 2;
 			if (comp == 0)
 				return std::make_pair(iterator(node), false);
 			else if (comp == 1 && node->_left && node->_left != _begin)
@@ -210,19 +210,29 @@ namespace ft {
 	public:
 		/* Constructors */
 		explicit map (const key_compare& comp = key_compare(),
-					  const allocator_type& alloc = allocator_type());
+					  const allocator_type& alloc = allocator_type()) : _root(nullptr), _alloc(alloc), _size(0), _compare(comp) { _createBeginEnd(); }
 		template <class InputIterator>
 		map (InputIterator first, InputIterator last,
 			 const key_compare& comp = key_compare(),
 			 const allocator_type& alloc = allocator_type(),
-			 typename ft::enable_if<std::__is_input_iterator<InputIterator>::value>::type* = 0);
-		map (const map& x);
+			 typename ft::enable_if<std::__is_input_iterator<InputIterator>::value>::type* = 0) : _root(nullptr), _alloc(alloc), _size(0), _compare(comp) {
+			_createBeginEnd();
+			insert(first, last);
+		}
+		map (const map& x) : _root(nullptr), _alloc(x._alloc), _size(0), _alloc_rebind(x._alloc_rebind), _compare(x._compare) {
+			_createBeginEnd();
+			*this = x;
+		}
 
 		/* Destructor */
-		~map();
+		~map() {  }
 
 		/* Operator = */
-		map&					operator= (const map& x);
+		map&					operator= (const map& x) {
+			clear();
+			insert(x.begin(), x.end());
+			return *this;
+		}
 
 		/* Iterators */
 		class iterator : public std::iterator<std::bidirectional_iterator_tag, value_type> {
@@ -281,8 +291,7 @@ namespace ft {
 					node = node->_parent;
 				_t_map* tmp = node;
 				while (tmp->_parent->_right == tmp) {
-					tmp = tmp->_parent;
-					if (!tmp)
+					if (!(tmp = tmp->_parent))
 						return node->_right;
 				}
 				return tmp->_parent;
@@ -294,8 +303,7 @@ namespace ft {
 					return node->_parent;
 				_t_map* tmp = node;
 				while (tmp->_parent->_left == tmp) {
-					tmp = tmp->_parent;
-					if (!tmp)
+					if (!(tmp = tmp->_parent))
 						return node->_left;
 				}
 				return tmp->_parent;
@@ -539,14 +547,14 @@ namespace ft {
 				return tmp->_parent;
 			}
 		};
-		iterator				begin();
-		const_iterator			begin() const;
-		iterator				end();
-		const_iterator			end() const;
-		reverse_iterator		rbegin();
-		const_reverse_iterator	rbegin() const;
-		reverse_iterator		rend();
-		const_reverse_iterator	rend() const;
+		iterator				begin() { return (!_size) ? iterator(_end) : iterator(_begin->_parent); }
+		const_iterator			begin() const { return (!_size) ? const_iterator(_end) : const_iterator(_begin->_parent); }
+		iterator				end() { return iterator(_end); }
+		const_iterator			end() const { return const_iterator(_end); }
+		reverse_iterator		rbegin() { return (!_size) ? reverse_iterator(_begin) : reverse_iterator(_end->_parent); }
+		const_reverse_iterator	rbegin() const { return (!_size) ? const_reverse_iterator(_begin) : const_reverse_iterator(_end->_parent); }
+		reverse_iterator		rend() { return reverse_iterator(_begin); }
+		const_reverse_iterator	rend() const { return const_reverse_iterator(_begin); }
 
 		/* Capacity */
 		bool					empty() const { return _size == 0; }
@@ -554,34 +562,89 @@ namespace ft {
 		size_type				max_size() const { return std::numeric_limits<size_type>::max() / sizeof(_t_map); }
 
 		/* Element access */
-		mapped_type&			operator[] (const key_type& k);
+		mapped_type&			operator[] (const key_type& k) { return insert(std::make_pair(k, mapped_type())).first->second; }
 
 		/* Modifiers */
-		std::pair<iterator,bool>	insert (const value_type& val);
-		iterator				insert(iterator position, const value_type& val);
+		std::pair<iterator,bool>	insert (const value_type& val) {
+			if (!_size) {
+				_root = _createNode(nullptr, val, black);
+				_linkRight(_root, _end);
+				_linkLeft(_root, _begin);
+				return std::make_pair(iterator(_root), true);
+			}
+			return _insertNode(_root, val);
+		}
+		iterator				insert(iterator position, const value_type& val) {
+			static_cast<void>(position);
+			return insert(val).first;
+		}
 		template <class InputIterator>
 		void					insert(InputIterator first, InputIterator last,
-	   		typename ft::enable_if<std::__is_input_iterator<InputIterator>::value>::type* = 0);
+	   		typename ft::enable_if<std::__is_input_iterator<InputIterator>::value>::type* = 0) {
+			for ( ; first != last; ++first)
+				insert(*first);
+		}
 		void					erase(iterator position);
 		size_type				erase(const key_type& k);
 		void					erase(iterator first, iterator last);
 		void					swap(map& x);
-		void					clear();
+		void					clear() {  }
 
 		/* Observers */
-		key_compare				key_comp() const;
-		value_compare			value_comp() const;
+		key_compare				key_comp() const { return _compare; }
+		value_compare			value_comp() const { return value_compare(_compare); }
 
 		/* Operations */
-		iterator				find(const key_type& k);
-		const_iterator			find(const key_type& k) const;
-		size_type				count(const key_type& k) const;
-		iterator				lower_bound(const key_type& k);
-		const_iterator			lower_bound(const key_type& k) const;
-		iterator				upper_bound(const key_type& k);
-		const_iterator			upper_bound(const key_type& k) const;
-		std::pair<const_iterator,const_iterator>	equal_range (const key_type& k) const;
-		std::pair<iterator,iterator>				equal_range (const key_type& k);
+		iterator				find(const key_type& k) {
+			for (iterator it = begin(); it != end(); ++it)
+				if (it->first == k)
+					return it;
+			return end();
+		}
+		const_iterator			find(const key_type& k) const {
+			for (const_iterator it = begin(); it != end(); ++it)
+				if (it->first == k)
+					return it;
+			return end();
+		}
+		size_type				count(const key_type& k) const {
+			for (const_iterator it = begin(); it != end(); ++it)
+				if (it->first == k)
+					return 1;
+			return 0;
+		}
+		iterator				lower_bound(const key_type& k) {
+			iterator it = begin();
+			iterator itEnd = end();
+			while (it != itEnd && _compare(it->first, k))
+				++it;
+			return it;
+		}
+		const_iterator			lower_bound(const key_type& k) const {
+			const_iterator it = begin();
+			const_iterator itEnd = end();
+			while (it != itEnd && _compare(it->first, k))
+				++it;
+			return it;
+		}
+		iterator				upper_bound(const key_type& k) {
+			iterator it = lower_bound(k);
+			if (it != end() && !_compare(it->first, k) && !_compare(k, it->first))
+				++it;
+			return it;
+		}
+		const_iterator			upper_bound(const key_type& k) const {
+			const_iterator it = lower_bound(k);
+			if (it != end() && !_compare(it->first, k) && !_compare(k, it->first))
+				++it;
+			return it;
+		}
+		std::pair<const_iterator,const_iterator>	equal_range (const key_type& k) const {
+			return std::make_pair(lower_bound(k), upper_bound(k));
+		}
+		std::pair<iterator,iterator>				equal_range (const key_type& k) {
+			return std::make_pair(lower_bound(k), upper_bound(k));
+		}
 	};
 }
 

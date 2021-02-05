@@ -2,134 +2,60 @@
 #include <iostream>
 //#include "list.hpp"
 //#include <list>
-#include "vector.hpp"
-#include <vector>
-//#include "map.hpp"
+//#include "vector.hpp"
+//#include <vector>
+#include "map.hpp"
+#include <map>
 //#include "stack.hpp"
 //#include "queue.hpp"
 
-/*	LIST COMPILES	*/
-
-//void ftList() {
-//	ft::list<std::string> f;
-//
-//	f.push_back("LIST ");
-//	f.push_back("compiles ");
-//	f.push_back("successfully! ");
-//	f.push_back("Go ");
-//	f.push_back("check ");
-//	f.push_back("unit ");
-//	f.push_back("tests!");
-//
-//	ft::list<std::string>::iterator itf;
-//	ft::list<std::string>::iterator itfe = f.end();
-//	for (itf = f.begin(); itf != itfe; ++itf) {
-//		std::cout << *itf;
-//	}
-//	std::cout << std::endl << std::endl;
-//}
-//
-///*	VECTOR COMPILES	*/
-//
-//void ftVector() {
-//	ft::vector<std::string> v;
-//
-//	v.push_back("VECTOR ");
-//	v.push_back("compiles ");
-//	v.push_back("successfully! ");
-//	v.push_back("Go ");
-//	v.push_back("check ");
-//	v.push_back("unit ");
-//	v.push_back("tests!");
-//
-//	ft::vector<std::string>::iterator itv;
-//	ft::vector<std::string>::iterator itve = v.end();
-//	for (itv = v.begin(); itv != itve; ++itv)
-//	{
-//		std::cout << *itv;
-//	}
-//	std::cout << std::endl << std::endl;
-//}
-//
-///*	MAP COMPILES	*/
-//
-//void ftMap() {
-//	ft::map<int, std::string> m;
-//
-//	m.insert(std::make_pair(1, "MAP "));
-//	m.insert(std::make_pair(2, "compiles "));
-//	m.insert(std::make_pair(3, "successfully! "));
-//	m.insert(std::make_pair(4, "Go "));
-//	m.insert(std::make_pair(5, "check "));
-//	m.insert(std::make_pair(6, "unit "));
-//	m.insert(std::make_pair(7, "tests!"));
-//
-//	ft::map<int, std::string>::iterator itm;
-//	ft::map<int, std::string>::iterator itme = m.end();
-//	for (itm = m.begin(); itm != itme; ++itm) {
-//		std::cout << itm->second;
-//	}
-//	std::cout << std::endl << std::endl;
-//}
-//
-///*	STACK COMPILES	*/
-//
-//void ftStack() {
-//	ft::stack<std::string> s;
-//
-//	s.push("STACK ");
-//	s.push("compiles ");
-//	s.push("successfully! ");
-//	s.push("Go ");
-//	s.push("check ");
-//	s.push("unit ");
-//	s.push("tests!");
-//
-//	while (!s.empty()) {
-//		std::cout << s.top();
-//		s.pop();
-//	}
-//	std::cout << std::endl << std::endl;
-//}
-//
-///*	QUEUE COMPILES	*/
-//
-//void ftQueue() {
-//	ft::queue<std::string> q;
-//
-//	q.push("QUEUE ");
-//	q.push("compiles ");
-//	q.push("successfully! ");
-//	q.push("Go ");
-//	q.push("check ");
-//	q.push("unit ");
-//	q.push("tests!");
-//
-//	while (!q.empty()) {
-//		std::cout << q.front();
-//		q.pop();
-//	}
-//	std::cout << std::endl;
-//}
-
 int main()
 {
-	ft::vector<int> f;
-	std::vector<int> s;
+	std::map<int, int> s;
+	ft::map<int, int> f;
 
-	for (int i = 0; i < 10; ++i) {
-		f.push_back(i);
-		s.push_back(i);
-	}
-	std::cout << "iterator - 5 = " << *(f.end() - 5) << std::endl;
-	std::cout << "iterator - 3 = " << *(f.end() - 3) << std::endl;
-	f.insert(f.begin() + 1, f.end() - 5, f.end() - 3);
-	s.insert(s.begin() + 1, s.end() - 5, s.end() - 3);
-	for (ft::vector<int>::iterator it = f.begin(); it != f.end(); ++it)
-		std::cout << *it << " ";
+	for (int i = 0; i < 100; ++i)
+		s.insert(std::pair<int, int>(i, i * 2));
+//	s.insert(std::pair<int, int>(26, 10));
+//	s.insert(std::pair<int, int>(24, 12));
+//	s.insert(std::pair<int, int>(22, 14));
+	std::cout << "std size: " << s.size() << std::endl;
+	std::cout << "std: ";
+	for (std::map<int, int>::iterator it = s.begin(); it != s.end(); ++it)
+		std::cout << it->first << " ";
 	std::cout << std::endl;
-	for (std::vector<int>::iterator it = s.begin(); it != s.end(); ++it)
-		std::cout << *it << " ";
+	std::cout << "std: ";
+	std::map<int, int>::iterator itEnd = s.end();
+	--itEnd;
+	for (; itEnd != s.begin(); --itEnd)
+		std::cout << itEnd->first << " ";
 	std::cout << std::endl;
+//	f.insert(std::pair<int, int>(26, 10));
+//	f.insert(std::pair<int, int>(24, 12));
+//	f.insert(std::pair<int, int>(22, 14));
+	for (int i = 0; i < 100; ++i)
+		f.insert(std::pair<int, int>(i, i * 2));
+	std::cout << "ft size: " << f.size() << std::endl;
+	std::cout << "ft : ";
+//	ft::map<int, int>::iterator it1 = f.begin();
+//	std::cout << it1->first << " ";
+//	it1++;
+//	std::cout << it1->first << " ";
+//	it1++;
+//	std::cout << it1->first << " ";
+//	std::cout << std::endl;
+//	std::cout << ((it1 == f.end()) ? "true" : "false");
+	for (ft::map<int, int>::iterator it = f.begin(); it != f.end(); ++it)
+		std::cout << it->first << " ";
+	std::cout << std::endl;
+	std::cout << "ft : ";
+	ft::map<int, int>::iterator itEndF = f.end();
+	itEndF--;
+	for (; itEndF != f.begin(); --itEndF)
+		std::cout << itEndF->first << " ";
+	std::cout << std::endl;
+//	ft::map<int, int>::iterator itEnd = f.end();
+//	itEnd--;
+//	std::cout << "end: " << itEnd->first << std::endl;
 	return 0;
 }
