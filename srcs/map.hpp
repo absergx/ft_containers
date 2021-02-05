@@ -225,7 +225,11 @@ namespace ft {
 		}
 
 		/* Destructor */
-		~map() {  }
+		~map() {
+//			clear();
+			_alloc_rebind.deallocate(_begin, 1);
+			_alloc_rebind.deallocate(_end, 1);
+		}
 
 		/* Operator = */
 		map&					operator= (const map& x) {
@@ -290,10 +294,9 @@ namespace ft {
 				else if (node->_parent->_right == node)
 					node = node->_parent;
 				_t_map* tmp = node;
-				while (tmp->_parent->_right == tmp) {
+				while (tmp->_parent->_right == tmp)
 					if (!(tmp = tmp->_parent))
 						return node->_right;
-				}
 				return tmp->_parent;
 			}
 			_t_map*					_prevNode(_t_map* node) {
@@ -302,10 +305,9 @@ namespace ft {
 				else if (node->_parent && node->_parent->_right == node)
 					return node->_parent;
 				_t_map* tmp = node;
-				while (tmp->_parent->_left == tmp) {
+				while (tmp->_parent->_left == tmp)
 					if (!(tmp = tmp->_parent))
 						return node->_left;
-				}
 				return tmp->_parent;
 			}
 		};
@@ -369,11 +371,9 @@ namespace ft {
 				else if (node->_parent->_right == node)
 					node = node->_parent;
 				_t_map* tmp = node;
-				while (tmp->_parent->_right == tmp) {
-					tmp = tmp->_parent;
-					if (!tmp)
+				while (tmp->_parent->_right == tmp)
+					if (!(tmp = tmp->_parent))
 						return node->_right;
-				}
 				return tmp->_parent;
 			}
 			_t_map*					_prevNode(_t_map* node) {
@@ -382,11 +382,9 @@ namespace ft {
 				else if (node->_parent && node->_parent->_right == node)
 					return node->_parent;
 				_t_map* tmp = node;
-				while (tmp->_parent->_left == tmp) {
-					tmp = tmp->_parent;
-					if (!tmp)
+				while (tmp->_parent->_left == tmp)
+					if (!(tmp = tmp->_parent))
 						return node->_left;
-				}
 				return tmp->_parent;
 			}
 		};
@@ -445,11 +443,9 @@ namespace ft {
 				else if (node->_parent->_right == node)
 					node = node->_parent;
 				_t_map* tmp = node;
-				while (tmp->_parent->_right == tmp) {
-					tmp = tmp->_parent;
-					if (!tmp)
+				while (tmp->_parent->_right == tmp)
+					if (!(tmp = tmp->_parent))
 						return node->_right;
-				}
 				return tmp->_parent;
 			}
 			_t_map*					_prevNode(_t_map* node) {
@@ -458,11 +454,9 @@ namespace ft {
 				else if (node->_parent && node->_parent->_right == node)
 					return node->_parent;
 				_t_map* tmp = node;
-				while (tmp->_parent->_left == tmp) {
-					tmp = tmp->_parent;
-					if (!tmp)
+				while (tmp->_parent->_left == tmp)
+					if (!(tmp = tmp->_parent))
 						return node->_left;
-				}
 				return tmp->_parent;
 			}
 		};
@@ -584,11 +578,41 @@ namespace ft {
 			for ( ; first != last; ++first)
 				insert(*first);
 		}
-		void					erase(iterator position);
-		size_type				erase(const key_type& k);
-		void					erase(iterator first, iterator last);
-		void					swap(map& x);
-		void					clear() {  }
+		void					erase(iterator position) {
+			(void)position;
+			//todo DO IT
+		}
+		size_type				erase(const key_type& k) {
+			(void)k;
+			//todo DO IT
+			return 0;
+		}
+		void					erase(iterator first, iterator last) {
+			(void)first;
+			(void)last;
+			//todo DO IT
+		}
+		void					swap(map& x) {
+			_t_map* tmpRoot = _root;
+			_root = x._root;
+			x._root = tmpRoot;
+
+			_t_map* tmpBegin = _begin;
+			_begin = x._begin;
+			x._begin = tmpBegin;
+
+			_t_map*	tmpEnd = _end;
+			_end = x._end;
+			x._end = tmpEnd;
+
+			size_type tmpSize = _size;
+			_size = x._size;
+			x._size = tmpSize;
+		}
+		void					clear() {
+			while (_size)
+				erase(begin());
+		}
 
 		/* Observers */
 		key_compare				key_comp() const { return _compare; }

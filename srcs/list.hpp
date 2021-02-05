@@ -94,8 +94,7 @@ namespace ft {
 		private:
 			_t_node*	_pointer;
 		public:
-			iterator() : _pointer(nullptr) {}
-			iterator(_t_node *pointer) : _pointer(pointer) {}
+			explicit iterator(_t_node *pointer = nullptr) : _pointer(pointer) {}
 			iterator(iterator const &iterator) { *this = iterator; }
 			~iterator() {}
 			iterator&					operator= (const iterator& rhs) {
@@ -135,8 +134,7 @@ namespace ft {
 		private:
 			_t_node*	_pointer;
 		public:
-			const_iterator() : _pointer(nullptr) {}
-			const_iterator(_t_node *pointer) : _pointer(pointer) {}
+			explicit const_iterator(_t_node *pointer = nullptr) : _pointer(pointer) {}
 			const_iterator(iterator const &it) { *this = it; }
 			const_iterator(const_iterator const &it) { *this = it; }
 			~const_iterator() {}
@@ -180,8 +178,7 @@ namespace ft {
 		private:
 			_t_node*	_pointer;
 		public:
-			reverse_iterator() : _pointer(nullptr) {}
-			reverse_iterator(_t_node *pointer) : _pointer(pointer) {}
+			explicit reverse_iterator(_t_node *pointer = nullptr) : _pointer(pointer) {}
 			reverse_iterator(reverse_iterator const &it) { *this = it; }
 			~reverse_iterator() {}
 			reverse_iterator&			operator= (const reverse_iterator &rhs) {
@@ -220,8 +217,7 @@ namespace ft {
 		private:
 			_t_node*	_pointer;
 		public:
-			const_reverse_iterator() : _pointer(nullptr) {}
-			const_reverse_iterator(_t_node *pointer) : _pointer(pointer) {}
+			explicit const_reverse_iterator(_t_node *pointer = nullptr) : _pointer(pointer) {}
 			const_reverse_iterator(reverse_iterator const &it) { *this = it; }
 			const_reverse_iterator(const_reverse_iterator const &it) { *this = it; }
 			~const_reverse_iterator() {}

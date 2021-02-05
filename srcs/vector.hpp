@@ -112,8 +112,7 @@ namespace ft {
 		private:
 			pointer			_pointer;
 		public:
-			iterator() : _pointer(nullptr) {}
-			iterator(pointer arg) : _pointer(arg) {}
+			explicit iterator(pointer arg = nullptr) : _pointer(arg) {}
 			iterator(iterator const &it) { *this = it; }
 			~iterator() {}
 			iterator&		operator= (iterator const &rhs) {
@@ -178,8 +177,7 @@ namespace ft {
 		private:
 			pointer			_pointer;
 		public:
-			const_iterator() : _pointer(nullptr) {}
-			const_iterator(pointer arg) : _pointer(arg) {}
+			explicit const_iterator(pointer arg = nullptr) : _pointer(arg) {}
 			const_iterator(const_iterator const &it) { *this = it; }
 			const_iterator(iterator const &it) { *this = it; }
 			~const_iterator() {}
@@ -249,9 +247,8 @@ namespace ft {
 		private:
 			pointer 		_pointer;
 		public:
-			reverse_iterator() : _pointer(nullptr) {}
+			explicit reverse_iterator(pointer ptr = nullptr) : _pointer(ptr) {}
 			reverse_iterator(reverse_iterator const &it) { *this = it; }
-			reverse_iterator(pointer ptr) : _pointer(ptr) {}
 			~reverse_iterator() {}
 			reverse_iterator&	operator= (reverse_iterator const& rhs) {
 				if (this != &rhs)
@@ -314,10 +311,9 @@ namespace ft {
 		private:
 			pointer			_pointer;
 		public:
-			const_reverse_iterator() : _pointer(nullptr) {}
+			explicit const_reverse_iterator(pointer ptr = nullptr) : _pointer(ptr) {}
 			const_reverse_iterator(reverse_iterator const &it) { *this = it; }
 			const_reverse_iterator(const_reverse_iterator const &it) { *this = it; }
-			const_reverse_iterator(pointer ptr) : _pointer(ptr) {}
 			~const_reverse_iterator() {}
 			const_reverse_iterator&		operator= (const_reverse_iterator const &rhs) {
 				if (this != &rhs)
