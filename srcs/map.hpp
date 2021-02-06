@@ -207,6 +207,19 @@ namespace ft {
 			return std::make_pair(iterator(newNode), true);
 		}
 
+		/* ERASE SHIT */
+		_t_map*						_findMinNode(_t_map* node) {
+			if (node->_left)
+				return _findMinNode(node->_left);
+			return node;
+		}
+
+		_t_map*					_eraseNode(_t_map* nodeToErase, const key_type& k) {
+			if (!nodeToErase)
+				return nodeToErase;
+			
+		}
+
 	public:
 		/* Constructors */
 		explicit map (const key_compare& comp = key_compare(),
