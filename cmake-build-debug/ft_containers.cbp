@@ -422,6 +422,9 @@
 		<Unit filename="/Users/memilio/homerun/ft_containers/jalvaro_tests/main.cpp">
 			<Option target="jalvaro_tests"/>
 		</Unit>
+		<Unit filename="/Users/memilio/homerun/ft_containers/jalvaro_tests/map_test.cpp">
+			<Option target="jalvaro_tests"/>
+		</Unit>
 		<Unit filename="/Users/memilio/homerun/ft_containers/jalvaro_tests/queue_test.cpp">
 			<Option target="jalvaro_tests"/>
 		</Unit>
@@ -435,6 +438,9 @@
 			<Option target="ft_containers"/>
 		</Unit>
 		<Unit filename="/Users/memilio/homerun/ft_containers/srcs/list.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/memilio/homerun/ft_containers/srcs/map.hpp">
 			<Option target="ft_containers"/>
 		</Unit>
 		<Unit filename="/Users/memilio/homerun/ft_containers/srcs/queue.hpp">
@@ -456,6 +462,9 @@
 			<Option target="gtest_main"/>
 		</Unit>
 		<Unit filename="/Users/memilio/homerun/ft_containers/unit_tests/list.cpp">
+			<Option target="Google_Tests_run"/>
+		</Unit>
+		<Unit filename="/Users/memilio/homerun/ft_containers/unit_tests/map.cpp">
 			<Option target="Google_Tests_run"/>
 		</Unit>
 		<Unit filename="/Users/memilio/homerun/ft_containers/unit_tests/queue.cpp">

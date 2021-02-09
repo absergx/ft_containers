@@ -187,7 +187,7 @@ namespace ft {
 				return *this;
 			}
 			bool 						operator==(const reverse_iterator& rhs) const { return _pointer == rhs._pointer; }
-			bool 						operator!=(const reverse_iterator& rhs) const { return _pointer != rhs._pointer; }
+			bool 						operator!=(const reverse_iterator& rhs) const { return  _pointer != rhs._pointer; }
 			bool						operator==(const const_reverse_iterator& rhs) const { return _pointer == rhs.getPointer(); }
 			bool						operator!=(const const_reverse_iterator& rhs) const { return _pointer != rhs.getPointer(); }
 			reverse_iterator&			operator++() {

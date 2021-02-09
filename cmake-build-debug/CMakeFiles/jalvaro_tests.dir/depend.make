@@ -5,14 +5,17 @@ CMakeFiles/jalvaro_tests.dir/jalvaro_tests/list_test.cpp.o: ../srcs/list.hpp
 CMakeFiles/jalvaro_tests.dir/jalvaro_tests/list_test.cpp.o: ../jalvaro_tests/list_test.cpp
 
 CMakeFiles/jalvaro_tests.dir/jalvaro_tests/main.cpp.o: ../jalvaro_tests/main.cpp
-CMakeFiles/jalvaro_tests.dir/jalvaro_tests/main.cpp.o: ../srcs/vector.hpp
+CMakeFiles/jalvaro_tests.dir/jalvaro_tests/main.cpp.o: ../srcs/map.hpp
+
+CMakeFiles/jalvaro_tests.dir/jalvaro_tests/map_test.cpp.o: ../srcs/map.hpp
+CMakeFiles/jalvaro_tests.dir/jalvaro_tests/map_test.cpp.o: ../jalvaro_tests/map_test.cpp
 
 CMakeFiles/jalvaro_tests.dir/jalvaro_tests/queue_test.cpp.o: ../srcs/list.hpp
 CMakeFiles/jalvaro_tests.dir/jalvaro_tests/queue_test.cpp.o: ../srcs/queue.hpp
 CMakeFiles/jalvaro_tests.dir/jalvaro_tests/queue_test.cpp.o: ../jalvaro_tests/queue_test.cpp
 
-CMakeFiles/jalvaro_tests.dir/jalvaro_tests/stack_test.cpp.o: ../srcs/list.hpp
 CMakeFiles/jalvaro_tests.dir/jalvaro_tests/stack_test.cpp.o: ../srcs/stack.hpp
+CMakeFiles/jalvaro_tests.dir/jalvaro_tests/stack_test.cpp.o: ../srcs/vector.hpp
 CMakeFiles/jalvaro_tests.dir/jalvaro_tests/stack_test.cpp.o: ../jalvaro_tests/stack_test.cpp
 
 CMakeFiles/jalvaro_tests.dir/jalvaro_tests/vector_test.cpp.o: ../srcs/vector.hpp

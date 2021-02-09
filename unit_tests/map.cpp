@@ -142,7 +142,7 @@ TEST_F(MapInsertSimpleTest, case4) {
 class MapIteratorTest : public ::testing::Test {
 protected:
 	virtual void SetUp() {
-		for (int i = 0; i < 11; ++i) {
+		for (int i = 0; i < 2; ++i) {
 			s.insert(std::make_pair(std::to_string(i), i));
 			f.insert(std::make_pair(std::to_string(i), i));
 		}
@@ -1158,33 +1158,33 @@ TEST_F(MapEraseByIteratorTest, iteratorValidity2) {
 
 	checkMapsAreEqualIt(itf, ftmap.end(), its, stmap.end());
 }
-
-class MapClearTest : public testing::Test {
-protected:
-	virtual void SetUp() {
-
-	}
-	std::map<std::string, int> s;
-	ft::map<std::string, int>  f;
-};
-
-TEST_F(MapClearTest, emptyClear) {
-	s.clear();
-	f.clear();
-
-	checkIfMapsAreEqual(f, s);
-}
-
-TEST_F(MapClearTest, nonEmptyClear) {
-	for (int i = 0; i < 100; ++i) {
-		s.insert(std::make_pair(std::to_string(i), i));
-		f.insert(std::make_pair(std::to_string(i), i));
-	}
-
-	s.clear();
-	f.clear();
-	checkIfMapsAreEqual(f, s);
-}
+//
+//class MapClearTest : public testing::Test {
+//protected:
+//	virtual void SetUp() {
+//
+//	}
+//	std::map<std::string, int> s;
+//	ft::map<std::string, int>  f;
+//};
+//
+//TEST_F(MapClearTest, emptyClear) {
+//	s.clear();
+//	f.clear();
+//
+//	checkIfMapsAreEqual(f, s);
+//}
+//
+//TEST_F(MapClearTest, nonEmptyClear) {
+//	for (int i = 0; i < 100; ++i) {
+//		s.insert(std::make_pair(std::to_string(i), i));
+//		f.insert(std::make_pair(std::to_string(i), i));
+//	}
+//
+//	s.clear();
+//	f.clear();
+//	checkIfMapsAreEqual(f, s);
+//}
 
 class MapAssignationTest : public testing::Test {
 protected:

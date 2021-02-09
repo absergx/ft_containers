@@ -13,12 +13,12 @@ set(SRCS
 		srcs/list.hpp
 #        srcs/iterator.hpp
         srcs/vector.hpp
-#        srcs/map.hpp
+        srcs/map.hpp
 #        srcs/stack.hpp
         srcs/queue.hpp)
 
 add_executable(ft_containers main.cpp ${SRCS})
-add_executable(jalvaro_tests jalvaro_tests/main.cpp jalvaro_tests/list_test.cpp jalvaro_tests/queue_test.cpp jalvaro_tests/stack_test.cpp jalvaro_tests/vector_test.cpp)
+add_executable(jalvaro_tests jalvaro_tests/main.cpp jalvaro_tests/map_test.cpp jalvaro_tests/list_test.cpp jalvaro_tests/queue_test.cpp jalvaro_tests/stack_test.cpp jalvaro_tests/vector_test.cpp)
 
 add_library(testlib INTERFACE)
 target_include_directories(testlib INTERFACE ./srcs)

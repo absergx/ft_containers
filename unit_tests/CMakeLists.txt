@@ -7,7 +7,7 @@ set(TEST_FILES
         test.cpp
 		list.cpp
         vector.cpp
-#        map.cpp
+        map.cpp
 		stack.cpp
 		queue.cpp)
 

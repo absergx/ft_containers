@@ -54,10 +54,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /goinfre/memilio/CLion.app/Contents/bin/cmake/mac/bin/cmake
+CMAKE_COMMAND = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake
 
 # The command to remove a file.
-RM = /goinfre/memilio/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
+RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -90,9 +90,22 @@ CMakeFiles/jalvaro_tests.dir/jalvaro_tests/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/jalvaro_tests.dir/jalvaro_tests/main.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/memilio/homerun/ft_containers/jalvaro_tests/main.cpp -o CMakeFiles/jalvaro_tests.dir/jalvaro_tests/main.cpp.s
 
+CMakeFiles/jalvaro_tests.dir/jalvaro_tests/map_test.cpp.o: CMakeFiles/jalvaro_tests.dir/flags.make
+CMakeFiles/jalvaro_tests.dir/jalvaro_tests/map_test.cpp.o: ../jalvaro_tests/map_test.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/memilio/homerun/ft_containers/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/jalvaro_tests.dir/jalvaro_tests/map_test.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/jalvaro_tests.dir/jalvaro_tests/map_test.cpp.o -c /Users/memilio/homerun/ft_containers/jalvaro_tests/map_test.cpp
+
+CMakeFiles/jalvaro_tests.dir/jalvaro_tests/map_test.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/jalvaro_tests.dir/jalvaro_tests/map_test.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/memilio/homerun/ft_containers/jalvaro_tests/map_test.cpp > CMakeFiles/jalvaro_tests.dir/jalvaro_tests/map_test.cpp.i
+
+CMakeFiles/jalvaro_tests.dir/jalvaro_tests/map_test.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/jalvaro_tests.dir/jalvaro_tests/map_test.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/memilio/homerun/ft_containers/jalvaro_tests/map_test.cpp -o CMakeFiles/jalvaro_tests.dir/jalvaro_tests/map_test.cpp.s
+
 CMakeFiles/jalvaro_tests.dir/jalvaro_tests/list_test.cpp.o: CMakeFiles/jalvaro_tests.dir/flags.make
 CMakeFiles/jalvaro_tests.dir/jalvaro_tests/list_test.cpp.o: ../jalvaro_tests/list_test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/memilio/homerun/ft_containers/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/jalvaro_tests.dir/jalvaro_tests/list_test.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/memilio/homerun/ft_containers/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/jalvaro_tests.dir/jalvaro_tests/list_test.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/jalvaro_tests.dir/jalvaro_tests/list_test.cpp.o -c /Users/memilio/homerun/ft_containers/jalvaro_tests/list_test.cpp
 
 CMakeFiles/jalvaro_tests.dir/jalvaro_tests/list_test.cpp.i: cmake_force
@@ -105,7 +118,7 @@ CMakeFiles/jalvaro_tests.dir/jalvaro_tests/list_test.cpp.s: cmake_force
 
 CMakeFiles/jalvaro_tests.dir/jalvaro_tests/queue_test.cpp.o: CMakeFiles/jalvaro_tests.dir/flags.make
 CMakeFiles/jalvaro_tests.dir/jalvaro_tests/queue_test.cpp.o: ../jalvaro_tests/queue_test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/memilio/homerun/ft_containers/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/jalvaro_tests.dir/jalvaro_tests/queue_test.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/memilio/homerun/ft_containers/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/jalvaro_tests.dir/jalvaro_tests/queue_test.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/jalvaro_tests.dir/jalvaro_tests/queue_test.cpp.o -c /Users/memilio/homerun/ft_containers/jalvaro_tests/queue_test.cpp
 
 CMakeFiles/jalvaro_tests.dir/jalvaro_tests/queue_test.cpp.i: cmake_force
@@ -118,7 +131,7 @@ CMakeFiles/jalvaro_tests.dir/jalvaro_tests/queue_test.cpp.s: cmake_force
 
 CMakeFiles/jalvaro_tests.dir/jalvaro_tests/stack_test.cpp.o: CMakeFiles/jalvaro_tests.dir/flags.make
 CMakeFiles/jalvaro_tests.dir/jalvaro_tests/stack_test.cpp.o: ../jalvaro_tests/stack_test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/memilio/homerun/ft_containers/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/jalvaro_tests.dir/jalvaro_tests/stack_test.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/memilio/homerun/ft_containers/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/jalvaro_tests.dir/jalvaro_tests/stack_test.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/jalvaro_tests.dir/jalvaro_tests/stack_test.cpp.o -c /Users/memilio/homerun/ft_containers/jalvaro_tests/stack_test.cpp
 
 CMakeFiles/jalvaro_tests.dir/jalvaro_tests/stack_test.cpp.i: cmake_force
@@ -131,7 +144,7 @@ CMakeFiles/jalvaro_tests.dir/jalvaro_tests/stack_test.cpp.s: cmake_force
 
 CMakeFiles/jalvaro_tests.dir/jalvaro_tests/vector_test.cpp.o: CMakeFiles/jalvaro_tests.dir/flags.make
 CMakeFiles/jalvaro_tests.dir/jalvaro_tests/vector_test.cpp.o: ../jalvaro_tests/vector_test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/memilio/homerun/ft_containers/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/jalvaro_tests.dir/jalvaro_tests/vector_test.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/memilio/homerun/ft_containers/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/jalvaro_tests.dir/jalvaro_tests/vector_test.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/jalvaro_tests.dir/jalvaro_tests/vector_test.cpp.o -c /Users/memilio/homerun/ft_containers/jalvaro_tests/vector_test.cpp
 
 CMakeFiles/jalvaro_tests.dir/jalvaro_tests/vector_test.cpp.i: cmake_force
@@ -145,6 +158,7 @@ CMakeFiles/jalvaro_tests.dir/jalvaro_tests/vector_test.cpp.s: cmake_force
 # Object files for target jalvaro_tests
 jalvaro_tests_OBJECTS = \
 "CMakeFiles/jalvaro_tests.dir/jalvaro_tests/main.cpp.o" \
+"CMakeFiles/jalvaro_tests.dir/jalvaro_tests/map_test.cpp.o" \
 "CMakeFiles/jalvaro_tests.dir/jalvaro_tests/list_test.cpp.o" \
 "CMakeFiles/jalvaro_tests.dir/jalvaro_tests/queue_test.cpp.o" \
 "CMakeFiles/jalvaro_tests.dir/jalvaro_tests/stack_test.cpp.o" \
@@ -154,13 +168,14 @@ jalvaro_tests_OBJECTS = \
 jalvaro_tests_EXTERNAL_OBJECTS =
 
 jalvaro_tests: CMakeFiles/jalvaro_tests.dir/jalvaro_tests/main.cpp.o
+jalvaro_tests: CMakeFiles/jalvaro_tests.dir/jalvaro_tests/map_test.cpp.o
 jalvaro_tests: CMakeFiles/jalvaro_tests.dir/jalvaro_tests/list_test.cpp.o
 jalvaro_tests: CMakeFiles/jalvaro_tests.dir/jalvaro_tests/queue_test.cpp.o
 jalvaro_tests: CMakeFiles/jalvaro_tests.dir/jalvaro_tests/stack_test.cpp.o
 jalvaro_tests: CMakeFiles/jalvaro_tests.dir/jalvaro_tests/vector_test.cpp.o
 jalvaro_tests: CMakeFiles/jalvaro_tests.dir/build.make
 jalvaro_tests: CMakeFiles/jalvaro_tests.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/memilio/homerun/ft_containers/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable jalvaro_tests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/memilio/homerun/ft_containers/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable jalvaro_tests"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/jalvaro_tests.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "map.hpp"
-#include "../srcs/vector.hpp"
+#include "../srcs/map.hpp"
+//#include "../srcs/vector.hpp"
 //#include "../srcs/list.hpp"
 //#include "../srcs/queue.hpp"
 //#include "../srcs/stack.hpp"
@@ -22,8 +22,8 @@
 #define RESET "\033[0m"
 
 //int     list_test(void);
-int     vector_test(void);
-//int     map_test(void);
+//int     vector_test(void);
+int     map_test(void);
 //int     stack_test(void);
 //int     queue_test(void);
 
@@ -40,10 +40,11 @@ int     main(void) {
 			std::cout << "Skip list tests" << std::endl;
 //			list_test();
 		else if (a == 2)
-			vector_test();
+			std::cout << "Skip vector tests" << std::endl;
+//			vector_test();
 		else if (a == 3)
-			std::cout << "Skip map tests" << std::endl;
-//			map_test();
+//			std::cout << "Skip map tests" << std::endl;
+			map_test();
 		else if (a == 4)
 			std::cout << "Skip stack tests" << std::endl;
 //			stack_test();

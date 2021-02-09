@@ -34,9 +34,9 @@ namespace ft {
 		class const_reverse_iterator;
 
 		class value_compare : public std::binary_function<value_type, value_type, bool> {
-		protected:
+		public:
 			key_compare		_compare;
-			value_compare(key_compare arg) : _compare(arg) {}
+			explicit value_compare(key_compare arg) : _compare(arg) {}
 		public:
 			bool operator()(const_reference lhs, const_reference rhs) const { return _compare(lhs.first, rhs.first); }
 		};
@@ -169,13 +169,14 @@ namespace ft {
 				node->_color = !node->_color;
 		}
 
-		void						_balance(_t_map* node) {
+		_t_map*						_balance(_t_map* node) {
 			if (_isRedNode(node->_right))
 				node = _rotateLeft(node);
 			if (_isRedNode(node->_left) && _isRedNode(node->_left->_left))
 				node = _rotateRight(node);
 			if (_isRedNode(node->_left) && _isRedNode(node->_right))
 				_flipColors(node);
+			return node;
 		}
 
 		inline void 				_insertLeft(_t_map* toInsert, _t_map* parent) {
@@ -214,10 +215,74 @@ namespace ft {
 			return node;
 		}
 
+		_t_map*					_moveRedLeft(_t_map* node) {
+			_flipColors(node);
+			if (node->_right && _isRedNode(node->_right->_left)) {
+				node->_right = _rotateRight(node->_right);
+				node = _rotateLeft(node);
+				_flipColors(node);
+			}
+			return node;
+		}
+
+		_t_map*					_moveRedRight(_t_map* node) {
+			_flipColors(node);
+			if (node->_left && _isRedNode(node->_left->_left)) {
+				node = _rotateRight(node);
+				_flipColors(node);
+			}
+			return node;
+		}
+
 		_t_map*					_eraseNode(_t_map* nodeToErase, const key_type& k) {
 			if (!nodeToErase)
 				return nodeToErase;
-			
+			int cmp = _compare(k, nodeToErase->_data->first) + _compare(nodeToErase->_data->first, k) * 2;
+			if (cmp == 1) {
+				if (!_isRedNode(nodeToErase->_left) && !_isRedNode(nodeToErase->_left->_left)) {
+					nodeToErase = _moveRedLeft(nodeToErase);
+				}
+				_linkLeft(nodeToErase, _eraseNode(nodeToErase->_left, k));
+			} else {
+				if (_isRedNode(nodeToErase->_left)) {
+					nodeToErase = _rotateRight(nodeToErase);
+					_linkRight(nodeToErase, _eraseNode(nodeToErase->_right, k));
+					return _balance(nodeToErase);
+				}
+				if (cmp != 2 && (nodeToErase->_right == _end || nodeToErase->_right == nullptr)) {
+					_t_map *tmp = (!nodeToErase->_left && nodeToErase->_right == _end) ? nodeToErase->_right : nodeToErase->_left;
+					_destroyNode(nodeToErase);
+					return tmp;
+				}
+				if (!_isRedNode(nodeToErase->_right) && nodeToErase->_right && !_isRedNode(nodeToErase->_right->_left)) {
+					nodeToErase = _moveRedRight(nodeToErase);
+				}
+				if (!_compare(nodeToErase->_data->first, k)) {
+					_t_map *min = _findMinNode(nodeToErase->_right);
+					if (nodeToErase == _root)
+						_root = min;
+					if (min->_parent != nodeToErase) {
+						_linkLeft(min->_parent, min->_right);
+						_linkRight(min, nodeToErase->_right);
+					}
+					if (nodeToErase->_left == _begin) {
+						nodeToErase->_left->_parent = min;
+						min->_left = nodeToErase->_left;
+					} else
+						_linkLeft(min, nodeToErase->_left);
+					min->_parent = nullptr;
+					if (nodeToErase->_parent) {
+						if (nodeToErase->_parent->_left == nodeToErase)
+							_linkLeft(nodeToErase->_parent, min);
+						else
+							_linkRight(nodeToErase->_parent, min);
+					}
+					_destroyNode(nodeToErase);
+					nodeToErase = min;
+				} else
+					_linkRight(nodeToErase, _eraseNode(nodeToErase->_right, k));
+			}
+			return _balance(nodeToErase);
 		}
 
 	public:
@@ -232,7 +297,7 @@ namespace ft {
 			_createBeginEnd();
 			insert(first, last);
 		}
-		map (const map& x) : _root(nullptr), _alloc(x._alloc), _size(0), _alloc_rebind(x._alloc_rebind), _compare(x._compare) {
+		map (const map& x) : _root(nullptr), _alloc_rebind(x._alloc_rebind), _alloc(x._alloc), _size(0), _compare(x._compare) {
 			_createBeginEnd();
 			*this = x;
 		}
@@ -405,7 +470,7 @@ namespace ft {
 		private:
 			_t_map*					_ptr;
 		public:
-			explicit reverse_iterator(_t_map* it = nullptr) : _ptr(it) {}
+			explicit reverse_iterator(_t_map* ptr = nullptr) : _ptr(ptr) {}
 			reverse_iterator(const reverse_iterator &it) : _ptr(it._ptr) {}
 			~reverse_iterator() {}
 			reverse_iterator&		operator= (const reverse_iterator &it) {
