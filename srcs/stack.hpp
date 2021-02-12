@@ -2,13 +2,15 @@
 // Created by Meldred Emilio on 11/29/20.
 //
 
-#ifndef FT_CONTAINERS_STACK_HPP
-#define FT_CONTAINERS_STACK_HPP
+#pragma once
+//#ifndef FT_CONTAINERS_STACK_HPP
+//#define FT_CONTAINERS_STACK_HPP
 
 #include "vector.hpp"
+#include "list.hpp"
 
 namespace ft {
-	template <class T, class Container = vector<T> >
+	template <class T, class Container = list<T> >
 	class stack {
 	public:
 		typedef	T			value_type;
@@ -17,6 +19,7 @@ namespace ft {
 
 		/* Member functions */
 		explicit stack(const container_type& ctnr = container_type()) : _vault(ctnr) {}
+		~stack() {}
 		bool				empty() const { return _vault.empty(); }
 		size_type			size() const { return _vault.size(); }
 		value_type&			top() { return _vault.back(); }
@@ -44,4 +47,4 @@ namespace ft {
 	bool operator>= (const stack<T,Container>& lhs, const stack<T,Container>& rhs) { return lhs.getContainer() >= rhs.getContainer(); }
 }
 
-#endif //FT_CONTAINERS_STACK_HPP
+//#endif //FT_CONTAINERS_STACK_HPP

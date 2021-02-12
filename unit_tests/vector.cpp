@@ -951,6 +951,7 @@ TEST_F(VectorInsertStrTest, insertIntInPosition6) { // insert into end without r
 	checkVectorsAreEqualIt(itf, f.end(), its, s.end()); // itf and its should remain valid
 }
 
+// todo why SIGABRT ??
 TEST_F(VectorInsertStrTest, insertIntRangeN1) {	// insert into begin with reallocation, less then size
 	ft::vector<std::string> f(sample.begin(), sample.end());
 	std::vector<std::string> s(sample.begin(), sample.end());
@@ -1918,4 +1919,5 @@ TEST_F(VectorComprasionTest, justCase5) {
 	EXPECT_EQ(true, s1 <= s2);
 	EXPECT_EQ(true, f1 <= f2);
 }
+
 

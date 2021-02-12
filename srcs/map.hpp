@@ -2,18 +2,15 @@
 // Created by Meldred Emilio on 11/29/20.
 //
 
-#ifndef FT_CONTAINERS_MAP_HPP
-#define FT_CONTAINERS_MAP_HPP
+//#ifndef FT_CONTAINERS_MAP_HPP
+//#define FT_CONTAINERS_MAP_HPP
 
+#pragma once
+
+#include "ft.hpp"
 #include <iostream>
 
 namespace ft {
-	template<bool B, class T = void>
-	struct enable_if {};
-
-	template<class T>
-	struct enable_if<true, T> { typedef T type; };
-
 	template<class Key, class T, class Compare = std::less<Key>, class Alloc = std::allocator<std::pair<const Key, T> > >
 	class map {
 	public:
@@ -235,13 +232,12 @@ namespace ft {
 		}
 
 		_t_map*					_eraseNode(_t_map* nodeToErase, const key_type& k) {
-			if (!nodeToErase)
-				return nodeToErase;
+			if (nodeToErase == nullptr)
+				return nullptr;
 			int cmp = _compare(k, nodeToErase->_data->first) + _compare(nodeToErase->_data->first, k) * 2;
 			if (cmp == 1) {
-				if (!_isRedNode(nodeToErase->_left) && !_isRedNode(nodeToErase->_left->_left)) {
+				if (!_isRedNode(nodeToErase->_left) && !_isRedNode(nodeToErase->_left->_left))
 					nodeToErase = _moveRedLeft(nodeToErase);
-				}
 				_linkLeft(nodeToErase, _eraseNode(nodeToErase->_left, k));
 			} else {
 				if (_isRedNode(nodeToErase->_left)) {
@@ -304,7 +300,7 @@ namespace ft {
 
 		/* Destructor */
 		~map() {
-//			clear();
+			clear();
 			_alloc_rebind.deallocate(_begin, 1);
 			_alloc_rebind.deallocate(_end, 1);
 		}
@@ -477,10 +473,10 @@ namespace ft {
 				_ptr = it._ptr;
 				return *this;
 			}
-			bool 					operator==(const reverse_iterator &it) { return _ptr == it._ptr; }
-			bool 					operator!=(const reverse_iterator &it) { return _ptr != it._ptr; }
-			bool 					operator==(const const_reverse_iterator &it) { return _ptr == it.getPointer(); }
-			bool 					operator!=(const const_reverse_iterator &it) { return _ptr != it.getPointer(); }
+			bool 					operator==(const reverse_iterator &it) const { return _ptr == it._ptr; }
+			bool 					operator!=(const reverse_iterator &it) const { return _ptr != it._ptr; }
+			bool 					operator==(const const_reverse_iterator &it) const { return _ptr == it.getPointer(); }
+			bool 					operator!=(const const_reverse_iterator &it) const { return _ptr != it.getPointer(); }
 			reverse_iterator&		operator++() {
 				_ptr = _prevNode(_ptr);
 				return *this;
@@ -554,10 +550,10 @@ namespace ft {
 				_ptr = it.getPointer();
 				return *this;
 			}
-			bool 					operator==(const reverse_iterator &it) { return _ptr == it.getPointer(); }
-			bool 					operator!=(const reverse_iterator &it) { return _ptr != it.getPointer(); }
-			bool 					operator==(const const_reverse_iterator &it) { return _ptr == it._ptr; }
-			bool 					operator!=(const const_reverse_iterator &it) { return _ptr != it._ptr; }
+			bool 					operator==(const reverse_iterator &it) const { return _ptr == it.getPointer(); }
+			bool 					operator!=(const reverse_iterator &it) const { return _ptr != it.getPointer(); }
+			bool 					operator==(const const_reverse_iterator &it) const { return _ptr == it._ptr; }
+			bool 					operator!=(const const_reverse_iterator &it) const { return _ptr != it._ptr; }
 			const_reverse_iterator&	operator++() {
 				_ptr = _prevNode(_ptr);
 				return *this;
@@ -657,18 +653,17 @@ namespace ft {
 				insert(*first);
 		}
 		void					erase(iterator position) {
-			(void)position;
-			//todo DO IT
+			erase(position->first);
 		}
 		size_type				erase(const key_type& k) {
-			(void)k;
-			//todo DO IT
-			return 0;
+			if (_size == 0 || find(k) == end())
+				return 0;
+			_eraseNode(_root, k);
+			return 1;
 		}
 		void					erase(iterator first, iterator last) {
-			(void)first;
-			(void)last;
-			//todo DO IT
+			while (first != last)
+				erase(first++);
 		}
 		void					swap(map& x) {
 			_t_map* tmpRoot = _root;
@@ -750,4 +745,4 @@ namespace ft {
 	};
 }
 
-#endif //FT_CONTAINERS_MAP_HPP
+//#endif //FT_CONTAINERS_MAP_HPP

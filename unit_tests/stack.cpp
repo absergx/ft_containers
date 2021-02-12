@@ -77,7 +77,6 @@ TEST_F(StackFullTest, testFunctional) {
 		EXPECT_EQ(s2.empty(), f2.empty());
 		EXPECT_EQ(s2.size(), f2.size());
 	}
-
 }
 
 TEST_F(StackFullTest, testOperators) {

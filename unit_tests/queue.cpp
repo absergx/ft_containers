@@ -110,4 +110,5 @@ TEST_F(QueueFullTest, testOperators) {
 
 	EXPECT_GE(s1, s2);
 	EXPECT_GE(f1, f2);
+	while (1);
 }

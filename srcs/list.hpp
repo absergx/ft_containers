@@ -2,20 +2,17 @@
 // Created by Meldred Emilio on 11/29/20.
 //
 
-#ifndef FT_CONTAINERS_LIST_HPP
-#define FT_CONTAINERS_LIST_HPP
+//#ifndef FT_CONTAINERS_LIST_HPP
+//#define FT_CONTAINERS_LIST_HPP
 
+#pragma once
+
+#include "ft.hpp"
 #include <memory>
 #include <type_traits>
 #include <stdexcept>
 
 namespace ft {
-	template<bool B, class T = void>
-	struct enable_if {};
-
-	template<class T>
-	struct enable_if<true, T> { typedef T type; };
-
 	template< class T, class Alloc = std::allocator<T> >
 	class list {
 	public:
@@ -287,6 +284,7 @@ namespace ft {
 		~list() {
 			clear();
 			_alloc.destroy(_end_node->_data);
+			_alloc.deallocate(_end_node->_data, 1);
 			_alloc_rebind.deallocate(_end_node, 1);
 		}
 		list& operator=(const list& x) {
@@ -586,4 +584,4 @@ namespace ft {
 	}
 }
 
-#endif //FT_CONTAINERS_LIST_HPP
+//#endif //FT_CONTAINERS_LIST_HPP

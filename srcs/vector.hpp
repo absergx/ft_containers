@@ -2,18 +2,14 @@
 // Created by Meldred Emilio on 11/29/20.
 //
 
-#ifndef FT_CONTAINERS_VECTOR_HPP
-#define FT_CONTAINERS_VECTOR_HPP
+//#ifndef FT_CONTAINERS_VECTOR_HPP
+//#define FT_CONTAINERS_VECTOR_HPP
 
+#pragma once
+#include "ft.hpp"
 #include <memory>
 
 namespace ft {
-	template<bool B, class T = void>
-	struct enable_if {};
-
-	template<class T>
-	struct enable_if<true, T> { typedef T type; };
-
 	template < class T, class Alloc = std::allocator<T> >
 	class vector {
 	public:
@@ -585,4 +581,4 @@ namespace ft {
 	}
 }
 
-#endif //FT_CONTAINERS_VECTOR_HPP
+//#endif //FT_CONTAINERS_VECTOR_HPP

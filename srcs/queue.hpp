@@ -2,8 +2,10 @@
 // Created by Meldred Emilio on 11/29/20.
 //
 
-#ifndef FT_CONTAINERS_QUEUE_HPP
-#define FT_CONTAINERS_QUEUE_HPP
+//#ifndef FT_CONTAINERS_QUEUE_HPP
+//#define FT_CONTAINERS_QUEUE_HPP
+
+#pragma once
 
 #include "list.hpp"
 
@@ -47,4 +49,4 @@ namespace ft {
 	bool operator>= (const queue<T,Container>& lhs, const queue<T,Container>& rhs) { return lhs.getContainer() >= rhs.getContainer(); }
 }
 
-#endif //FT_CONTAINERS_QUEUE_HPP
+//#endif //FT_CONTAINERS_QUEUE_HPP
