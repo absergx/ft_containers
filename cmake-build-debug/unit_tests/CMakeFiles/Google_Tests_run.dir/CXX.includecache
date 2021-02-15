@@ -358,3 +358,15 @@ stack
 string
 -
 
+/Users/memilio/homerun/ft_containers/unit_tests/vector.cpp
+gtest/gtest.h
+/Users/memilio/homerun/ft_containers/unit_tests/gtest/gtest.h
+vector.hpp
+/Users/memilio/homerun/ft_containers/unit_tests/vector.hpp
+vector
+-
+string
+-
+stdexcept
+-
+

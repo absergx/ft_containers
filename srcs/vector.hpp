@@ -461,7 +461,8 @@ namespace ft {
 				_reallocVector();
 				pos = end().getPointer() - index;
 			}
-			_arrMove(pos + 1, pos, end().getPointer() - pos);
+//			_arrMove(pos + 1, pos, end().getPointer() - pos);
+			std::memmove(pos + 1, pos, static_cast<size_type>((end().getPointer() - pos)) * sizeof(value_type));
 			_alloc.construct(pos, val);
 			++_size;
 			return iterator(pos);
@@ -473,7 +474,8 @@ namespace ft {
 				_reallocVector(n);
 				pos = end().getPointer() - index;
 			}
-			_arrMove(pos + n, pos, end().getPointer() - pos);
+//			_arrMove(pos + n, pos, end().getPointer() - pos);
+			std::memmove(pos + n, pos, static_cast<size_type>((end().getPointer() - pos)) * sizeof(value_type));
 			for (size_type count = 0; count < n; ++count)
 				_alloc.construct(pos + count, val);
 			_size += n;
@@ -488,7 +490,8 @@ namespace ft {
 				_reallocVector(range);
 				pos = end().getPointer() - index;
 			}
-			_arrMove(pos + range, pos, end().getPointer() - pos);
+//			_arrMove(pos + range, pos, end().getPointer() - pos);
+			std::memmove(pos + range, pos, static_cast<size_type>((end().getPointer() - pos)) * sizeof(value_type));
 			for (size_type count = 0; count < range; ++count, ++first)
 				_alloc.construct(pos + count, *first);
 			_size += range;
