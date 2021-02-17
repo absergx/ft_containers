@@ -36,33 +36,10 @@
   <component name="ChangeListManager">
     <list default="true" id="9669e708-914f-45aa-886d-882631712d33" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/ft_containers" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/ft_containers" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/ft_containers.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/ft_containers.cbp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jalvaro_tests/list_test.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jalvaro_tests/main.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jalvaro_tests/map_test.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jalvaro_tests/queue_test.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jalvaro_tests/stack_test.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jalvaro_tests/vector_test.cpp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/ft.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/ft.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/map.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/map.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/queue.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/queue.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/stack.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/stack.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/vector.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/vector.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unit_tests/list.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/unit_tests/list.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unit_tests/map.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/unit_tests/map.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unit_tests/queue.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/unit_tests/queue.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unit_tests/stack.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/unit_tests/stack.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unit_tests/test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/unit_tests/test.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unit_tests/vector.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/unit_tests/vector.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,11 +73,6 @@
     </key>
   </component>
   <component name="RunManager" selected="CMake Application.ft_containers">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Google_Tests_run" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ft_containers" TARGET_NAME="Google_Tests_run" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ft_containers" RUN_TARGET_NAME="Google_Tests_run" TEST_MODE="SUITE_TEST">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -135,6 +107,11 @@
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
         <option name="BeforeTestRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="ft_containers" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ft_containers" TARGET_NAME="ft_containers" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ft_containers" RUN_TARGET_NAME="ft_containers">
@@ -227,7 +204,8 @@
       <workItem from="1613479750150" duration="1112000" />
       <workItem from="1613485395885" duration="6267000" />
       <workItem from="1613559958562" duration="1906000" />
-      <workItem from="1613569958741" duration="6917000" />
+      <workItem from="1613569958741" duration="7568000" />
+      <workItem from="1613584383915" duration="3983000" />
     </task>
     <servers />
   </component>

@@ -12,6 +12,7 @@
 #include <queue>
 #include <string>
 #include <ostream>
+#include "multimap.hpp"
 
 namespace Color {
 	enum Code {
@@ -883,6 +884,59 @@ void 		testMap() {
 //
 }
 
+void 		printMultimaps(std::multimap<int, int> s, ft::multimap<int, int> f) {
+	Color::Modifier def(Color::FG_DEFAULT);
+	Color::Modifier green(Color::FG_GREEN);
+	Color::Modifier blue(Color::FG_BLUE);
+
+	std::cout << "Size: " << blue << s.size() << " " << green << f.size() << def << std::endl;
+	if (s.size() != f.size()) {
+		std::cout << "Error in print maps. Size is not equal." << std::endl;
+		return;
+	} else if (s.empty() && f.empty())
+		return;
+	std::multimap<int, int>::iterator sit = s.begin();
+	std::multimap<int, int>::iterator site = s.end();
+	ft::multimap<int, int>::iterator fit = f.begin();
+	ft::multimap<int, int>::iterator fite = f.end();
+	while (sit != site && fit != fite) {
+		std::cout << blue << sit->first << "-" << sit->second << "\t\t" << green << fit->first << "-" << fit->second << def << std::endl;
+		++sit;
+		++fit;
+	}
+}
+
+void 		testMultimap() {
+	Color::Modifier def(Color::FG_DEFAULT);
+	Color::Modifier green(Color::FG_GREEN);
+	Color::Modifier blue(Color::FG_BLUE);
+	ft::multimap<int, int> f;
+	std::multimap<int, int> s;
+
+	for (int i = 0; i < 5; ++i) {
+		for (int k = 0; k < 3; ++k) {
+			f.insert(std::pair<int, int>(i, i + k));
+			s.insert(std::pair<int, int>(i, i + k));
+		}
+	}
+	f.insert(std::pair<int, int>(4, 0));
+	s.insert(std::pair<int, int>(4, 0));
+	printMultimaps(s, f);
+	getchar();
+	f.insert(std::pair<int, int>(0, 7));
+	s.insert(std::pair<int, int>(0, 7));
+	f.insert(std::pair<int, int>(4, 2));
+	s.insert(std::pair<int, int>(4, 2));
+	f.insert(std::pair<int, int>(0, 1));
+	s.insert(std::pair<int, int>(0, 1));
+	printMultimaps(s, f);
+	getchar();
+	std::cout << "Erase" << std::endl;
+	f.erase(0);
+	s.erase(0);
+	printMultimaps(s, f);
+}
+
 int			main()
 {
 	Color::Modifier red(Color::FG_RED);
@@ -914,6 +968,10 @@ int			main()
 		else if (input == "map") {
 			std::cout << green << "Map Test:" << def << std::endl;
 			testMap();
+		}
+		else if (input == "multimap") {
+			std::cout << green << "MultiMap Test:" << def << std::endl;
+			testMultimap();
 		}
 		else
 			std::cout << red << "Oups, i don't know this command." << std::endl;

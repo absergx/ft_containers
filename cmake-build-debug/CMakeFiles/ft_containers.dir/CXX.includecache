@@ -24,6 +24,8 @@ ft.hpp
 iostream
 -
 
+../srcs/multimap.hpp
+
 ../srcs/queue.hpp
 list.hpp
 ../srcs/list.hpp
@@ -67,4 +69,6 @@ string
 -
 ostream
 -
+multimap.hpp
+/Users/memilio/homerun/ft_containers/multimap.hpp
 

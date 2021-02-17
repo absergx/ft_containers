@@ -483,7 +483,7 @@ namespace ft {
 		iterator		erase(iterator position) {
 			pointer pos = position.getPointer();
 			_alloc.destroy(pos);
-			_arrMove(pos, pos + 1, end() - position - 1);
+			std::memmove(pos, pos + 1, static_cast<size_type>((end().getPointer() - pos - 1)) * sizeof(value_type));
 			--_size;
 			return iterator(pos);
 		}

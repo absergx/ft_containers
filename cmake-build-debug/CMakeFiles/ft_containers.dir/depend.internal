@@ -5,6 +5,7 @@ CMakeFiles/ft_containers.dir/main.cpp.o
  ../srcs/ft.hpp
  ../srcs/list.hpp
  ../srcs/map.hpp
+ ../srcs/multimap.hpp
  ../srcs/queue.hpp
  ../srcs/stack.hpp
  ../srcs/vector.hpp
