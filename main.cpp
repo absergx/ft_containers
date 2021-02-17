@@ -669,13 +669,218 @@ void		testVector() {
 	std::cout << "Not equal vectors: " << blue << boolToString(s >= sNotEq) << " " << green << boolToString(f >= fNotEq) << def << std::endl;
 }
 
+void 		printMaps(std::map<int, std::string> s, ft::map<int, std::string> f) {
+	Color::Modifier def(Color::FG_DEFAULT);
+	Color::Modifier green(Color::FG_GREEN);
+	Color::Modifier blue(Color::FG_BLUE);
+
+	std::cout << "Size: " << blue << s.size() << " " << green << f.size() << def << std::endl;
+	if (s.size() != f.size()) {
+		std::cout << "Error in print maps. Size is not equal." << std::endl;
+		return;
+	} else if (s.empty() && f.empty())
+		return;
+	std::map<int, std::string>::iterator sit = s.begin();
+	std::map<int, std::string>::iterator site = s.end();
+	ft::map<int, std::string>::iterator fit = f.begin();
+	ft::map<int, std::string>::iterator fite = f.end();
+	while (sit != site && fit != fite) {
+		std::cout << blue << sit->first << "-" << sit->second << "\t\t" << green << fit->first << "-" << fit->second << def << std::endl;
+		++sit;
+		++fit;
+	}
+}
+
 void 		testMap() {
 	Color::Modifier def(Color::FG_DEFAULT);
 	Color::Modifier green(Color::FG_GREEN);
 	Color::Modifier blue(Color::FG_BLUE);
 	std::cout << blue << "Blue - std " << green << "Green - ft" << def << std::endl;
 
+	std::cout << "---Constructor tests---" << std::endl;
+	std::cout << "Empty constructor. Call .size() and .empty() to both maps after construct:" << std::endl;
+	std::map<int, std::string> s;
+	ft::map<int, std::string> f;
+	printMaps(s, f);
+	std::cout << "Is empty? : " << blue << boolToString(s.empty()) << " " << green << boolToString(f.empty()) << def << std::endl;
 
+	s.insert(std::pair<int, std::string>(22, "first"));
+	f.insert(std::pair<int, std::string>(22, "first"));
+	s.insert(std::pair<int, std::string>(24, "second"));
+	f.insert(std::pair<int, std::string>(24, "second"));
+	s.insert(std::pair<int, std::string>(10, "third"));
+	f.insert(std::pair<int, std::string>(10, "third"));
+	printMaps(s, f);
+	{
+		std::cout << "Range constructor. Use reverse iterator from rbegin to rend after inserting to empty maps." << std::endl;
+		std::map<int, std::string> sRange(s.rbegin(), s.rend());
+		ft::map<int, std::string> fRange(s.rbegin(), s.rend());
+		printMaps(sRange, fRange);
+		std::cout << "Copy constructor. Use previous map as source." << std::endl;
+		std::map<int, std::string> sCopy(sRange);
+		ft::map<int, std::string> fCopy(fRange);
+		printMaps(sCopy, fCopy);
+		std::cout << "Operator = . Lets make empty maps and then use assignation operator from previous maps:" << std::endl;
+		std::map<int, std::string> sAssign;
+		ft::map<int, std::string> fAssign;
+		printMaps(sAssign, fAssign);
+		std::cout << "After assignation: " << std::endl;
+		sAssign = sCopy;
+		fAssign = fCopy;
+		printMaps(sAssign, fAssign);
+	}
+	getchar();
+
+	std::cout << "---Capacity---" << std::endl
+		<< ".empty() with not empty maps :"
+		<< blue << boolToString(s.empty()) << " " << green << boolToString(f.empty()) << def << std::endl;
+	getchar();
+
+	std::cout << "---Modifiers---" << std::endl
+		<< ".insert() values in for loop -10 - 10:" << std::endl;
+	for (int i = -10; i <= 10; ++i) {
+		s.insert(std::pair<int, std::string>(i, "for-looped-values-insert"));
+		f.insert(std::pair<int, std::string>(i, "for-looped-values-insert"));
+	}
+	printMaps(s, f);
+	getchar();
+	std::cout << ".insert() using input iterators. Make new map with values 25 - 30 and insert from there:" << std::endl;
+	std::map<int, std::string> toInsert;
+	for (int i = 25; i <= 30; ++i)
+		toInsert.insert(std::pair<int, std::string>(i, "input-iterators-values"));
+	s.insert(toInsert.begin(), toInsert.end());
+	f.insert(toInsert.begin(), toInsert.end());
+	printMaps(s, f);
+	getchar();
+
+	std::cout << ".erase() using iterators. Actual size is 29, so use for loop 10 times to iterators and then use 10 times erase." << std::endl;
+	{
+		std::map<int, std::string>::iterator sit = s.begin();
+		ft::map<int, std::string>::iterator fit = f.begin();
+		for (int i = 0; i < 10; ++i) {
+			++sit;
+			++fit;
+		}
+		for (int i = 0; i < 10; ++i) {
+			s.erase(sit++);
+			f.erase(fit++);
+		}
+		printMaps(s, f);
+		getchar();
+		std::cout << ".erase() with two iterators as arguments." << std::endl;
+		std::map<int, std::string>::iterator sit1(sit);
+		ft::map<int, std::string>::iterator fit1(fit);
+		for (int i = 0; i < 5; ++i) {
+			++sit1;
+			++fit1;
+		}
+		s.erase(sit, sit1);
+		f.erase(fit, fit1);
+		printMaps(s, f);
+		getchar();
+		std::cout << ".erase() using key value. lets erase values from -9 to - 3:" << std::endl;
+		for (int i = -9; i <= -3; ++i) {
+			s.erase(i);
+			f.erase(i);
+		}
+		printMaps(s, f);
+		getchar();
+	}
+
+	std::cout << ".swap() . lets do new maps with values 100 - 120:" << std::endl;
+	std::map<int, std::string> sSwap;
+	ft::map<int, std::string> fSwap;
+	for (int i = 100; i <= 120; ++i) {
+		sSwap[i] = "new-map-for-swap";
+		fSwap[i] = "new-map-for-swap";
+	}
+	printMaps(sSwap, fSwap);
+	std::cout << "Main maps before swapping:" << std::endl;
+	printMaps(s, f);
+	getchar();
+	s.swap(sSwap);
+	f.swap(fSwap);
+	std::cout << "After swap new maps:" << std::endl;
+	printMaps(sSwap, fSwap);
+	std::cout << "After swap main maps:" << std::endl;
+	printMaps(s, f);
+
+	// clear
+	std::cout << ".clear(). Call .size() and .empty() before clear:" << std::endl;
+	std::cout << ".size(): " << blue << s.size() << " " << green << f.size() << def << std::endl;
+	std::cout << ".empty(): " << blue << boolToString(s.empty()) << " " << green << boolToString(f.empty()) << def << std::endl;
+	std::cout << "Call .size() and .empty() after clear:" << std::endl;
+	s.clear();
+	f.clear();
+	std::cout << ".size(): " << blue << s.size() << " " << green << f.size() << def << std::endl;
+	std::cout << ".empty(): " << blue << boolToString(s.empty()) << " " << green << boolToString(f.empty()) << def << std::endl;
+	getchar();
+
+	std::cout << "---Element access---" << std::endl
+			  << "Operator []. Use 66, 33, 77 as keys:" << std::endl;
+	s[66] = "element-access-test";
+	f[66] = "element-access-test";
+	s[33] = "element-access-test";
+	f[33] = "element-access-test";
+	s[77] = "element-access-test";
+	f[77] = "element-access-test";
+	printMaps(s, f);
+	getchar();
+
+	std::cout << "---Operations---" << std::endl;
+	std::cout << "Fill map with new values 30 - 40" << std::endl;
+	for (int i = 30; i <= 40; ++i) {
+		s[i] = "operations-test";
+		f[i] = "operations-test";
+	}
+	printMaps(s, f);
+	getchar();
+
+	std::cout << ".find() using for loop 30 - 35, print ->second:" << std::endl;
+	for (int i = 30; i <= 35; ++i) {
+		std::cout << ".find(" << i << "): " << blue << s.find(i)->second << " " << green << f.find(i)->second << def << std::endl;
+	}
+	getchar();
+
+	std::cout << ".count() using for loop 35 - 45:" << std::endl;
+	for (int i = 35; i <= 45; ++i) {
+		std::cout << ".count(" << i << "): " << blue << s.count(i) << " " << green << f.count(i) << def << std::endl;
+	}
+	getchar();
+
+	std::cout << "Our maps:" << std::endl;
+	printMaps(s, f);
+	std::cout << ".lower_bound() with values 45, 100, 70" << std::endl
+		<< "45: " << blue << s.lower_bound(45)->first << " " << green << f.lower_bound(45)->first << def << std::endl
+		<< "100: " << blue << s.lower_bound(100)->first << " " << green << f.lower_bound(100)->first << def << std::endl
+		<< "70: " << blue << s.lower_bound(70)->first << " " << green << f.lower_bound(70)->first << def << std::endl;
+	getchar();
+
+	std::cout << ".upper_bound() with values 0, 50, 67" << std::endl
+		<< "0: " << blue << s.upper_bound(0)->first << " " << green << f.upper_bound(0)->first << def << std::endl
+		<< "50: " << blue << s.upper_bound(50)->first << " " << green << f.upper_bound(50)->first << def << std::endl
+		<< "67: " << blue << s.upper_bound(67)->first << " " << green << f.upper_bound(67)->first << def << std::endl;
+	getchar();
+
+	std::cout << ".equal_range() with values 50, 80" << std::endl;
+	std::cout << blue << s.equal_range(50).first->first << " - " << s.equal_range(50).second->first
+		<< " " << green << f.equal_range(50).first->first << " - " << f.equal_range(50).first->first << def << std::endl
+		<< blue << s.equal_range(80).first->first << " - " << s.equal_range(80).second->first
+		<< " " << green << f.equal_range(80).first->first << " - " << f.equal_range(80).first->first << def << std::endl;
+
+//	std::cout << "---Observers---" << std::endl;
+//	std::cout << ".key_comp() test. Using for loop 30 - 40 and compare to 37" << std::endl;
+//	std::map<int, std::string>::key_compare sComp = s.key_comp();
+//	ft::map<int, std::string>::key_compare fComp = f.key_comp();
+//	for (int i = 30; i <= 40; ++i) {
+//		std::cout << i << ": " << blue << boolToString(sComp(i, 37)) << " " << green << boolToString(fComp(i, 37)) << std::endl;
+//	}
+//
+//	// value_comp
+//	std::cout << ".value_comp() test. Compare to several strings:" << std::endl;
+//	std::map<int, std::string>::value_compare sValComp = s.value_comp();
+//	ft::map<int, std::string>::value_compare fValComp = f.value_comp();
+//
 }
 
 int			main()
@@ -693,27 +898,22 @@ int			main()
 		else if (input == "stack") {
 			std::cout << green << "Stack Test:" << def << std::endl;
 			testStack();
-			std::cout << red << "Test ended! Enjoy results." << std::endl;
 		}
 		else if (input == "list") {
 			std::cout << green << "List Test:" << def << std::endl;
 			testList();
-			std::cout << red << "Test ended! Enjoy results." << std::endl;
 		}
 		else if (input == "vector") {
 			std::cout << green << "Vector Test:" << def << std::endl;
 			testVector();
-			std::cout << red << "Test ended! Enjoy results." << std::endl;
 		}
 		else if (input == "queue") {
 			std::cout << green << "Queue Test:" << def << std::endl;
 			testQueue();
-			std::cout << red << "Test ended! Enjoy results." << std::endl;
 		}
 		else if (input == "map") {
 			std::cout << green << "Map Test:" << def << std::endl;
 			testMap();
-			std::cout << red << "Test ended! Enjoy results." << std::endl;
 		}
 		else
 			std::cout << red << "Oups, i don't know this command." << std::endl;

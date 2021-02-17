@@ -100,16 +100,6 @@ install/fast: preinstall/fast
 	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -131,6 +121,16 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
 
 # Special rule for the target install/local
 install/local: preinstall
@@ -175,19 +175,6 @@ preinstall/fast:
 depend:
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
-
-#=============================================================================
-# Target rules for targets named jalvaro_tests
-
-# Build rule for target.
-jalvaro_tests: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 jalvaro_tests
-.PHONY : jalvaro_tests
-
-# fast build rule for target.
-jalvaro_tests/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jalvaro_tests.dir/build.make CMakeFiles/jalvaro_tests.dir/build
-.PHONY : jalvaro_tests/fast
 
 #=============================================================================
 # Target rules for targets named ft_containers
@@ -267,168 +254,6 @@ gtest/fast:
 	$(MAKE) $(MAKESILENT) -f unit_tests/lib/googletest/CMakeFiles/gtest.dir/build.make unit_tests/lib/googletest/CMakeFiles/gtest.dir/build
 .PHONY : gtest/fast
 
-jalvaro_tests/list_test.o: jalvaro_tests/list_test.cpp.o
-
-.PHONY : jalvaro_tests/list_test.o
-
-# target to build an object file
-jalvaro_tests/list_test.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jalvaro_tests.dir/build.make CMakeFiles/jalvaro_tests.dir/jalvaro_tests/list_test.cpp.o
-.PHONY : jalvaro_tests/list_test.cpp.o
-
-jalvaro_tests/list_test.i: jalvaro_tests/list_test.cpp.i
-
-.PHONY : jalvaro_tests/list_test.i
-
-# target to preprocess a source file
-jalvaro_tests/list_test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jalvaro_tests.dir/build.make CMakeFiles/jalvaro_tests.dir/jalvaro_tests/list_test.cpp.i
-.PHONY : jalvaro_tests/list_test.cpp.i
-
-jalvaro_tests/list_test.s: jalvaro_tests/list_test.cpp.s
-
-.PHONY : jalvaro_tests/list_test.s
-
-# target to generate assembly for a file
-jalvaro_tests/list_test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jalvaro_tests.dir/build.make CMakeFiles/jalvaro_tests.dir/jalvaro_tests/list_test.cpp.s
-.PHONY : jalvaro_tests/list_test.cpp.s
-
-jalvaro_tests/main.o: jalvaro_tests/main.cpp.o
-
-.PHONY : jalvaro_tests/main.o
-
-# target to build an object file
-jalvaro_tests/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jalvaro_tests.dir/build.make CMakeFiles/jalvaro_tests.dir/jalvaro_tests/main.cpp.o
-.PHONY : jalvaro_tests/main.cpp.o
-
-jalvaro_tests/main.i: jalvaro_tests/main.cpp.i
-
-.PHONY : jalvaro_tests/main.i
-
-# target to preprocess a source file
-jalvaro_tests/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jalvaro_tests.dir/build.make CMakeFiles/jalvaro_tests.dir/jalvaro_tests/main.cpp.i
-.PHONY : jalvaro_tests/main.cpp.i
-
-jalvaro_tests/main.s: jalvaro_tests/main.cpp.s
-
-.PHONY : jalvaro_tests/main.s
-
-# target to generate assembly for a file
-jalvaro_tests/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jalvaro_tests.dir/build.make CMakeFiles/jalvaro_tests.dir/jalvaro_tests/main.cpp.s
-.PHONY : jalvaro_tests/main.cpp.s
-
-jalvaro_tests/map_test.o: jalvaro_tests/map_test.cpp.o
-
-.PHONY : jalvaro_tests/map_test.o
-
-# target to build an object file
-jalvaro_tests/map_test.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jalvaro_tests.dir/build.make CMakeFiles/jalvaro_tests.dir/jalvaro_tests/map_test.cpp.o
-.PHONY : jalvaro_tests/map_test.cpp.o
-
-jalvaro_tests/map_test.i: jalvaro_tests/map_test.cpp.i
-
-.PHONY : jalvaro_tests/map_test.i
-
-# target to preprocess a source file
-jalvaro_tests/map_test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jalvaro_tests.dir/build.make CMakeFiles/jalvaro_tests.dir/jalvaro_tests/map_test.cpp.i
-.PHONY : jalvaro_tests/map_test.cpp.i
-
-jalvaro_tests/map_test.s: jalvaro_tests/map_test.cpp.s
-
-.PHONY : jalvaro_tests/map_test.s
-
-# target to generate assembly for a file
-jalvaro_tests/map_test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jalvaro_tests.dir/build.make CMakeFiles/jalvaro_tests.dir/jalvaro_tests/map_test.cpp.s
-.PHONY : jalvaro_tests/map_test.cpp.s
-
-jalvaro_tests/queue_test.o: jalvaro_tests/queue_test.cpp.o
-
-.PHONY : jalvaro_tests/queue_test.o
-
-# target to build an object file
-jalvaro_tests/queue_test.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jalvaro_tests.dir/build.make CMakeFiles/jalvaro_tests.dir/jalvaro_tests/queue_test.cpp.o
-.PHONY : jalvaro_tests/queue_test.cpp.o
-
-jalvaro_tests/queue_test.i: jalvaro_tests/queue_test.cpp.i
-
-.PHONY : jalvaro_tests/queue_test.i
-
-# target to preprocess a source file
-jalvaro_tests/queue_test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jalvaro_tests.dir/build.make CMakeFiles/jalvaro_tests.dir/jalvaro_tests/queue_test.cpp.i
-.PHONY : jalvaro_tests/queue_test.cpp.i
-
-jalvaro_tests/queue_test.s: jalvaro_tests/queue_test.cpp.s
-
-.PHONY : jalvaro_tests/queue_test.s
-
-# target to generate assembly for a file
-jalvaro_tests/queue_test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jalvaro_tests.dir/build.make CMakeFiles/jalvaro_tests.dir/jalvaro_tests/queue_test.cpp.s
-.PHONY : jalvaro_tests/queue_test.cpp.s
-
-jalvaro_tests/stack_test.o: jalvaro_tests/stack_test.cpp.o
-
-.PHONY : jalvaro_tests/stack_test.o
-
-# target to build an object file
-jalvaro_tests/stack_test.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jalvaro_tests.dir/build.make CMakeFiles/jalvaro_tests.dir/jalvaro_tests/stack_test.cpp.o
-.PHONY : jalvaro_tests/stack_test.cpp.o
-
-jalvaro_tests/stack_test.i: jalvaro_tests/stack_test.cpp.i
-
-.PHONY : jalvaro_tests/stack_test.i
-
-# target to preprocess a source file
-jalvaro_tests/stack_test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jalvaro_tests.dir/build.make CMakeFiles/jalvaro_tests.dir/jalvaro_tests/stack_test.cpp.i
-.PHONY : jalvaro_tests/stack_test.cpp.i
-
-jalvaro_tests/stack_test.s: jalvaro_tests/stack_test.cpp.s
-
-.PHONY : jalvaro_tests/stack_test.s
-
-# target to generate assembly for a file
-jalvaro_tests/stack_test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jalvaro_tests.dir/build.make CMakeFiles/jalvaro_tests.dir/jalvaro_tests/stack_test.cpp.s
-.PHONY : jalvaro_tests/stack_test.cpp.s
-
-jalvaro_tests/vector_test.o: jalvaro_tests/vector_test.cpp.o
-
-.PHONY : jalvaro_tests/vector_test.o
-
-# target to build an object file
-jalvaro_tests/vector_test.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jalvaro_tests.dir/build.make CMakeFiles/jalvaro_tests.dir/jalvaro_tests/vector_test.cpp.o
-.PHONY : jalvaro_tests/vector_test.cpp.o
-
-jalvaro_tests/vector_test.i: jalvaro_tests/vector_test.cpp.i
-
-.PHONY : jalvaro_tests/vector_test.i
-
-# target to preprocess a source file
-jalvaro_tests/vector_test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jalvaro_tests.dir/build.make CMakeFiles/jalvaro_tests.dir/jalvaro_tests/vector_test.cpp.i
-.PHONY : jalvaro_tests/vector_test.cpp.i
-
-jalvaro_tests/vector_test.s: jalvaro_tests/vector_test.cpp.s
-
-.PHONY : jalvaro_tests/vector_test.s
-
-# target to generate assembly for a file
-jalvaro_tests/vector_test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jalvaro_tests.dir/build.make CMakeFiles/jalvaro_tests.dir/jalvaro_tests/vector_test.cpp.s
-.PHONY : jalvaro_tests/vector_test.cpp.s
-
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -474,25 +299,6 @@ help:
 	@echo "... gmock_main"
 	@echo "... gtest"
 	@echo "... gtest_main"
-	@echo "... jalvaro_tests"
-	@echo "... jalvaro_tests/list_test.o"
-	@echo "... jalvaro_tests/list_test.i"
-	@echo "... jalvaro_tests/list_test.s"
-	@echo "... jalvaro_tests/main.o"
-	@echo "... jalvaro_tests/main.i"
-	@echo "... jalvaro_tests/main.s"
-	@echo "... jalvaro_tests/map_test.o"
-	@echo "... jalvaro_tests/map_test.i"
-	@echo "... jalvaro_tests/map_test.s"
-	@echo "... jalvaro_tests/queue_test.o"
-	@echo "... jalvaro_tests/queue_test.i"
-	@echo "... jalvaro_tests/queue_test.s"
-	@echo "... jalvaro_tests/stack_test.o"
-	@echo "... jalvaro_tests/stack_test.i"
-	@echo "... jalvaro_tests/stack_test.s"
-	@echo "... jalvaro_tests/vector_test.o"
-	@echo "... jalvaro_tests/vector_test.i"
-	@echo "... jalvaro_tests/vector_test.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

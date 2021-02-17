@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   map.cpp                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: matrus <marvin@42.fr>                      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/28 10:38:06 by matrus            #+#    #+#             */
-/*   Updated: 2020/11/28 10:38:12 by matrus           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "gtest/gtest.h"
 #include "map.hpp"
 #include <map>
@@ -191,19 +179,6 @@ TEST_F(MapIteratorTest, IteratorConstInputConstInputTest) {
 
 	mapIteratorTest(itf, itfe, tmpf, its, itse, tmps);
 }
-
-/*// THIS TEST NORMALLY SHOULD NOT COMPILE
-TEST_F(MapIteratorTest, IteratorConstInputInputTest) {
-	ft::map<std::string, int>::const_iterator itf =		f.begin();
-	ft::map<std::string, int>::const_iterator itfe =	f.end();
-	ft::map<std::string, int>::iterator tmpf;
-
-	std::map<std::string,int>::const_iterator its =	s.begin();
-	std::map<std::string,int>::const_iterator itse =	s.end();
-	std::map<std::string,int>::iterator tmps;
-
-	mapIteratorTest(itf, itfe, tmpf, its, itse, tmps);
-}*/
 
 TEST_F(MapIteratorTest, IteratorReverseReverseTest) {
 	ft::map<std::string, int>::reverse_iterator itf =		f.rbegin();
@@ -1158,33 +1133,33 @@ TEST_F(MapEraseByIteratorTest, iteratorValidity2) {
 
 	checkMapsAreEqualIt(itf, ftmap.end(), its, stmap.end());
 }
-//
-//class MapClearTest : public testing::Test {
-//protected:
-//	virtual void SetUp() {
-//
-//	}
-//	std::map<std::string, int> s;
-//	ft::map<std::string, int>  f;
-//};
-//
-//TEST_F(MapClearTest, emptyClear) {
-//	s.clear();
-//	f.clear();
-//
-//	checkIfMapsAreEqual(f, s);
-//}
-//
-//TEST_F(MapClearTest, nonEmptyClear) {
-//	for (int i = 0; i < 100; ++i) {
-//		s.insert(std::make_pair(std::to_string(i), i));
-//		f.insert(std::make_pair(std::to_string(i), i));
-//	}
-//
-//	s.clear();
-//	f.clear();
-//	checkIfMapsAreEqual(f, s);
-//}
+
+class MapClearTest : public testing::Test {
+protected:
+	virtual void SetUp() {
+
+	}
+	std::map<std::string, int> s;
+	ft::map<std::string, int>  f;
+};
+
+TEST_F(MapClearTest, emptyClear) {
+	s.clear();
+	f.clear();
+
+	checkIfMapsAreEqual(f, s);
+}
+
+TEST_F(MapClearTest, nonEmptyClear) {
+	for (int i = 0; i < 100; ++i) {
+		s.insert(std::make_pair(std::to_string(i), i));
+		f.insert(std::make_pair(std::to_string(i), i));
+	}
+
+	s.clear();
+	f.clear();
+	checkIfMapsAreEqual(f, s);
+}
 
 class MapAssignationTest : public testing::Test {
 protected:

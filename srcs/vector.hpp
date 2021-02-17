@@ -2,9 +2,6 @@
 // Created by Meldred Emilio on 11/29/20.
 //
 
-//#ifndef FT_CONTAINERS_VECTOR_HPP
-//#define FT_CONTAINERS_VECTOR_HPP
-
 #pragma once
 #include "ft.hpp"
 #include <memory>
@@ -30,17 +27,6 @@ namespace ft {
 		allocator_type	_alloc;
 		size_type		_size;
 		size_type		_capacity;
-
-		void			_arrMove(pointer dst, pointer src, difference_type len)
-		{
-			while (len > 0) {
-				--len;
-				if (src < dst)
-					*(dst + len) = *(src + len);
-				else
-					*dst++ = *src++;
-			}
-		}
 
 		difference_type	_getIndex(pointer ptr) {
 			return end().getPointer() - ptr;
@@ -461,7 +447,6 @@ namespace ft {
 				_reallocVector();
 				pos = end().getPointer() - index;
 			}
-//			_arrMove(pos + 1, pos, end().getPointer() - pos);
 			std::memmove(pos + 1, pos, static_cast<size_type>((end().getPointer() - pos)) * sizeof(value_type));
 			_alloc.construct(pos, val);
 			++_size;
@@ -474,7 +459,6 @@ namespace ft {
 				_reallocVector(n);
 				pos = end().getPointer() - index;
 			}
-//			_arrMove(pos + n, pos, end().getPointer() - pos);
 			std::memmove(pos + n, pos, static_cast<size_type>((end().getPointer() - pos)) * sizeof(value_type));
 			for (size_type count = 0; count < n; ++count)
 				_alloc.construct(pos + count, val);
@@ -490,7 +474,6 @@ namespace ft {
 				_reallocVector(range);
 				pos = end().getPointer() - index;
 			}
-//			_arrMove(pos + range, pos, end().getPointer() - pos);
 			std::memmove(pos + range, pos, static_cast<size_type>((end().getPointer() - pos)) * sizeof(value_type));
 			for (size_type count = 0; count < range; ++count, ++first)
 				_alloc.construct(pos + count, *first);
@@ -583,5 +566,3 @@ namespace ft {
 		x.swap(y);
 	}
 }
-
-//#endif //FT_CONTAINERS_VECTOR_HPP

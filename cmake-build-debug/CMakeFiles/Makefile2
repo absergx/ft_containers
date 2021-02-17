@@ -73,7 +73,6 @@ CMAKE_BINARY_DIR = /Users/memilio/homerun/ft_containers/cmake-build-debug
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/jalvaro_tests.dir/all
 all: CMakeFiles/ft_containers.dir/all
 all: unit_tests/all
 
@@ -85,7 +84,6 @@ preinstall: unit_tests/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/jalvaro_tests.dir/clean
 clean: CMakeFiles/ft_containers.dir/clean
 clean: unit_tests/clean
 
@@ -170,33 +168,6 @@ unit_tests/lib/googletest/clean: unit_tests/lib/googletest/CMakeFiles/gtest_main
 unit_tests/lib/googletest/clean: unit_tests/lib/googletest/CMakeFiles/gtest.dir/clean
 
 .PHONY : unit_tests/lib/googletest/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/jalvaro_tests.dir
-
-# All Build rule for target.
-CMakeFiles/jalvaro_tests.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jalvaro_tests.dir/build.make CMakeFiles/jalvaro_tests.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jalvaro_tests.dir/build.make CMakeFiles/jalvaro_tests.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/memilio/homerun/ft_containers/cmake-build-debug/CMakeFiles --progress-num=18,19,20,21,22,23,24 "Built target jalvaro_tests"
-.PHONY : CMakeFiles/jalvaro_tests.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/jalvaro_tests.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/memilio/homerun/ft_containers/cmake-build-debug/CMakeFiles 7
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/jalvaro_tests.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/memilio/homerun/ft_containers/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/jalvaro_tests.dir/rule
-
-# Convenience name for target.
-jalvaro_tests: CMakeFiles/jalvaro_tests.dir/rule
-
-.PHONY : jalvaro_tests
-
-# clean rule for target.
-CMakeFiles/jalvaro_tests.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/jalvaro_tests.dir/build.make CMakeFiles/jalvaro_tests.dir/clean
-.PHONY : CMakeFiles/jalvaro_tests.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/ft_containers.dir

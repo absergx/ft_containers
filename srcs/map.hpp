@@ -2,9 +2,6 @@
 // Created by Meldred Emilio on 11/29/20.
 //
 
-//#ifndef FT_CONTAINERS_MAP_HPP
-//#define FT_CONTAINERS_MAP_HPP
-
 #pragma once
 
 #include "ft.hpp"
@@ -744,5 +741,3 @@ namespace ft {
 		}
 	};
 }
-
-//#endif //FT_CONTAINERS_MAP_HPP

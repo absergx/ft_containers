@@ -3,8 +3,6 @@
 //
 
 #pragma once
-//#ifndef FT_CONTAINERS_STACK_HPP
-//#define FT_CONTAINERS_STACK_HPP
 
 #include "vector.hpp"
 #include "list.hpp"
@@ -46,5 +44,3 @@ namespace ft {
 	template <class T, class Container>
 	bool operator>= (const stack<T,Container>& lhs, const stack<T,Container>& rhs) { return lhs.getContainer() >= rhs.getContainer(); }
 }
-
-//#endif //FT_CONTAINERS_STACK_HPP
