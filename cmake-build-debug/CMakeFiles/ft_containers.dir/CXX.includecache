@@ -25,6 +25,8 @@ iostream
 -
 
 ../srcs/multimap.hpp
+ft.hpp
+../srcs/ft.hpp
 
 ../srcs/queue.hpp
 list.hpp

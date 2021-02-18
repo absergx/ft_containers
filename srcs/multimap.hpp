@@ -4,6 +4,8 @@
 
 #pragma once
 
+#include "ft.hpp"
+
 namespace ft {
 	template < class Key,
 			class T,
@@ -277,13 +279,37 @@ namespace ft {
 		}
 
 	public:
+		/* Constructors */
 		explicit multimap (const key_compare& comp = key_compare(),
 			   const allocator_type& alloc = allocator_type()) : _root(nullptr),
 			   _alloc(alloc), _size(0), _compare(comp) { _createBeginEnd(); }
+		template <class InputIterator>
+		multimap (InputIterator first, InputIterator last,
+				  const key_compare& comp = key_compare(),
+				  const allocator_type& alloc = allocator_type(),
+				  typename ft::enable_if<std::__is_input_iterator<InputIterator>::value>::type* = 0)
+				  : _root(nullptr), _alloc(alloc), _size(0), _compare(comp) {
+			_createBeginEnd();
+			insert(first, last);
+		}
+		multimap (const multimap& x) : _root(nullptr), _alloc_rebind(x._alloc_rebind), _alloc(x._alloc),
+				_size(0), _compare(x._compare) {
+			_createBeginEnd();
+			*this = x;
+		}
+
+		/* Destructor */
 		~multimap() {
-//			clear();
-//			_alloc_rebind.deallocate(_begin, 1);
-//			_alloc_rebind.deallocate(_end, 1);
+			clear();
+			_alloc_rebind.deallocate(_begin, 1);
+			_alloc_rebind.deallocate(_end, 1);
+		}
+
+		/* Operator = */
+		multimap&					operator= (const multimap& x) {
+			clear();
+			insert(x.begin(), x.end());
+			return *this;
 		}
 
 		/* Iterators */
@@ -614,6 +640,16 @@ namespace ft {
 			}
 			return _insertNode(_root, val);
 		}
+		iterator				insert (iterator position, const value_type& val) {
+			static_cast<void>(position);
+			return insert(val);
+		}
+		template <class InputIterator>
+		void					insert (InputIterator first, InputIterator last,
+					 typename ft::enable_if<std::__is_input_iterator<InputIterator>::value>::type* = 0) {
+			for ( ; first != last; ++first)
+				insert(*first);
+		}
 
 		void					erase(iterator position) {
 			erase(position->first);
@@ -631,6 +667,29 @@ namespace ft {
 				++ret;
 			}
 			return ret;
+		}
+
+		void					swap (multimap& x) {
+			_t_map* tmpRoot = _root;
+			_root = x._root;
+			x._root = tmpRoot;
+
+			_t_map* tmpBegin = _begin;
+			_begin = x._begin;
+			x._begin = tmpBegin;
+
+			_t_map*	tmpEnd = _end;
+			_end = x._end;
+			x._end = tmpEnd;
+
+			size_type tmpSize = _size;
+			_size = x._size;
+			x._size = tmpSize;
+		}
+
+		void					clear() {
+			while (_size)
+				erase(begin());
 		}
 
 		/* Observers */
@@ -651,6 +710,40 @@ namespace ft {
 			return end();
 		}
 
-	};
+		size_type				count(const key_type& k) const {
+			size_type ret = 0;
+			for (const_iterator it = begin(); it != end(); ++it)
+				if (it->first == k)
+					++ret;
+			return ret;
+		}
 
+		iterator				lower_bound(const key_type& k) {
+			iterator it = begin();
+			iterator itEnd = end();
+			while (it != itEnd && _compare(it->first, k))
+				++it;
+			return it;
+		}
+		const_iterator			lower_bound(const key_type& k) const {
+			const_iterator it = begin();
+			const_iterator itEnd = end();
+			while (it != itEnd && _compare(it->first, k))
+				++it;
+			return it;
+		}
+
+		iterator				upper_bound(const key_type& k) {
+			iterator it = lower_bound(k);
+			while (it != end() && !_compare(it->first, k) && !_compare(k, it->first))
+				++it;
+			return it;
+		}
+		const_iterator			upper_bound(const key_type& k) const {
+			const_iterator it = lower_bound(k);
+			while (it != end() && !_compare(it->first, k) && !_compare(k, it->first))
+				++it;
+			return it;
+		}
+	};
 }

@@ -868,20 +868,6 @@ void 		testMap() {
 		<< " " << green << f.equal_range(50).first->first << " - " << f.equal_range(50).first->first << def << std::endl
 		<< blue << s.equal_range(80).first->first << " - " << s.equal_range(80).second->first
 		<< " " << green << f.equal_range(80).first->first << " - " << f.equal_range(80).first->first << def << std::endl;
-
-//	std::cout << "---Observers---" << std::endl;
-//	std::cout << ".key_comp() test. Using for loop 30 - 40 and compare to 37" << std::endl;
-//	std::map<int, std::string>::key_compare sComp = s.key_comp();
-//	ft::map<int, std::string>::key_compare fComp = f.key_comp();
-//	for (int i = 30; i <= 40; ++i) {
-//		std::cout << i << ": " << blue << boolToString(sComp(i, 37)) << " " << green << boolToString(fComp(i, 37)) << std::endl;
-//	}
-//
-//	// value_comp
-//	std::cout << ".value_comp() test. Compare to several strings:" << std::endl;
-//	std::map<int, std::string>::value_compare sValComp = s.value_comp();
-//	ft::map<int, std::string>::value_compare fValComp = f.value_comp();
-//
 }
 
 void 		printMultimaps(std::multimap<int, int> s, ft::multimap<int, int> f) {
@@ -910,31 +896,84 @@ void 		testMultimap() {
 	Color::Modifier def(Color::FG_DEFAULT);
 	Color::Modifier green(Color::FG_GREEN);
 	Color::Modifier blue(Color::FG_BLUE);
+	std::cout << blue << "Blue - std " << green << "Green - ft" << def << std::endl;
+
+	std::cout << "---Constructors test---" << std::endl;
+	std::cout << "Default constructor" << std::endl;
 	ft::multimap<int, int> f;
 	std::multimap<int, int> s;
+	printMultimaps(s, f);
+	std::cout << "Is empty? : " << blue << boolToString(s.empty()) << " " << green << boolToString(f.empty()) << def << std::endl;
 
+//	s.insert(std::pair<int, int>(22, 22));
+//	f.insert(std::pair<int, int>(22, 22));
+//	s.insert(std::pair<int, int>(24, 24));
+//	f.insert(std::pair<int, int>(24, 24));
+//	s.insert(std::pair<int, int>(10, 10));
+//	f.insert(std::pair<int, int>(10, 10));
+//	s.insert(std::pair<int, int>(22, 22));
+//	f.insert(std::pair<int, int>(22, 22));
+//	s.insert(std::pair<int, int>(24, 24));
+//	f.insert(std::pair<int, int>(24, 24));
+//	s.insert(std::pair<int, int>(10, 10));
+//	f.insert(std::pair<int, int>(10, 10));
+//	s.insert(std::pair<int, int>(22, 22));
+//	f.insert(std::pair<int, int>(22, 22));
+//	s.insert(std::pair<int, int>(24, 24));
+//	f.insert(std::pair<int, int>(24, 24));
+//	s.insert(std::pair<int, int>(10, 10));
+//	f.insert(std::pair<int, int>(10, 10));
 	for (int i = 0; i < 5; ++i) {
 		for (int k = 0; k < 3; ++k) {
 			f.insert(std::pair<int, int>(i, i + k));
 			s.insert(std::pair<int, int>(i, i + k));
 		}
 	}
-	f.insert(std::pair<int, int>(4, 0));
-	s.insert(std::pair<int, int>(4, 0));
 	printMultimaps(s, f);
+	{
+		std::cout << "Range constructor. Use reverse iterator from rbegin to rend after inserting to empty maps." << std::endl;
+		std::multimap<int, int> sRange(s.rbegin(), s.rend());
+		ft::multimap<int, int> fRange(s.rbegin(), s.rend());
+		printMultimaps(sRange, fRange);
+		getchar();
+		std::cout << "Copy constructor. Use previous map as source." << std::endl;
+		std::multimap<int, int> sCopy(sRange);
+		ft::multimap<int, int> fCopy(fRange);
+		printMultimaps(sCopy, fCopy);
+		getchar();
+		std::cout << "Operator = . Lets make empty maps and then use assignation operator from previous maps:" << std::endl;
+		std::multimap<int, int> sAssign;
+		ft::multimap<int, int> fAssign;
+		printMultimaps(sAssign, fAssign);
+		std::cout << "After assignation: " << std::endl;
+		sAssign = sCopy;
+		fAssign = fCopy;
+		printMultimaps(sAssign, fAssign);
+	}
 	getchar();
-	f.insert(std::pair<int, int>(0, 7));
-	s.insert(std::pair<int, int>(0, 7));
-	f.insert(std::pair<int, int>(4, 2));
-	s.insert(std::pair<int, int>(4, 2));
-	f.insert(std::pair<int, int>(0, 1));
-	s.insert(std::pair<int, int>(0, 1));
-	printMultimaps(s, f);
-	getchar();
-	std::cout << "Erase" << std::endl;
-	f.erase(0);
-	s.erase(0);
-	printMultimaps(s, f);
+//
+//	for (int i = 0; i < 5; ++i) {
+//		for (int k = 0; k < 3; ++k) {
+//			f.insert(std::pair<int, int>(i, i + k));
+//			s.insert(std::pair<int, int>(i, i + k));
+//		}
+//	}
+//	f.insert(std::pair<int, int>(4, 0));
+//	s.insert(std::pair<int, int>(4, 0));
+//	printMultimaps(s, f);
+//	getchar();
+//	f.insert(std::pair<int, int>(0, 7));
+//	s.insert(std::pair<int, int>(0, 7));
+//	f.insert(std::pair<int, int>(4, 2));
+//	s.insert(std::pair<int, int>(4, 2));
+//	f.insert(std::pair<int, int>(0, 1));
+//	s.insert(std::pair<int, int>(0, 1));
+//	printMultimaps(s, f);
+//	getchar();
+//	std::cout << "Erase" << std::endl;
+//	f.erase(0);
+//	s.erase(0);
+//	printMultimaps(s, f);
 }
 
 int			main()
