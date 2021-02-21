@@ -21,11 +21,7 @@
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
       <config projectName="ft_containers" targetName="ft_containers" />
-      <config projectName="ft_containers" targetName="gmock" />
-      <config projectName="ft_containers" targetName="gtest_main" />
-      <config projectName="ft_containers" targetName="Google_Tests_run" />
-      <config projectName="ft_containers" targetName="gtest" />
-      <config projectName="ft_containers" targetName="gmock_main" />
+      <config projectName="ft_containers" targetName="multimap_test" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -36,11 +32,41 @@
   <component name="ChangeListManager">
     <list default="true" id="9669e708-914f-45aa-886d-882631712d33" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ft_containers.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ft_containers.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ft_containers.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ft_containers.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ft_containers.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ft_containers.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ft_containers.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ft_containers.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/ft_containers" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/ft_containers" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/ft_containers.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/ft_containers.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/unit_tests/CMakeFiles/Google_Tests_run.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/unit_tests/CMakeFiles/Google_Tests_run.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/unit_tests/CMakeFiles/Google_Tests_run.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/unit_tests/CMakeFiles/Google_Tests_run.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/unit_tests/CMakeFiles/Google_Tests_run.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/unit_tests/CMakeFiles/Google_Tests_run.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/unit_tests/CMakeFiles/Google_Tests_run.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/unit_tests/CMakeFiles/Google_Tests_run.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/unit_tests/CMakeFiles/Google_Tests_run.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/unit_tests/CMakeFiles/Google_Tests_run.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/unit_tests/CMakeFiles/Google_Tests_run.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/unit_tests/CMakeFiles/Google_Tests_run.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/unit_tests/CMakeFiles/Google_Tests_run.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/unit_tests/CMakeFiles/Google_Tests_run.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/unit_tests/CMakeFiles/Google_Tests_run.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/unit_tests/CMakeFiles/Google_Tests_run.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/unit_tests/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/unit_tests/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/unit_tests/Google_Tests_run" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/unit_tests/Google_Tests_run" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/unit_tests/Google_tests.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/unit_tests/Google_tests.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/unit_tests/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/unit_tests/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/unit_tests/lib/googlemock/CMakeFiles/gmock.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/unit_tests/lib/googlemock/CMakeFiles/gmock.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/unit_tests/lib/googlemock/CMakeFiles/gmock_main.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/unit_tests/lib/googlemock/CMakeFiles/gmock_main.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/unit_tests/lib/googletest/CMakeFiles/gtest.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/unit_tests/lib/googletest/CMakeFiles/gtest.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/unit_tests/lib/googletest/CMakeFiles/gtest_main.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/unit_tests/lib/googletest/CMakeFiles/gtest_main.dir/progress.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/map.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/map.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/multimap.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/multimap.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unit_tests/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/unit_tests/CMakeLists.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +80,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="ProjectId" id="1nNU5onfM4ycpEYVRX0J2tGFALG" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -61,6 +95,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.advertisement.text.has.clang-format" value="true" />
@@ -73,18 +108,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="CMake Application.ft_containers">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Google_Tests_run" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ft_containers" TARGET_NAME="Google_Tests_run" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ft_containers" RUN_TARGET_NAME="Google_Tests_run" TEST_MODE="SUITE_TEST">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-        <option name="BeforeTestRunTask" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="CMake Application.multimap_test">
     <configuration name="MapIteratorTest" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ft_containers" TARGET_NAME="Google_Tests_run" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ft_containers" RUN_TARGET_NAME="Google_Tests_run" TEST_CLASS="MapIteratorTest" TEST_MODE="SUITE_TEST">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -115,43 +139,24 @@
         <option name="BeforeTestRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ft_containers" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ft_containers" TARGET_NAME="ft_containers" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ft_containers" RUN_TARGET_NAME="ft_containers">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="gmock" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ft_containers" TARGET_NAME="gmock" CONFIG_NAME="Debug">
+    <configuration name="multimap_test" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ft_containers" TARGET_NAME="multimap_test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ft_containers" RUN_TARGET_NAME="multimap_test">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="gmock_main" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ft_containers" TARGET_NAME="gmock_main" CONFIG_NAME="Debug">
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="gtest" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ft_containers" TARGET_NAME="gtest" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="gtest_main" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ft_containers" TARGET_NAME="gtest_main" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <list>
       <item itemvalue="CMake Application.ft_containers" />
-      <item itemvalue="CMake Application.gmock" />
-      <item itemvalue="CMake Application.gmock_main" />
-      <item itemvalue="CMake Application.gtest" />
-      <item itemvalue="CMake Application.gtest_main" />
-      <item itemvalue="Google Test.Google_Tests_run" />
+      <item itemvalue="CMake Application.multimap_test" />
       <item itemvalue="Google Test.MapIteratorTest" />
       <item itemvalue="Google Test.MapIteratorTest.IteratorReverseReverseTest" />
       <item itemvalue="Google Test.VectorInsertIntTest.insertIntInPosition1" />
@@ -207,7 +212,11 @@
       <workItem from="1613559958562" duration="1906000" />
       <workItem from="1613569958741" duration="7568000" />
       <workItem from="1613584383915" duration="4051000" />
-      <workItem from="1613649819873" duration="1784000" />
+      <workItem from="1613649819873" duration="2054000" />
+      <workItem from="1613653473139" duration="1577000" />
+      <workItem from="1613738263251" duration="7164000" />
+      <workItem from="1613919031138" duration="1760000" />
+      <workItem from="1613927413660" duration="404000" />
     </task>
     <servers />
   </component>

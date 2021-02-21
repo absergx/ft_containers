@@ -202,7 +202,7 @@ namespace ft {
 			return std::make_pair(iterator(newNode), true);
 		}
 
-		/* ERASE SHIT */
+		/* ERASE THINGS */
 		_t_map*						_findMinNode(_t_map* node) {
 			if (node->_left)
 				return _findMinNode(node->_left);

@@ -12,7 +12,10 @@
 #include <queue>
 #include <string>
 #include <ostream>
-#include "multimap.hpp"
+#include "set.hpp"
+#include <set>
+#include "deque.hpp"
+#include <deque>
 
 namespace Color {
 	enum Code {
@@ -736,6 +739,8 @@ void 		testMap() {
 		<< ".empty() with not empty maps :"
 		<< blue << boolToString(s.empty()) << " " << green << boolToString(f.empty()) << def << std::endl;
 	getchar();
+	std::cout << ".max_size()" << std::endl
+		<< blue << s.max_size() << " " << green << f.max_size() << def << std::endl;
 
 	std::cout << "---Modifiers---" << std::endl
 		<< ".insert() values in for loop -10 - 10:" << std::endl;
@@ -851,9 +856,9 @@ void 		testMap() {
 
 	std::cout << "Our maps:" << std::endl;
 	printMaps(s, f);
-	std::cout << ".lower_bound() with values 45, 100, 70" << std::endl
+	std::cout << ".lower_bound() with values 45, 20, 70" << std::endl
 		<< "45: " << blue << s.lower_bound(45)->first << " " << green << f.lower_bound(45)->first << def << std::endl
-		<< "100: " << blue << s.lower_bound(100)->first << " " << green << f.lower_bound(100)->first << def << std::endl
+		<< "20: " << blue << s.lower_bound(20)->first << " " << green << f.lower_bound(20)->first << def << std::endl
 		<< "70: " << blue << s.lower_bound(70)->first << " " << green << f.lower_bound(70)->first << def << std::endl;
 	getchar();
 
@@ -863,117 +868,457 @@ void 		testMap() {
 		<< "67: " << blue << s.upper_bound(67)->first << " " << green << f.upper_bound(67)->first << def << std::endl;
 	getchar();
 
-	std::cout << ".equal_range() with values 50, 80" << std::endl;
-	std::cout << blue << s.equal_range(50).first->first << " - " << s.equal_range(50).second->first
-		<< " " << green << f.equal_range(50).first->first << " - " << f.equal_range(50).first->first << def << std::endl
-		<< blue << s.equal_range(80).first->first << " - " << s.equal_range(80).second->first
-		<< " " << green << f.equal_range(80).first->first << " - " << f.equal_range(80).first->first << def << std::endl;
+	std::cout << ".equal_range() with values 40, 33" << std::endl;
+	std::cout << blue << s.equal_range(40).first->first << " - " << s.equal_range(40).second->first
+		<< " " << green << f.equal_range(40).first->first << " - " << f.equal_range(40).second->first << def << std::endl
+		<< blue << s.equal_range(33).first->first << " - " << s.equal_range(33).second->first
+		<< " " << green << f.equal_range(33).first->first << " - " << f.equal_range(33).second->first << def << std::endl;
 }
 
-void 		printMultimaps(std::multimap<int, int> s, ft::multimap<int, int> f) {
+void 		printDeques(std::deque<int> s, ft::deque<int> f) {
 	Color::Modifier def(Color::FG_DEFAULT);
 	Color::Modifier green(Color::FG_GREEN);
 	Color::Modifier blue(Color::FG_BLUE);
 
 	std::cout << "Size: " << blue << s.size() << " " << green << f.size() << def << std::endl;
 	if (s.size() != f.size()) {
-		std::cout << "Error in print maps. Size is not equal." << std::endl;
+		std::cout << "Error in print deques. Size is not equal." << std::endl;
 		return;
 	} else if (s.empty() && f.empty())
 		return;
-	std::multimap<int, int>::iterator sit = s.begin();
-	std::multimap<int, int>::iterator site = s.end();
-	ft::multimap<int, int>::iterator fit = f.begin();
-	ft::multimap<int, int>::iterator fite = f.end();
+	std::deque<int>::iterator sit = s.begin();
+	std::deque<int>::iterator site = s.end();
+	ft::deque<int>::iterator fit = f.begin();
+	ft::deque<int>::iterator fite = f.end();
 	while (sit != site && fit != fite) {
-		std::cout << blue << sit->first << "-" << sit->second << "\t\t" << green << fit->first << "-" << fit->second << def << std::endl;
+		std::cout << blue << *sit << "\t\t" << green << *fit << def << std::endl;
 		++sit;
 		++fit;
 	}
 }
 
-void 		testMultimap() {
+void 		printSets(std::set<int> s, ft::set<int> f) {
 	Color::Modifier def(Color::FG_DEFAULT);
 	Color::Modifier green(Color::FG_GREEN);
 	Color::Modifier blue(Color::FG_BLUE);
+
+	std::cout << "Size: " << blue << s.size() << " " << green << f.size() << def << std::endl;
+	if (s.size() != f.size()) {
+		std::cout << "Error in print deques. Size is not equal." << std::endl;
+		return;
+	} else if (s.empty() && f.empty())
+		return;
+	std::set<int>::iterator sit = s.begin();
+	std::set<int>::iterator site = s.end();
+	ft::set<int>::iterator fit = f.begin();
+	ft::set<int>::iterator fite = f.end();
+	while (sit != site && fit != fite) {
+		std::cout << blue << *sit << "\t\t" << green << *fit << def << std::endl;
+		++sit;
+		++fit;
+	}
+}
+
+void		testDeque() {
+	Color::Modifier def(Color::FG_DEFAULT);
+	Color::Modifier green(Color::FG_GREEN);
+	Color::Modifier blue(Color::FG_BLUE);
+
 	std::cout << blue << "Blue - std " << green << "Green - ft" << def << std::endl;
 
 	std::cout << "---Constructors test---" << std::endl;
 	std::cout << "Default constructor" << std::endl;
-	ft::multimap<int, int> f;
-	std::multimap<int, int> s;
-	printMultimaps(s, f);
+	std::deque<int> s;
+	ft::deque<int> f;
+	printDeques(s, f);
+	{
+		std::cout << "Fill constructor" << std::endl;
+		std::deque<int> s1(10, 42);
+		ft::deque<int> f1(10, 42);
+		printDeques(s1, f1);
+		std::cout << "Range constructor" << std::endl;
+		std::deque<int> s2(s1.begin(), s1.end());
+		ft::deque<int> f2(s1.begin(), s1.end());
+		printDeques(s2, f2);
+		std::cout << "Copy constructor" << std::endl;
+		std::deque<int> s3(s1);
+		ft::deque<int> f3(f1);
+		printDeques(s3, f3);
+		std::cout << "Operator =" << std::endl;
+		s = s3;
+		f = f3;
+		printDeques(s, f);
+	}
+	getchar();
+
+	std::cout << "---Capacity---" << std::endl;
+
+	std::cout << ".maxsize()" << std::endl;
+	std::cout << blue << s.max_size() << " " << green << f.max_size() << def << std::endl;
+
+	std::cout << ".resize() to smaller" << std::endl;
+	s.resize(5);
+	f.resize(5);
+	printDeques(s, f);
+
+	std::cout << ".resize() to higher with val = 13" << std::endl;
+	s.resize(12, 13);
+	f.resize(12, 13);
+	printDeques(s, f);
+
+
+	std::cout << ".empty() not empty vector" << std::endl;
+	std::cout << blue << boolToString(s.empty()) << " " << green << boolToString(f.empty()) << def << std::endl;
+	std::cout << ".empty() on empty vector" << std::endl;
+	{
+		std::deque<int> s1;
+		ft::deque<int> f1;
+		std::cout << blue << boolToString(s1.empty()) << " " << green << boolToString(f1.empty()) << def << std::endl;
+	}
+
+	std::cout << "---Element access---" << std::endl;
+	std::cout << "Test operator[]. Compare values in both lists in loop" << std::endl;
+	for (size_t i = 0; i < s.size(); ++i)
+		std::cout << "i = " << i << " values: " << blue << s[i] << " " << green << f[i] << def << std::endl;
+	getchar();
+	std::cout << ".at(). Same test as before" << std::endl;
+	for (size_t i = 0; i < s.size(); ++i)
+		std::cout << "i = " << i << " values: " << blue << s.at(i) << " " << green << f.at(i) << def << std::endl;
+	std::cout << ".front()" << std::endl;
+	std::cout << blue << s.front() << " " << green << f.front() << def << std::endl;
+	std::cout << ".back()" << std::endl;
+	std::cout << blue << s.back() << " " << green << f.back() << def << std::endl;
+	getchar();
+
+	std::cout << "---Modifiers---" << std::endl;
+	// assign
+	std::cout << ".assign() fill 5 times value = 55" << std::endl;
+	s.assign(5, 55);
+	f.assign(5, 55);
+	printDeques(s, f);
+	std::cout << ".assign() with input iterator from other list (for loop filled). Source vectors:" << std::endl;
+	ft::deque<int> fAssign;
+	std::deque<int> sAssign;
+	for (int i = 0; i < 10; ++i) {
+		fAssign.push_back(i);
+		sAssign.push_back(i);
+	}
+	printDeques(sAssign, fAssign);
+	std::cout << "After .assign() from begin to end source vectors:" << std::endl;
+	s.assign(sAssign.begin(), sAssign.end());
+	f.assign(fAssign.begin(), fAssign.end());
+	printDeques(s, f);
+	getchar();
+
+	// push_back
+	std::cout << ".push_back() . print vectors before:" << std::endl;
+	printDeques(s, f);
+	for (int i = 0; i < 10; ++i) {
+		s.push_back(i);
+		f.push_back(i);
+	}
+	std::cout << "after .push_back() in for loop vectors:" << std::endl;
+	printDeques(s, f);
+
+
+	// pop_back
+	std::cout << ".pop_back() . after 1 use: " << std::endl;
+	f.pop_back();
+	s.pop_back();
+	printDeques(s, f);
+	std::cout << ".pop_back() . after for loop 4 uses: " << std::endl;
+	for (int i = 0; i < 4; ++i) {
+		f.pop_back();
+		s.pop_back();
+	}
+	printDeques(s, f);
+	getchar();
+
+	// push_front
+	std::cout << ".push_front(). one use:" << std::endl;
+	f.push_front(123);
+	s.push_front(123);
+	printDeques(s, f);
+	getchar();
+	std::cout << ".push_front() in for loop:" << std::endl;
+	for (int i = 0; i < 5; ++i) {
+		f.push_front(i);
+		s.push_front(i);
+	}
+	printDeques(s, f);
+	getchar();
+
+	// pop_front
+	std::cout << ".pop_front() one use:" << std::endl;
+	s.pop_front();
+	f.pop_front();
+	printDeques(s, f);
+	getchar();
+	std::cout << ".pop_front() in for loop:" << std::endl;
+	for (int i = 0; i < 5; ++i) {
+		f.pop_front();
+		s.pop_front();
+	}
+	printDeques(s, f);
+	getchar();
+
+	// insert
+	std::cout << ".insert() into begin value = 123" << std::endl;
+	s.insert(s.begin(), 123);
+	f.insert(f.begin(), 123);
+	printDeques(s, f);
+	std::cout << ".insert() to --end() value = 88 n = 3" << std::endl;
+	s.insert(--s.end(), 88, 3);
+	f.insert(--f.end(), 88, 3);
+	printDeques(s, f);
+	std::cout << ".insert() from input iterator other vector to ++begin()" << std::endl;
+	ft::deque<int> fInsert(4, 99);
+	s.insert(++s.begin(), fInsert.begin(), fInsert.end());
+	f.insert(++f.begin(), fInsert.begin(), fInsert.end());
+	printDeques(s, f);
+	getchar();
+
+	// erase
+	std::cout << ".erase() to begin()" << std::endl;
+	s.erase(s.begin());
+	f.erase(f.begin());
+	printDeques(s, f);
+	std::cout << ".erase() to --end()" << std::endl;
+	s.erase(--s.end());
+	f.erase(--f.end());
+	printDeques(s, f);
+	getchar();
+
+	// swap
+	std::cout << ".swap() with vector. Source:" << std::endl;
+	ft::deque<int> fSwap(5, 1);
+	std::deque<int> sSwap(5, 1);
+	printDeques(sSwap, fSwap);
+	std::cout << "Our vectors before swap:" << std::endl;
+	printDeques(s, f);
+	std::cout << "After swap Source vectors:" << std::endl;
+	s.swap(sSwap);
+	f.swap(fSwap);
+	printDeques(sSwap, fSwap);
+	std::cout << "Main vectors after swap:" << std::endl;
+	printDeques(s, f);
+	getchar();
+
+	// clear
+	std::cout << ".clear() . print size and capacity after clear" << std::endl;
+	s.clear();
+	f.clear();
+	printDeques(s, f);
+
+	std::cout << "---Relational operators---" << std::endl;
+	ft::deque<int> fEq(4, 4);
+	std::deque<int> sEq(4, 4);
+	ft::deque<int> fNotEq(4, 5);
+	std::deque<int> sNotEq(4, 5);
+	s.assign(4, 4);
+	f.assign(4, 4);
+	std::cout << "Our main vectors:" << std::endl;
+	printDeques(s, f);
+	std::cout << "Vectors to be equal:" << std::endl;
+	printDeques(sEq, fEq);
+	std::cout << "Vectors to be not equal:" << std::endl;
+	printDeques(sNotEq, fNotEq);
+	getchar();
+
+	std::cout << "Operator ==" << std::endl;
+	std::cout << "Equal vectors: " << blue << boolToString(s == sEq) << " " << green << boolToString(f == fEq) << def << std::endl;
+	std::cout << "Not equal vectors: " << blue << boolToString(s == sNotEq) << " " << green << boolToString(f == fNotEq) << def << std::endl;
+
+	std::cout << "Operator !=" << std::endl;
+	std::cout << "Equal vectors: " << blue << boolToString(s != sEq) << " " << green << boolToString(f != fEq) << def << std::endl;
+	std::cout << "Not equal vectors: " << blue << boolToString(s != sNotEq) << " " << green << boolToString(f != fNotEq) << def << std::endl;
+
+	std::cout << "Operator <" << std::endl;
+	std::cout << "Equal vectors: " << blue << boolToString(s < sEq) << " " << green << boolToString(f < fEq) << def << std::endl;
+	std::cout << "Not equal vectors: " << blue << boolToString(s < sNotEq) << " " << green << boolToString(f < fNotEq) << def << std::endl;
+
+	std::cout << "Operator <=" << std::endl;
+	std::cout << "Equal vectors: " << blue << boolToString(s <= sEq) << " " << green << boolToString(f <= fEq) << def << std::endl;
+	std::cout << "Not equal vectors: " << blue << boolToString(s <= sNotEq) << " " << green << boolToString(f <= fNotEq) << def << std::endl;
+
+	std::cout << "Operator >" << std::endl;
+	std::cout << "Equal vectors: " << blue << boolToString(s > sEq) << " " << green << boolToString(f > fEq) << def << std::endl;
+	std::cout << "Not equal vectors: " << blue << boolToString(s > sNotEq) << " " << green << boolToString(f > fNotEq) << def << std::endl;
+
+	std::cout << "Operator >=" << std::endl;
+	std::cout << "Equal vectors: " << blue << boolToString(s >= sEq) << " " << green << boolToString(f >= fEq) << def << std::endl;
+	std::cout << "Not equal vectors: " << blue << boolToString(s >= sNotEq) << " " << green << boolToString(f >= fNotEq) << def << std::endl;
+}
+
+void 		testSet() {
+	Color::Modifier def(Color::FG_DEFAULT);
+	Color::Modifier green(Color::FG_GREEN);
+	Color::Modifier blue(Color::FG_BLUE);
+
+	std::cout << blue << "Blue - std " << green << "Green - ft" << def << std::endl;
+
+	std::cout << "---Constructor tests---" << std::endl;
+	std::cout << "Empty constructor. Call .size() and .empty() to both sets after construct:" << std::endl;
+	std::set<int> s;
+	ft::set<int> f;
+	printSets(s, f);
 	std::cout << "Is empty? : " << blue << boolToString(s.empty()) << " " << green << boolToString(f.empty()) << def << std::endl;
 
-//	s.insert(std::pair<int, int>(22, 22));
-//	f.insert(std::pair<int, int>(22, 22));
-//	s.insert(std::pair<int, int>(24, 24));
-//	f.insert(std::pair<int, int>(24, 24));
-//	s.insert(std::pair<int, int>(10, 10));
-//	f.insert(std::pair<int, int>(10, 10));
-//	s.insert(std::pair<int, int>(22, 22));
-//	f.insert(std::pair<int, int>(22, 22));
-//	s.insert(std::pair<int, int>(24, 24));
-//	f.insert(std::pair<int, int>(24, 24));
-//	s.insert(std::pair<int, int>(10, 10));
-//	f.insert(std::pair<int, int>(10, 10));
-//	s.insert(std::pair<int, int>(22, 22));
-//	f.insert(std::pair<int, int>(22, 22));
-//	s.insert(std::pair<int, int>(24, 24));
-//	f.insert(std::pair<int, int>(24, 24));
-//	s.insert(std::pair<int, int>(10, 10));
-//	f.insert(std::pair<int, int>(10, 10));
-	for (int i = 0; i < 5; ++i) {
-		for (int k = 0; k < 3; ++k) {
-			f.insert(std::pair<int, int>(i, i + k));
-			s.insert(std::pair<int, int>(i, i + k));
-		}
-	}
-	printMultimaps(s, f);
+	s.insert(22);
+	f.insert(22);
+	s.insert(24);
+	f.insert(24);
+	s.insert(10);
+	f.insert(10);
+	printSets(s, f);
 	{
-		std::cout << "Range constructor. Use reverse iterator from rbegin to rend after inserting to empty maps." << std::endl;
-		std::multimap<int, int> sRange(s.rbegin(), s.rend());
-		ft::multimap<int, int> fRange(s.rbegin(), s.rend());
-		printMultimaps(sRange, fRange);
-		getchar();
-		std::cout << "Copy constructor. Use previous map as source." << std::endl;
-		std::multimap<int, int> sCopy(sRange);
-		ft::multimap<int, int> fCopy(fRange);
-		printMultimaps(sCopy, fCopy);
-		getchar();
-		std::cout << "Operator = . Lets make empty maps and then use assignation operator from previous maps:" << std::endl;
-		std::multimap<int, int> sAssign;
-		ft::multimap<int, int> fAssign;
-		printMultimaps(sAssign, fAssign);
+		std::cout << "Range constructor. Use reverse iterator from rbegin to rend after inserting to empty sets." << std::endl;
+		std::set<int> sRange(s.rbegin(), s.rend());
+		ft::set<int> fRange(s.rbegin(), s.rend());
+		printSets(sRange, fRange);
+		std::cout << "Copy constructor. Use previous set as source." << std::endl;
+		std::set<int> sCopy(sRange);
+		ft::set<int> fCopy(fRange);
+		printSets(sCopy, fCopy);
+		std::cout << "Operator = . Lets make empty maps and then use assignation operator from previous sets:" << std::endl;
+		std::set<int> sAssign;
+		ft::set<int> fAssign;
+		printSets(sAssign, fAssign);
 		std::cout << "After assignation: " << std::endl;
 		sAssign = sCopy;
 		fAssign = fCopy;
-		printMultimaps(sAssign, fAssign);
+		printSets(sAssign, fAssign);
 	}
 	getchar();
-//
-//	for (int i = 0; i < 5; ++i) {
-//		for (int k = 0; k < 3; ++k) {
-//			f.insert(std::pair<int, int>(i, i + k));
-//			s.insert(std::pair<int, int>(i, i + k));
-//		}
-//	}
-//	f.insert(std::pair<int, int>(4, 0));
-//	s.insert(std::pair<int, int>(4, 0));
-//	printMultimaps(s, f);
-//	getchar();
-//	f.insert(std::pair<int, int>(0, 7));
-//	s.insert(std::pair<int, int>(0, 7));
-//	f.insert(std::pair<int, int>(4, 2));
-//	s.insert(std::pair<int, int>(4, 2));
-//	f.insert(std::pair<int, int>(0, 1));
-//	s.insert(std::pair<int, int>(0, 1));
-//	printMultimaps(s, f);
-//	getchar();
-//	std::cout << "Erase" << std::endl;
-//	f.erase(0);
-//	s.erase(0);
-//	printMultimaps(s, f);
+
+	std::cout << "---Capacity---" << std::endl
+			  << ".empty() with not empty sets :"
+			  << blue << boolToString(s.empty()) << " " << green << boolToString(f.empty()) << def << std::endl;
+	getchar();
+
+	std::cout << "---Modifiers---" << std::endl
+			  << ".insert() values in for loop -10 - 10:" << std::endl;
+	for (int i = -10; i <= 10; ++i) {
+		s.insert(i);
+		f.insert(i);
+	}
+	printSets(s, f);
+	getchar();
+	std::cout << ".insert() using input iterators. Make new map with values 25 - 30 and insert from there:" << std::endl;
+	std::set<int> toInsert;
+	for (int i = 25; i <= 30; ++i)
+		toInsert.insert(i);
+	s.insert(toInsert.begin(), toInsert.end());
+	f.insert(toInsert.begin(), toInsert.end());
+	printSets(s, f);
+	getchar();
+
+	std::cout << ".erase() using iterators. Actual size is 29, so use for loop 10 times to iterators and then use 10 times erase." << std::endl;
+	{
+		std::set<int>::iterator sit = s.begin();
+		ft::set<int>::iterator fit = f.begin();
+		for (int i = 0; i < 10; ++i) {
+			++sit;
+			++fit;
+		}
+		for (int i = 0; i < 10; ++i) {
+			s.erase(sit++);
+			f.erase(fit++);
+		}
+		printSets(s, f);
+		getchar();
+		std::cout << ".erase() with two iterators as arguments." << std::endl;
+		std::set<int>::iterator sit1(sit);
+		ft::set<int>::iterator fit1(fit);
+		for (int i = 0; i < 5; ++i) {
+			++sit1;
+			++fit1;
+		}
+		s.erase(sit, sit1);
+		f.erase(fit, fit1);
+		printSets(s, f);
+		getchar();
+		std::cout << ".erase() using key value. lets erase values from -9 to - 3:" << std::endl;
+		for (int i = -9; i <= -3; ++i) {
+			s.erase(i);
+			f.erase(i);
+		}
+		printSets(s, f);
+		getchar();
+	}
+
+	std::cout << ".swap() . lets do new sets with values 100 - 120:" << std::endl;
+	std::set<int> sSwap;
+	ft::set<int> fSwap;
+	for (int i = 100; i <= 120; ++i) {
+		sSwap.insert(i);
+		fSwap.insert(i);
+	}
+	printSets(sSwap, fSwap);
+	std::cout << "Main sets before swapping:" << std::endl;
+	printSets(s, f);
+	getchar();
+	s.swap(sSwap);
+	f.swap(fSwap);
+	std::cout << "After swap new sets:" << std::endl;
+	printSets(sSwap, fSwap);
+	std::cout << "After swap main sets:" << std::endl;
+	printSets(s, f);
+
+	// clear
+	std::cout << ".clear(). Call .size() and .empty() before clear:" << std::endl;
+	std::cout << ".size(): " << blue << s.size() << " " << green << f.size() << def << std::endl;
+	std::cout << ".empty(): " << blue << boolToString(s.empty()) << " " << green << boolToString(f.empty()) << def << std::endl;
+	std::cout << "Call .size() and .empty() after clear:" << std::endl;
+	s.clear();
+	f.clear();
+	std::cout << ".size(): " << blue << s.size() << " " << green << f.size() << def << std::endl;
+	std::cout << ".empty(): " << blue << boolToString(s.empty()) << " " << green << boolToString(f.empty()) << def << std::endl;
+	getchar();
+
+	std::cout << "---Operations---" << std::endl;
+	std::cout << "Fill set with new values 30 - 40" << std::endl;
+	for (int i = 30; i <= 40; ++i) {
+		s.insert(i);
+		f.insert(i);
+	}
+	printSets(s, f);
+	getchar();
+
+	std::cout << ".find() using for loop 30 - 35:" << std::endl;
+	for (int i = 30; i <= 35; ++i) {
+		std::cout << ".find(" << i << "): " << blue << *s.find(i) << " " << green << *f.find(i) << def << std::endl;
+	}
+	getchar();
+	std::cout << ".find() value out of set and check if == end()" << std::endl;
+	std::cout << ".find(1000)" << blue << boolToString(s.find(1000) == s.end()) << " "
+		<< green << boolToString(f.find(1000) == f.end()) << def << std::endl;
+
+	std::cout << ".count() using for loop 35 - 50:" << std::endl;
+	for (int i = 35; i <= 50; ++i) {
+		std::cout << ".count(" << i << "): " << blue << s.count(i) << " " << green << f.count(i) << def << std::endl;
+	}
+	getchar();
+
+	std::cout << "Our sets:" << std::endl;
+	printSets(s, f);
+	std::cout << ".lower_bound() with values 45, 20, 70" << std::endl
+			  << "45: " << blue << *s.lower_bound(45) << " " << green << *f.lower_bound(45) << def << std::endl
+			  << "20: " << blue << *s.lower_bound(20) << " " << green << *f.lower_bound(20) << def << std::endl
+			  << "70: " << blue << *s.lower_bound(70) << " " << green << *f.lower_bound(70) << def << std::endl;
+	getchar();
+
+	std::cout << ".upper_bound() with values 0, 50, 67" << std::endl
+			  << "0: " << blue << *s.upper_bound(0) << " " << green << *f.upper_bound(0) << def << std::endl
+			  << "50: " << blue << *s.upper_bound(50) << " " << green << *f.upper_bound(50) << def << std::endl
+			  << "67: " << blue << *s.upper_bound(67) << " " << green << *f.upper_bound(67) << def << std::endl;
+	getchar();
+
+	std::cout << ".equal_range() with values 40, 33" << std::endl;
+	std::cout << blue << *s.equal_range(40).first << " - " << *s.equal_range(40).second
+			  << " " << green << *f.equal_range(40).first << " - " << *f.equal_range(40).second << def << std::endl
+			  << blue << *s.equal_range(33).first << " - " << *s.equal_range(33).second
+			  << " " << green << *f.equal_range(33).first << " - " << *f.equal_range(33).second << def << std::endl;
 }
 
 int			main()
@@ -984,7 +1329,7 @@ int			main()
 	Color::Modifier blue(Color::FG_BLUE);
 	while (true) {
 		std::string input;
-		std::cout << blue << "Possible commands:\n" << green << "map vector stack list queue exit\n" << blue << "Enter what you want to test:" << std::endl;
+		std::cout << blue << "Possible commands:\n" << green << "map vector stack list queue deque set exit\n" << blue << "Enter what you want to test:" << std::endl;
 		std::getline(std::cin, input);
 		if (input == "exit")
 			break;
@@ -1008,9 +1353,13 @@ int			main()
 			std::cout << green << "Map Test:" << def << std::endl;
 			testMap();
 		}
-		else if (input == "multimap") {
-			std::cout << green << "MultiMap Test:" << def << std::endl;
-			testMultimap();
+		else if (input == "set") {
+			std::cout << green << "Set Test:" << def << std::endl;
+			testSet();
+		}
+		else if (input == "deque") {
+			std::cout << green << "Deque Test:" << def << std::endl;
+			testDeque();
 		}
 		else
 			std::cout << red << "Oups, i don't know this command." << std::endl;

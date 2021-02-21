@@ -14,10 +14,14 @@ set(SRCS
         srcs/vector.hpp
         srcs/map.hpp
         srcs/stack.hpp
-        srcs/queue.hpp)
+        srcs/queue.hpp
+		srcs/set.hpp
+		srcs/deque.hpp)
 
 add_executable(ft_containers main.cpp ${SRCS})
 
-add_library(testlib INTERFACE)
-target_include_directories(testlib INTERFACE ./srcs)
-add_subdirectory(unit_tests)
+add_executable(multimap_test multimap_test.cpp ${SRCS})
+
+#add_library(testlib INTERFACE)
+#target_include_directories(testlib INTERFACE ./srcs)
+#add_subdirectory(unit_tests)

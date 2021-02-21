@@ -268,6 +268,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/memilio/homerun/ft_containers/unit_tests/deque.cpp">
+			<Option target="Google_Tests_run"/>
+		</Unit>
 		<Unit filename="/Users/memilio/homerun/ft_containers/unit_tests/lib/googlemock/src/gmock-all.cc">
 			<Option target="gmock"/>
 		</Unit>
@@ -287,6 +290,9 @@
 			<Option target="Google_Tests_run"/>
 		</Unit>
 		<Unit filename="/Users/memilio/homerun/ft_containers/unit_tests/queue.cpp">
+			<Option target="Google_Tests_run"/>
+		</Unit>
+		<Unit filename="/Users/memilio/homerun/ft_containers/unit_tests/set.cpp">
 			<Option target="Google_Tests_run"/>
 		</Unit>
 		<Unit filename="/Users/memilio/homerun/ft_containers/unit_tests/stack.cpp">

@@ -1,7 +1,9 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Google_Tests_run.dir/deque.cpp.o"
   "CMakeFiles/Google_Tests_run.dir/list.cpp.o"
   "CMakeFiles/Google_Tests_run.dir/map.cpp.o"
   "CMakeFiles/Google_Tests_run.dir/queue.cpp.o"
+  "CMakeFiles/Google_Tests_run.dir/set.cpp.o"
   "CMakeFiles/Google_Tests_run.dir/stack.cpp.o"
   "CMakeFiles/Google_Tests_run.dir/test.cpp.o"
   "CMakeFiles/Google_Tests_run.dir/vector.cpp.o"

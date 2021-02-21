@@ -6,29 +6,11 @@
 
 #IncludeRegexTransform: 
 
-../srcs/ft.hpp
-
-../srcs/list.hpp
+../srcs/deque.hpp
 ft.hpp
 ../srcs/ft.hpp
-memory
--
-type_traits
--
-stdexcept
--
 
-../srcs/stack.hpp
-vector.hpp
-../srcs/vector.hpp
-list.hpp
-../srcs/list.hpp
-
-../srcs/vector.hpp
-ft.hpp
 ../srcs/ft.hpp
-memory
--
 
 ../unit_tests/lib/googletest/include/gtest/gtest-death-test.h
 gtest/internal/gtest-death-test-internal.h
@@ -348,25 +330,11 @@ cxxabi.h
 acxx_demangle.h
 -
 
-/Users/memilio/homerun/ft_containers/unit_tests/stack.cpp
+/Users/memilio/homerun/ft_containers/unit_tests/deque.cpp
 gtest/gtest.h
 /Users/memilio/homerun/ft_containers/unit_tests/gtest/gtest.h
-stack.hpp
-/Users/memilio/homerun/ft_containers/unit_tests/stack.hpp
-stack
--
-string
--
-
-/Users/memilio/homerun/ft_containers/unit_tests/vector.cpp
-gtest/gtest.h
-/Users/memilio/homerun/ft_containers/unit_tests/gtest/gtest.h
-vector.hpp
-/Users/memilio/homerun/ft_containers/unit_tests/vector.hpp
-vector
--
-string
--
-stdexcept
+deque.hpp
+/Users/memilio/homerun/ft_containers/unit_tests/deque.hpp
+deque
 -
 

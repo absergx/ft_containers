@@ -191,6 +191,33 @@ Google_Tests_run/fast:
 	cd /Users/memilio/homerun/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f unit_tests/CMakeFiles/Google_Tests_run.dir/build.make unit_tests/CMakeFiles/Google_Tests_run.dir/build
 .PHONY : Google_Tests_run/fast
 
+deque.o: deque.cpp.o
+
+.PHONY : deque.o
+
+# target to build an object file
+deque.cpp.o:
+	cd /Users/memilio/homerun/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f unit_tests/CMakeFiles/Google_Tests_run.dir/build.make unit_tests/CMakeFiles/Google_Tests_run.dir/deque.cpp.o
+.PHONY : deque.cpp.o
+
+deque.i: deque.cpp.i
+
+.PHONY : deque.i
+
+# target to preprocess a source file
+deque.cpp.i:
+	cd /Users/memilio/homerun/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f unit_tests/CMakeFiles/Google_Tests_run.dir/build.make unit_tests/CMakeFiles/Google_Tests_run.dir/deque.cpp.i
+.PHONY : deque.cpp.i
+
+deque.s: deque.cpp.s
+
+.PHONY : deque.s
+
+# target to generate assembly for a file
+deque.cpp.s:
+	cd /Users/memilio/homerun/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f unit_tests/CMakeFiles/Google_Tests_run.dir/build.make unit_tests/CMakeFiles/Google_Tests_run.dir/deque.cpp.s
+.PHONY : deque.cpp.s
+
 list.o: list.cpp.o
 
 .PHONY : list.o
@@ -271,6 +298,33 @@ queue.s: queue.cpp.s
 queue.cpp.s:
 	cd /Users/memilio/homerun/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f unit_tests/CMakeFiles/Google_Tests_run.dir/build.make unit_tests/CMakeFiles/Google_Tests_run.dir/queue.cpp.s
 .PHONY : queue.cpp.s
+
+set.o: set.cpp.o
+
+.PHONY : set.o
+
+# target to build an object file
+set.cpp.o:
+	cd /Users/memilio/homerun/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f unit_tests/CMakeFiles/Google_Tests_run.dir/build.make unit_tests/CMakeFiles/Google_Tests_run.dir/set.cpp.o
+.PHONY : set.cpp.o
+
+set.i: set.cpp.i
+
+.PHONY : set.i
+
+# target to preprocess a source file
+set.cpp.i:
+	cd /Users/memilio/homerun/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f unit_tests/CMakeFiles/Google_Tests_run.dir/build.make unit_tests/CMakeFiles/Google_Tests_run.dir/set.cpp.i
+.PHONY : set.cpp.i
+
+set.s: set.cpp.s
+
+.PHONY : set.s
+
+# target to generate assembly for a file
+set.cpp.s:
+	cd /Users/memilio/homerun/ft_containers/cmake-build-debug && $(MAKE) $(MAKESILENT) -f unit_tests/CMakeFiles/Google_Tests_run.dir/build.make unit_tests/CMakeFiles/Google_Tests_run.dir/set.cpp.s
+.PHONY : set.cpp.s
 
 stack.o: stack.cpp.o
 
@@ -366,6 +420,9 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... Google_Tests_run"
+	@echo "... deque.o"
+	@echo "... deque.i"
+	@echo "... deque.s"
 	@echo "... list.o"
 	@echo "... list.i"
 	@echo "... list.s"
@@ -375,6 +432,9 @@ help:
 	@echo "... queue.o"
 	@echo "... queue.i"
 	@echo "... queue.s"
+	@echo "... set.o"
+	@echo "... set.i"
+	@echo "... set.s"
 	@echo "... stack.o"
 	@echo "... stack.i"
 	@echo "... stack.s"

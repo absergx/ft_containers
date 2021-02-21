@@ -653,13 +653,14 @@ namespace ft {
 
 		void					erase(iterator position) {
 			erase(position->first);
+			// todo fix to work with only 1 del
 		}
 		void					erase(iterator first, iterator last) {
 			while (first != last)
 				erase(first++);
 		}
 		size_type				erase(const key_type& k) {
-			if (_size == 0 || find(k) == end())
+			if (_size == 0)
 				return 0;
 			size_type ret = 0;
 			while (find(k) != end()) {
@@ -688,8 +689,8 @@ namespace ft {
 		}
 
 		void					clear() {
-			while (_size)
-				erase(begin());
+//			while (_size)
+//				erase(begin());
 		}
 
 		/* Observers */

@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../srcs/ft.hpp
+
+../srcs/multimap.hpp
+ft.hpp
+../srcs/ft.hpp
+
+/Users/memilio/homerun/ft_containers/multimap_test.cpp
+map
+-
+multimap.hpp
+/Users/memilio/homerun/ft_containers/multimap.hpp
+iostream
+-
+

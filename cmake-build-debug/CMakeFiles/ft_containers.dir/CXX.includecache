@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+../srcs/deque.hpp
+ft.hpp
+../srcs/ft.hpp
+
 ../srcs/ft.hpp
 
 ../srcs/list.hpp
@@ -24,13 +28,13 @@ ft.hpp
 iostream
 -
 
-../srcs/multimap.hpp
-ft.hpp
-../srcs/ft.hpp
-
 ../srcs/queue.hpp
 list.hpp
 ../srcs/list.hpp
+
+../srcs/set.hpp
+ft.hpp
+../srcs/ft.hpp
 
 ../srcs/stack.hpp
 vector.hpp
@@ -71,6 +75,12 @@ string
 -
 ostream
 -
-multimap.hpp
-/Users/memilio/homerun/ft_containers/multimap.hpp
+set.hpp
+/Users/memilio/homerun/ft_containers/set.hpp
+set
+-
+deque.hpp
+/Users/memilio/homerun/ft_containers/deque.hpp
+deque
+-
 
